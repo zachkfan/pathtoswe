@@ -1,8 +1,6 @@
 import Image from "next/image";
-import Banner from "./componenets/banner"
-import { Nunito } from "next/font/google";
-
-const nunito = Nunito({subsets: ['latin']})
+import Banner from "./ui/home/banner"
+import { nunito } from "./ui/fonts";
 
 export default function Home() {
   return (
