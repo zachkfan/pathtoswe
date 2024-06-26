@@ -6,4 +6,7 @@
   :root {
     @apply bg-white;
   }
+  h2 {
+    @apply text-2xl;
+  }
 }
