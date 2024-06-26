@@ -8,7 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-
       colors: {
         'concrete-gray': '#f3f3f3',
         'black-gray': '#222222'
@@ -20,10 +19,6 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      colors: {
-        'light-black': '#222222',
-        'light-grey' : '#F3F3F3',
       },
     },
   },
