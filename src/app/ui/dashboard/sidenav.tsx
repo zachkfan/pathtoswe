@@ -15,11 +15,13 @@ export default function SideNav() {
   };
 
   return (
-    <div className={clsx("flex h-full flex-col px-3 py-4 md:px-2 bg-black-gray  text-white",
+    <div className={clsx("w-full flex-none",
       {
-        'w-16': !isOpen,
+        'md:w-16': !isOpen,
+        'md:w-64': isOpen,
       },
-      )}>
+    )}>
+    <div className={"flex h-full flex-col px-3 py-4 md:px-2 bg-black-gray  text-white"}>
       <Link
         className="mb-8 flex h-20 items-center justify-start rounded-md p-4"
         href="/"
@@ -38,6 +40,7 @@ export default function SideNav() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }
