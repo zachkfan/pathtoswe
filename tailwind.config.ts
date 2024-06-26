@@ -18,6 +18,7 @@ const config: Config = {
       },
       colors: {
         'light-black': '#222222',
+        'light-grey' : '#F3F3F3',
       },
     },
   },
