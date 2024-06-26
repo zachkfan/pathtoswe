@@ -21,6 +21,19 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
+      keyframes: {
+        fadeInFromLeft: {
+          '0%': { opacity: '0', transform: 'translateX(-100%)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        fadeInFromLeft1: 'fadeInFromLeft 1s ease-out',
+        fadeInFromLeft2: 'fadeInFromLeft 2s ease-out',
+
+      },
+      
     },
   },
   plugins: [
