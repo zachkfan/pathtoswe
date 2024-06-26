@@ -10,7 +10,7 @@ export default function Logo() {
         width={100}
         height={100}
         alt="PathToSWE Logo"
-        className="h-12 w-12 rounded-md"
+        className="h-9 w-9 rounded-md"
       />
     </div>
   );
