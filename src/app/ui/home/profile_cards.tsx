@@ -12,7 +12,7 @@ interface Props {
 
 const profile_cards = ({image, imageAlt, name, description, linkedin, email} : Props) => {
   return (
-    <div className="card bg-concrete-gray shadow-xl w-full">
+    <div className="card bg-concrete-gray shadow-xl w-full hover:scale-110 duration-100">
   <figure>
     <img
       src={image}
@@ -22,7 +22,7 @@ const profile_cards = ({image, imageAlt, name, description, linkedin, email} : P
     <h2 className="card-title mx-auto">
       {name}
     </h2>
-    <p>{description}</p>
+    <p className='font-serif font-light'>{description}</p>
     <div className="card-actions justify-end">
         <Icon image={"/linkedin-3-48.png"} imageAlt={"Linked In Icon"} href={linkedin}></Icon>
         <Icon image={"/email-13-48.png"} imageAlt={"Email Icon"} href={"mailto:" + email}></Icon>
