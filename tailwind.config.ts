@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+
+      colors: {
+        'concrete-gray': '#f3f3f3',
+        'black-gray': '#222222'
+      },
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],
       },
