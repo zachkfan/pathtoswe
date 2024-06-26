@@ -6,11 +6,11 @@ export default function Logo() {
       className="flex flex-row items-center leading-none"
     >  
       <Image 
-        src="/black_logo.png"
+        src="/big_white_logo.png"
         width={100}
         height={100}
         alt="PathToSWE Logo"
-        className="h-12 w-12"
+        className="h-12 w-12 rounded-md"
       />
     </div>
   );

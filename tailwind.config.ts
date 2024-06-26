@@ -13,7 +13,8 @@ const config: Config = {
         'black-gray': '#222222'
       },
       fontFamily: {
-        sans: ['Nunito', 'sans-serif'],
+        sans: ['var(--font-nunito)'],
+        serif: ['var(--font-playfair-display)'],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
