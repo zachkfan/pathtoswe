@@ -43,9 +43,7 @@ export default function NavLinks() {
             )}
           >
             <LinkIcon className="w-6" />
-            <p className={clsx("hidden",
-              {'md:block': open}
-            )}>{link.name}</p>
+            <p className={clsx("animate-fadeInFromRight", open ? 'md:block': 'hidden')}>{link.name}</p>
           </Link>
         );
       })}

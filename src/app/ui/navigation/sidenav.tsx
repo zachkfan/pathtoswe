@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import NavLinks from '@/app/ui/navigation/nav-links';
 import Logo from '@/app/ui/navigation/logo';
-import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid';
+import { ArrowRightStartOnRectangleIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
 import { OpenContext } from '@/app/context/open-context';
 import clsx from 'clsx';
@@ -17,27 +17,28 @@ export default function SideNav() {
 
   return (
     <OpenContext.Provider value={isOpen}>
-      <div className={clsx("w-full flex-none",
-        {
-          'md:w-24': !isOpen,
-          'md:w-64': isOpen,
-        },
-      )}>
+      <div className={clsx("transition-all duration-300 w-full flex-none", isOpen ? 'md:w-64': 'md:w-24')}>
         <div className={"flex h-full flex-col px-3 py-4 md:px-2 bg-black-gray  text-white"}>
-          <Link
-            className={clsx("mb-8 flex h-20 items-center rounded-md p-4",
-              {'justify-center': !isOpen}
-            )}
-            href="/"
-          > 
-            <Logo />
-            <h2 className={clsx("ml-3 grow font-serif hidden",
-              {
-              'md:block': isOpen,
-              }
-            )}>PathToSWE</h2>
-          </Link>
-          <button className="btn btn-circle bg-white" onClick={() => toggleSidebar()}></button>
+          <div className="mb-8 flex p-4 items-center pr-0">
+            <Link
+              className={clsx("flex h-20 items-center rounded-md",
+                {'justify-center, ml-auto': !isOpen}
+              )}
+              href="/"
+            > 
+              <Logo />
+              <h2 className={clsx("animate-fadeInFromRight ml-3 grow font-serif hidden",
+                {
+                'md:block': isOpen,
+                }
+              )}>PathToSWE</h2>
+            </Link>
+            <button className={clsx("animate-fadeInFromRight btn btn-xs btn-square bg-transparent",
+              {'ml-auto': isOpen}
+            )} onClick={() => toggleSidebar()}>
+              {isOpen ? <ChevronLeftIcon className="w-4" />: <ChevronRightIcon className="w-4"/>}
+            </button>
+          </div>
           <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
             <NavLinks />
             <div className="hidden h-auto w-full grow rounded-md md:block"></div>
@@ -46,9 +47,10 @@ export default function SideNav() {
                 {'md:justify-start': isOpen}
               )}>
                 <ArrowRightStartOnRectangleIcon className="w-6" />
-                <div className={clsx("hidden", 
-                  {'md:block': isOpen}
-                )}>Sign Out</div> 
+                <div className={clsx("animate-fadeInFromRight", isOpen ? 'md:block' : 'hidden')}>
+                  {/* keeps the words together on transition */}
+                  Sign&nbsp;Out
+                </div> 
               </button>
             </form>
           </div>
