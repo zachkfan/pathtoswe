@@ -24,7 +24,7 @@ const profile_cards = ({image, imageAlt, name, description, linkedin, email} : P
     </h2>
     <p className='font-serif font-light'>{description}</p>
     <div className="card-actions justify-end">
-        <Icon image={"/linkedin.svg"} imageAlt={"Linked In Icon"} href={linkedin}></Icon>
+        <Icon image={"/linkedin.svg"} imageAlt={"Linkedin Icon"} href={linkedin}></Icon>
         <Icon image={"/email.svg"} imageAlt={"Email Icon"} href={"mailto:" + email}></Icon>
     </div>
   </div>
