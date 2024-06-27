@@ -6,8 +6,10 @@ import {
   UserIcon
 } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname  } from 'next/navigation';
 import clsx from 'clsx';
+import { useContext } from 'react';
+import { OpenContext } from '@/app/context/open-context'
 
 // Map of links to display in the side navigation.
 const links = [
@@ -22,6 +24,7 @@ const links = [
 
 export default function NavLinks() {
   const pathname = usePathname();
+  const open = useContext(OpenContext);
 
   return (
     <>
@@ -39,7 +42,9 @@ export default function NavLinks() {
             )}
           >
             <LinkIcon className="w-6" />
-            <p className="hidden md:block">{link.name}</p>
+            <p className={clsx("hidden",
+              {'md:block': open}
+            )}>{link.name}</p>
           </Link>
         );
       })}
