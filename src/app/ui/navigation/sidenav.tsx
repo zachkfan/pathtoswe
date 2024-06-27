@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import NavLinks from '@/app/ui/navigation/nav-links';
-import Logo from '@/app/ui/navigation/logo';
+import Logo from '@/app/ui/navigation/nav-logo';
 import { ArrowRightStartOnRectangleIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
 import { OpenContext } from '@/app/context/open-context';
