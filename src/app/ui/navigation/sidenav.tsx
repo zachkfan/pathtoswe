@@ -25,7 +25,9 @@ export default function SideNav() {
       )}>
         <div className={"flex h-full flex-col px-3 py-4 md:px-2 bg-black-gray  text-white"}>
           <Link
-            className="mb-8 flex h-20 items-center justify-start rounded-md p-4"
+            className={clsx("mb-8 flex h-20 items-center rounded-md p-4",
+              {'justify-center': !isOpen}
+            )}
             href="/"
           > 
             <Logo />
@@ -40,7 +42,9 @@ export default function SideNav() {
             <NavLinks />
             <div className="hidden h-auto w-full grow rounded-md md:block"></div>
             <form>
-              <button className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-concrete-gray hover:text-black-gray md:flex-none md:justify-start md:p-2 md:px-3">
+              <button className={clsx("transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-concrete-gray hover:text-black-gray md:flex-none md:p-2 md:px-3",
+                {'md:justify-start': isOpen}
+              )}>
                 <ArrowRightStartOnRectangleIcon className="w-6" />
                 <div className={clsx("hidden", 
                   {'md:block': isOpen}

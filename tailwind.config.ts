@@ -31,7 +31,6 @@ const config: Config = {
       animation: {
         fadeInFromLeft1: 'fadeInFromLeft 1s ease-out',
         fadeInFromLeft2: 'fadeInFromLeft 2s ease-out',
-
       },
       
     },
