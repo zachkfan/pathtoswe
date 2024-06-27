@@ -7,10 +7,10 @@ export default function Logo() {
     >  
       <Image 
         src="/big_white_logo.png"
-        width={100}
-        height={100}
+        width={36}
+        height={36}
         alt="PathToSWE Logo"
-        className="h-9 w-9 rounded-md"
+        className="w-[36px] h-[36px] rounded-md"
       />
     </div>
   );
