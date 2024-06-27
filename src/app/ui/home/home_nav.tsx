@@ -30,7 +30,7 @@ const home_nav = () => {
       <HomeNavLink title={"Log In"} href={"/"}></HomeNavLink>
       </ul>
     </div>
-    <Image className= "hidden md:flex"src={"/darker_black_logo.png"} alt={"Logo"} width={100} height={100}>
+    <Image className= "hidden md:flex"src={"/black_logo.png"} alt={"Logo"} width={100} height={100}>
     </Image>
   </div>
   <div className="flex-none text-white">
