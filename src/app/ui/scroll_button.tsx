@@ -25,7 +25,6 @@ export default function ScrollButton({ footerOffset }: Props) {
   }, [footerOffset]);
 
   return (
-    // TODO: scroll up with footer (fixed->absolute, bottom-2)
     <button
       className={clsx(
         "btn btn-circle opacity-20 bottom-corner bottom-2",
