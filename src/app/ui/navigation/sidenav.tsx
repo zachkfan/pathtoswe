@@ -41,15 +41,20 @@ export default function SideNav() {
           <NavLinks open={isOpen}/>
           <div className="hidden h-auto w-full grow rounded-md md:block"></div>
           <form>
-            <button className={clsx("transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-concrete-gray hover:text-black-gray md:flex-none md:p-2 md:px-3",
-              {'md:justify-start': isOpen}
-            )}>
+            {/* subject to change but keeping form since we need a function to sign user out on submit */}
+            <Link
+              key={"Home"}
+              href={"/"}
+            >
+              <button className={clsx("transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-concrete-gray hover:text-black-gray md:flex-none md:p-2 md:px-3",
+                {'md:justify-start': isOpen}
+              )}>
               <ArrowRightStartOnRectangleIcon className="w-6" />
               <div className={clsx("animate-fadeInFromRight", isOpen ? 'md:block' : 'hidden')}>
-                {/* keeps the words together on transition */}
                 Sign&nbsp;Out
               </div> 
             </button>
+            </Link>
           </form>
         </div>
       </div>
