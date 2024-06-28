@@ -6,7 +6,7 @@ import ScrollButton from "./ui/scroll_button";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <main className="font-sans">
         <Banner />
         <HomeBody />
@@ -54,6 +54,6 @@ export default function Home() {
         <ScrollButton />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
