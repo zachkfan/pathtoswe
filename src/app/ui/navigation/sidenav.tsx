@@ -1,18 +1,14 @@
 "use client";
 
 import Link from 'next/link';
-import NavLinks from '@/app/ui/navigation/nav-links';
-import Logo from '@/app/ui/navigation/nav-logo';
+import NavLinks from '@/app/ui/navigation/nav_links';
+import Logo from '@/app/ui/navigation/nav_logo';
 import { ArrowRightStartOnRectangleIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
 import clsx from 'clsx';
 
 export default function SideNav() {
   const [isOpen, setIsOpen] = useState(true);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <div className={clsx("transition-all duration-300 w-full flex-none", isOpen ? 'md:w-64': 'md:w-24')}>
@@ -33,7 +29,7 @@ export default function SideNav() {
           </Link>
           <button className={clsx("animate-fadeInFromRight btn btn-xs btn-square bg-transparent border-none",
             {'ml-auto': isOpen}
-          )} onClick={() => toggleSidebar()}>
+          )} onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <ChevronLeftIcon className="w-4 text-white" />: <ChevronRightIcon className="w-4 text-white"/>}
           </button>
         </div>

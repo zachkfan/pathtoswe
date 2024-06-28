@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Banner from "./ui/home/banner";
 import HomeBody from "./ui/home/home_body";
 import Card from "./ui/home/profile_cards";
 import Footer from './ui/footer';
+import ScrollButton from './ui/scroll_button';
 
 export default function Home() {
   return (
@@ -22,6 +22,7 @@ export default function Home() {
         <Card image={"/cole_photo.png"} imageAlt={"Photo of Cole Drake"} name={"Cole Drake"} description={"Hello, My name is Cole Drake and I am a second year studying Electrical Computer Engineering at Carnegie Mellon University."} linkedin={"https://www.linkedin.com"} email={"coled@andrew.cmu.edu"}></Card>
         </div>
       </div>
+      <ScrollButton />
       </main>
       <Footer />
     </div>
