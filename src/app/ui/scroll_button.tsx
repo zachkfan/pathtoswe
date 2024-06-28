@@ -22,7 +22,7 @@ export default function ScrollButton() {
   return (
     // TODO: scroll up with footer (fixed->absolute, bottom-2)
     <button
-      className={clsx("btn btn-circle opacity-20 fixed right-2 bottom-20", {
+      className={clsx("btn btn-circle opacity-20 fixed right-2 bottom-2", {
         "motion-safe:animate-bounce": isBottom,
       })}
       onClick={() => scrollTo({ top: 0, left: 0, behavior: "smooth" })}
