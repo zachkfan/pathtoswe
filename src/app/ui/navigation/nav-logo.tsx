@@ -1,10 +1,6 @@
 import Image from 'next/image'
-import { useContext } from 'react';
-import { OpenContext } from '@/app/context/open-context'
 
 export default function Logo() {
-  const open = useContext(OpenContext);
-
   return (
     <div
       className="flex flex-row items-center leading-none"

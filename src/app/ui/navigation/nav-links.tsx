@@ -8,8 +8,6 @@ import {
 import Link from 'next/link';
 import { usePathname  } from 'next/navigation';
 import clsx from 'clsx';
-import { useContext } from 'react';
-import { OpenContext } from '@/app/context/open-context'
 
 // Map of links to display in the side navigation.
 const links = [
@@ -22,9 +20,12 @@ const links = [
   { name: 'Account', href: '/dashboard/account', icon: UserIcon },
 ];
 
-export default function NavLinks() {
+interface Props {
+  open: boolean;
+}
+
+export default function NavLinks( {open}: Props ) {
   const pathname = usePathname();
-  const open = useContext(OpenContext);
 
   return (
     <>
