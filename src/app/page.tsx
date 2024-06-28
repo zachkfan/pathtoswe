@@ -2,7 +2,7 @@ import Banner from "./ui/home/banner";
 import HomeBody from "./ui/home/home_body";
 import Card from "./ui/home/profile_cards";
 import Footer from './ui/footer';
-import ScrollButton from './ui/scroll_button';
+import ScrollButton from './ui/scroll_button'
 
 export default function Home() {
   return (
