@@ -31,10 +31,10 @@ export default function SideNav() {
               }
             )}>PathToSWE</h2>
           </Link>
-          <button className={clsx("animate-fadeInFromRight btn btn-xs btn-square bg-transparent",
+          <button className={clsx("animate-fadeInFromRight btn btn-xs btn-square bg-transparent border-none",
             {'ml-auto': isOpen}
           )} onClick={() => toggleSidebar()}>
-            {isOpen ? <ChevronLeftIcon className="w-4" />: <ChevronRightIcon className="w-4"/>}
+            {isOpen ? <ChevronLeftIcon className="w-4 text-white" />: <ChevronRightIcon className="w-4 text-white"/>}
           </button>
         </div>
         <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
