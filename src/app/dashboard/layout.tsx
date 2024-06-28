@@ -1,7 +1,7 @@
-import SideNav from '@/app/ui/navigation/sidenav';
-import Footer from '@/app/ui/footer';
-import ScrollButton from '@/app/ui/scroll_button';
- 
+import SideNav from "@/app/ui/navigation/sidenav";
+import Footer from "@/app/ui/footer";
+import ScrollButton from "@/app/ui/scroll_button";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {children}
           <ScrollButton />
         </div>
-      </div>  
+      </div>
       <Footer />
     </div>
   );
