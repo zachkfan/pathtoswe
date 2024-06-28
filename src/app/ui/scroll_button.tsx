@@ -4,27 +4,35 @@ import { ArrowUpIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 
-export default function ScrollButton() {
-  const [isBottom, setIsBottom] = useState(false);
+interface Props {
+  footerOffset: number;
+}
+
+export default function ScrollButton({ footerOffset }: Props) {
+  const [overlapFooter, setOverlapFooter] = useState(false);
 
   const handleScroll = () => {
     const scrollTop = window.innerHeight + window.scrollY;
-    const offsetHeight = document.documentElement.offsetHeight;
+    // console.log(footerOffset, scrollTop);
     // added magic number (1) to compensate for bounce not triggering on home page
-    setIsBottom(scrollTop >= offsetHeight - 1);
+    console.log(scrollTop, footerOffset);
+    setOverlapFooter(scrollTop - 1 >= footerOffset);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [footerOffset]);
 
   return (
     // TODO: scroll up with footer (fixed->absolute, bottom-2)
     <button
-      className={clsx("btn btn-circle opacity-20 fixed right-2 bottom-20", {
-        "motion-safe:animate-bounce": isBottom,
-      })}
+      className={clsx(
+        "btn btn-circle opacity-20 bottom-corner bottom-2",
+        overlapFooter
+          ? `relative motion-safe:animate-bounce left-[95vw]`
+          : "fixed right-1"
+      )}
       onClick={() => scrollTo({ top: 0, left: 0, behavior: "smooth" })}
     >
       <ArrowUpIcon className="w-7 text-white" />

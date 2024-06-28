@@ -1,10 +1,22 @@
+"use client";
+
 import Banner from "./ui/home/banner";
 import HomeBody from "./ui/home/home_body";
 import Card from "./ui/home/profile_cards";
 import Footer from "./ui/footer";
 import ScrollButton from "./ui/scroll_button";
+import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
+  const footerRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    if (footerRef.current) {
+      setOffset(footerRef.current.offsetTop);
+    }
+  }, []);
+
   return (
     <>
       <main className="font-sans">
@@ -51,9 +63,11 @@ export default function Home() {
             ></Card>
           </div>
         </div>
-        <ScrollButton />
+        <ScrollButton footerOffset={offset} />
       </main>
-      <Footer />
+      <div ref={footerRef}>
+        <Footer />
+      </div>
     </>
   );
 }
