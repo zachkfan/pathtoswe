@@ -3,9 +3,6 @@ import Link from 'next/link'
 
 
 const sign_up_form = () => {
-    const inputStyle = {
-
-    }
     return (
     <div className="min-h-screen flex items-center justify-center bg-black-gray">
         <img src="./black_gray_logo.png" className="absolute top-0 left-0 w-48 h-48 p-2" />
