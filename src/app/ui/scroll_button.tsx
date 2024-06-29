@@ -27,7 +27,7 @@ export default function ScrollButton({ footerOffset }: Props) {
   return (
     <button
       className={clsx(
-        "btn btn-circle opacity-20 bottom-corner bottom-2",
+        "btn btn-circle bg-black-gray opacity-20 bottom-corner bottom-2",
         overlapFooter
           ? `relative motion-safe:animate-bounce left-[95vw]`
           : "fixed right-1"

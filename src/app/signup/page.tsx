@@ -1,12 +1,8 @@
-import React from 'react';
-import SignUpForm from './signup';
+import React from "react";
+import SignUpForm from "./signup";
 
 const App: React.FC = () => {
-    return (
-        <div className="App">
-            <SignUpForm />
-        </div>
-    );
-}
+  return <SignUpForm />;
+};
 
 export default App;

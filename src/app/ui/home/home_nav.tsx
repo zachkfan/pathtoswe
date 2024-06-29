@@ -29,13 +29,10 @@ const home_nav = () => {
           >
             <HomeNavLink
               title={"Search Interships"}
-              href={"/dashboard/search"}
+              href={"/search"}
             ></HomeNavLink>
             <HomeNavLink title={"Dashboard"} href={"/dashboard"}></HomeNavLink>
-            <HomeNavLink
-              title={"Your Account"}
-              href={"/dashboard/account"}
-            ></HomeNavLink>
+            <HomeNavLink title={"Your Account"} href={"/account"}></HomeNavLink>
             <HomeNavLink title={"Log In"} href={"/"}></HomeNavLink>
           </ul>
         </div>
@@ -51,13 +48,10 @@ const home_nav = () => {
         <ul className="menu menu-horizontal px-1 text-2xl hidden md:flex">
           <HomeNavLink
             title={"Search Interships"}
-            href={"/dashboard/search"}
+            href={"/search"}
           ></HomeNavLink>
           <HomeNavLink title={"Dashboard"} href={"/dashboard"}></HomeNavLink>
-          <HomeNavLink
-            title={"Your Account"}
-            href={"/dashboard/account"}
-          ></HomeNavLink>
+          <HomeNavLink title={"Your Account"} href={"/account"}></HomeNavLink>
           <HomeNavLink title={"Log In"} href={"/"}></HomeNavLink>
         </ul>
       </div>

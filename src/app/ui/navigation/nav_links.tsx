@@ -10,10 +10,10 @@ const links = [
   { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
   {
     name: "Search",
-    href: "/dashboard/search",
+    href: "/search",
     icon: ListBulletIcon,
   },
-  { name: "Account", href: "/dashboard/account", icon: UserIcon },
+  { name: "Account", href: "/account", icon: UserIcon },
 ];
 
 interface Props {
