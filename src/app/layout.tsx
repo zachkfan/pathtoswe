@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Nunito, Playfair_Display } from 'next/font/google';
+import { Nunito, Playfair_Display } from "next/font/google";
 import "./ui/globals.css";
+import { StrictMode } from "react";
 
-const nunito = Nunito({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-nunito',
-});
-const playfairDisplay = Playfair_Display({ 
+const nunito = Nunito({
   subsets: ["latin"],
-  display: 'swap',
-  variable: '--font-playfair-display',
+  display: "swap",
+  variable: "--font-nunito",
+});
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair-display",
 });
 
 export const metadata: Metadata = {
@@ -24,8 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${nunito.variable}`}>
-      <body>{children}</body>
-    </html>
+    <StrictMode>
+      <html
+        lang="en"
+        className={`${playfairDisplay.variable} ${nunito.variable}`}
+      >
+        <body>{children}</body>
+      </html>
+    </StrictMode>
   );
 }
