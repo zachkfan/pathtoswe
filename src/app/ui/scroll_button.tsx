@@ -13,9 +13,7 @@ export default function ScrollButton({ footerOffset }: Props) {
 
   const handleScroll = () => {
     const scrollTop = window.innerHeight + window.scrollY;
-    // console.log(footerOffset, scrollTop);
     // added magic number (1) to compensate for bounce not triggering on home page
-    console.log(scrollTop, footerOffset);
     setOverlapFooter(scrollTop - 1 >= footerOffset);
   };
 
