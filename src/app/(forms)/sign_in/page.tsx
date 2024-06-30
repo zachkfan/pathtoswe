@@ -25,7 +25,6 @@ export default function Signin() {
           member={"Not a member?"}
         ></SignLink>
       </div>
-      {/* <img src="../Sign_in.png" className="w-1/2 h-auto"></img> */}
       <div className="w-1/2 h-full">
         <Image
           src="/Sign_in.png"

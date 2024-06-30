@@ -19,15 +19,15 @@ export default function Page() {
           company="Google"
           role="Software Engineer Intern"
           location="New York City"
-          date_posted="06/29/2024"
-          apply_link="https://www.google.com/"
+          datePosted="06/29/2024"
+          applyLink="https://www.google.com/"
         ></Row>
         <Row
           company="Google"
           role="Software Engineer Intern"
           location="New York City"
-          date_posted="06/29/2024"
-          apply_link="https://www.google.com/"
+          datePosted="06/29/2024"
+          applyLink="https://www.google.com/"
         ></Row>
       </tbody>
     </table>

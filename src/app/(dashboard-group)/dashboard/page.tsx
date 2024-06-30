@@ -1,4 +1,4 @@
-import SortingCard from "@/app/ui/dashboard/sorting-card";
+import SortingCard from "@/app/ui/dashboard/sorting_card";
 import {
   XMarkIcon,
   DocumentTextIcon,
@@ -57,32 +57,32 @@ export default function Page() {
             company="Google"
             role="SWE Intern"
             location="NYC"
-            date_posted="06/30/2024"
-            date_applied="06/31/2024"
+            datePosted="06/30/2024"
+            dateApplied="06/31/2024"
             status="Pending"
           ></Row>
           <Row
             company="Meta"
             role="SWE Intern"
             location="Redmond, Washington"
-            date_posted="06/32/2024"
-            date_applied="07/19/2024"
+            datePosted="06/32/2024"
+            dateApplied="07/19/2024"
             status="Closed"
           ></Row>
           <Row
             company="Nvidia"
             role="SWE Intern"
             location="Taiwan"
-            date_posted="06/32/2024"
-            date_applied="07/19/2024"
+            datePosted="06/32/2024"
+            dateApplied="07/19/2024"
             status="Interviewed"
           ></Row>
           <Row
             company="Amazon"
             role="Cloud Engineern Intern"
             location="Chicago, IL"
-            date_posted="06/32/2024"
-            date_applied="07/19/2024"
+            datePosted="06/32/2024"
+            dateApplied="07/19/2024"
             status="Hired"
           ></Row>
         </tbody>

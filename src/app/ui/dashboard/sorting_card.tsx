@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 interface Props {
-  status: string;
+  status: "Closed" | "Pending" | "Interviewed" | "Hired";
   icon: React.ComponentType;
   applicationCount: number;
   bgColor: string;
