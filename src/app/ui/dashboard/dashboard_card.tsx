@@ -13,25 +13,33 @@ export default function DashboardCard({
   location,
   datePosted,
   dateApplied,
+  status,
 }: Props) {
+  const color = () => {
+    switch (status) {
+      case "Closed":
+        return {
+          backgroundColor: "#FA5A7D",
+        };
+      case "Pending":
+        return { backgroundColor: "#FF947A" };
+      case "Interviewed":
+        return { backgroundColor: "#BF83FF" };
+      case "Hired":
+        return { backgroundColor: "#3CD856" };
+    }
+  };
   return (
-    <div className="card w-52 h-52" style={{ backgroundColor: bgColor }}>
-      <div className="card-body text-black gap-3">
-        <div
-          className="flex justify-center items-center w-12 h-12 rounded-full"
-          style={{ backgroundColor: iconBgColor }}
-        >
-          <div
-            className={clsx(
-              "stroke-white text-white",
-              status === "Closed" ? "stroke-2 size-8" : "stroke-0 size-7"
-            )}
-          >
-            <Icon />
-          </div>
-        </div>
-        <h2 className="card-title font-extrabold text-2xl">{status}</h2>
-        <p>{applicationCount} applications</p>
+    <div className="card card-side bg-white w-[45%] text-black drop-shadow-around">
+      <figure>
+        <div className="w-18 h-52" style={color()}></div>
+      </figure>
+      <div className="card-body mt-4">
+        <h4>{company}</h4>
+        <h3 className="card-title text-2xl font-bold">{role}</h3>
+        <button className="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit">
+          View Application
+        </button>
       </div>
     </div>
   );

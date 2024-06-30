@@ -6,6 +6,7 @@ import {
   TagIcon,
 } from "@heroicons/react/24/solid";
 import Row from "@/app/ui/dashboard/dashboard_row";
+import Card from "@/app/ui/dashboard/dashboard_card";
 
 export default function Page() {
   return (
@@ -87,6 +88,16 @@ export default function Page() {
           ></Row>
         </tbody>
       </table>
+      <div className="mt-4">
+        <Card
+          company="Google"
+          role="Software Engineering Intern"
+          location="NYC"
+          datePosted="06/30/2024"
+          dateApplied="06/31/2024"
+          status="Pending"
+        />
+      </div>
     </>
   );
 }

@@ -36,6 +36,12 @@ const config: Config = {
         fadeInFromLeft2: 'fadeInFromLeft 2s ease-out',
         fadeInFromRight: 'fadeInFromRight 0.5s ease-out',
       },
+      dropShadow: {
+        'around': '0px 0px 15px rgba(0, 0, 0, 0.1)',
+      },
+      spacing: {
+        '18': '4.5rem',
+      }
     },
   },
   plugins: [

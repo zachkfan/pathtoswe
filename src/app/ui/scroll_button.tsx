@@ -30,7 +30,7 @@ export default function ScrollButton({ footerOffset }: Props) {
         "btn btn-circle bg-black-gray opacity-20 bottom-corner bottom-2",
         overlapFooter
           ? `relative motion-safe:animate-bounce left-[95vw]`
-          : "fixed right-1"
+          : "fixed right-[0.5vw]"
       )}
       onClick={() => {
         scrollTo({ top: 0, left: 0, behavior: "smooth" });
