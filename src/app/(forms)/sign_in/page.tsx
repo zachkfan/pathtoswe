@@ -5,6 +5,7 @@ import OrDiv from '../../ui/login_components/or_div';
 import SignLink from '../../ui/login_components/signup_link';
 import TextBox from '../../ui/login_components/text_box';
 import Button from '../../ui/login_components/button';
+import Image from "next/image";
 
 export default function Signin () {
     return (
@@ -24,7 +25,15 @@ export default function Signin () {
                     member={"Not a member?"}
                 ></SignLink>
             </div>
-            <img src="../Sign_in.png" className="w-1/2 h-auto"></img>
+            {/* <img src="../Sign_in.png" className="w-1/2 h-auto"></img> */}
+            <div className="w-1/2 h-full">
+                <Image 
+                    src="/Sign_in.png"
+                    alt="Logo of Google"
+                    width={5000}
+                    height={5000}
+                ></Image>
+            </div>
         </div>
     );
 }
