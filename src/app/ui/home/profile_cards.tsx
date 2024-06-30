@@ -1,4 +1,3 @@
-import React from "react";
 import Icon from "./social_media_icon";
 
 interface Props {
