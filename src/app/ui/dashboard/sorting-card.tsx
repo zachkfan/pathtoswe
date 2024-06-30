@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 interface Props {
   status: string;
   icon: React.ComponentType;
@@ -20,7 +22,12 @@ export default function SortingCards({
           className="flex justify-center items-center w-12 h-12 rounded-full"
           style={{ backgroundColor: iconBgColor }}
         >
-          <div className="size-8 stroke-white text-white stroke-2">
+          <div
+            className={clsx(
+              "stroke-white text-white",
+              status === "Closed" ? "stroke-2 size-8" : "stroke-0 size-7"
+            )}
+          >
             <Icon />
           </div>
         </div>
