@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Status from "./status_tag";
+import { MouseEvent } from "react";
 
 interface Props {
   company: string;
@@ -19,7 +21,19 @@ const dashboard_row = ({
   status,
 }: Props) => {
   return (
-    <tr>
+    <tr
+      className="hover:cursor-pointer hover:bg-concrete-gray"
+      onClick={() =>
+        console.log({
+          company,
+          role,
+          location,
+          datePosted,
+          dateApplied,
+          status,
+        })
+      }
+    >
       <td>{company}</td>
       <td>{role}</td>
       <td>{location}</td>

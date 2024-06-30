@@ -42,7 +42,7 @@ export default function Page() {
           iconBgColor="#3CD856"
         />
       </div>
-      <table className="table table-pin-cols table-zebra text-center">
+      <table className="table table-pin-cols text-center text-black">
         <thead>
           <tr>
             <th>Company</th>
