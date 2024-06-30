@@ -1,16 +1,15 @@
 import React from "react";
-import Row from "@/app/ui/search/row";
+import Row from "@/app/ui/search/search_row";
 
 export default function Page() {
   return (
-    <table className="table table-pin-cols table-zebra">
+    <table className="table table-pin-cols table-zebra text-center">
       <thead>
         <tr>
           <th>Company</th>
           <th>Role</th>
           <th>Location</th>
           <th>Date Posted</th>
-          <th></th>
           <th></th>
           <th>Apply Link</th>
         </tr>

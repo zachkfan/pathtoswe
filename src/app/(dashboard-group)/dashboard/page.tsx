@@ -5,6 +5,7 @@ import {
   UsersIcon,
   TagIcon,
 } from "@heroicons/react/24/solid";
+import Row from "@/app/ui/dashboard/dashboard_row";
 
 export default function Page() {
   return (
@@ -40,6 +41,52 @@ export default function Page() {
           iconBgColor="#3CD856"
         />
       </div>
+      <table className="table table-pin-cols table-zebra text-center">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Location</th>
+            <th>Date Posted</th>
+            <th>Date Applied</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Row
+            company="Google"
+            role="SWE Intern"
+            location="NYC"
+            date_posted="06/30/2024"
+            date_applied="06/31/2024"
+            status="Pending"
+          ></Row>
+          <Row
+            company="Meta"
+            role="SWE Intern"
+            location="Redmond, Washington"
+            date_posted="06/32/2024"
+            date_applied="07/19/2024"
+            status="Closed"
+          ></Row>
+          <Row
+            company="Nvidia"
+            role="SWE Intern"
+            location="Taiwan"
+            date_posted="06/32/2024"
+            date_applied="07/19/2024"
+            status="Interviewed"
+          ></Row>
+          <Row
+            company="Amazon"
+            role="Cloud Engineern Intern"
+            location="Chicago, IL"
+            date_posted="06/32/2024"
+            date_applied="07/19/2024"
+            status="Hired"
+          ></Row>
+        </tbody>
+      </table>
     </>
   );
 }

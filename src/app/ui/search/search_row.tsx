@@ -18,10 +18,8 @@ const row = ({ company, role, location, date_posted, apply_link }: Props) => {
       <td>{role}</td>
       <td>{location}</td>
       <td>{date_posted}</td>
-      <td>
+      <td className="flex content-around gap-7 justify-center px-0">
         <Save />
-      </td>
-      <td>
         <Hide />
       </td>
       <td>

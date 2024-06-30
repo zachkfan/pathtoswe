@@ -24,8 +24,8 @@ const profile_cards = ({
         <Image
           src={image}
           alt={imageAlt}
-          width={320}
-          height={320}
+          width={800}
+          height={800}
           className={"size-full"}
         />
       </figure>
