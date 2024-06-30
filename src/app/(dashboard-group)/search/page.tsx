@@ -9,9 +9,9 @@ export default function Page() {
           <th>Company</th>
           <th>Role</th>
           <th>Location</th>
-          <th>Date Posted</th>
+          <th className="pr-0">Date Posted</th>
           <th></th>
-          <th>Apply Link</th>
+          <th className="pl-0">Apply Link</th>
         </tr>
       </thead>
       <tbody>

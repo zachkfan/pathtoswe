@@ -33,10 +33,7 @@ const home_nav = () => {
             ></HomeNavLink>
             <HomeNavLink title={"Dashboard"} href={"/dashboard"}></HomeNavLink>
             <HomeNavLink title={"Your Account"} href={"/account"}></HomeNavLink>
-            <HomeNavLink
-              title={"Log In"}
-              href={"/login/sign_in_form"}
-            ></HomeNavLink>
+            <HomeNavLink title={"Log In"} href={"/sign_in"}></HomeNavLink>
           </ul>
         </div>
         <Image
@@ -55,10 +52,7 @@ const home_nav = () => {
           ></HomeNavLink>
           <HomeNavLink title={"Dashboard"} href={"/dashboard"}></HomeNavLink>
           <HomeNavLink title={"Your Account"} href={"/account"}></HomeNavLink>
-          <HomeNavLink
-            title={"Log In"}
-            href={"/login/sign_in_form"}
-          ></HomeNavLink>
+          <HomeNavLink title={"Log In"} href={"/sign_in"}></HomeNavLink>
         </ul>
       </div>
     </div>

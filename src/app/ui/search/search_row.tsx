@@ -17,12 +17,12 @@ const row = ({ company, role, location, date_posted, apply_link }: Props) => {
       <td>{company}</td>
       <td>{role}</td>
       <td>{location}</td>
-      <td>{date_posted}</td>
+      <td className="pr-0">{date_posted}</td>
       <td className="flex content-around gap-7 justify-center px-0">
         <Save />
         <Hide />
       </td>
-      <td>
+      <td className="pl-0">
         <Apply href={apply_link}></Apply>
       </td>
     </tr>
