@@ -1,4 +1,5 @@
 import Icon from "./social_media_icon";
+import Image from "next/image";
 
 interface Props {
   image: string;
@@ -20,7 +21,13 @@ const profile_cards = ({
   return (
     <div className="card bg-concrete-gray shadow-xl w-full hover:scale-110 duration-100">
       <figure>
-        <img src={image} alt={imageAlt} />
+        <Image
+          src={image}
+          alt={imageAlt}
+          width={320}
+          height={320}
+          className={"size-full"}
+        />
       </figure>
       <div className="card-body pb-4">
         <h2 className="card-title mx-auto">{name}</h2>

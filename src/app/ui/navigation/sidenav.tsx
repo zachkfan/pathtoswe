@@ -50,7 +50,9 @@ export default function SideNav() {
               "animate-fadeInFromRight btn btn-xs btn-square bg-transparent border-none",
               { "ml-auto": isOpen }
             )}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
           >
             {isOpen ? (
               <ChevronLeftIcon className="w-4 text-white" />

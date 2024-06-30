@@ -11,15 +11,17 @@ interface Props {
 export default function ScrollButton({ footerOffset }: Props) {
   const [overlapFooter, setOverlapFooter] = useState(false);
 
-  const handleScroll = () => {
-    const scrollTop = window.innerHeight + window.scrollY;
-    // added magic number (1) to compensate for bounce not triggering on home page
-    setOverlapFooter(scrollTop - 1 >= footerOffset);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.innerHeight + window.scrollY;
+      // added magic number (1) to compensate for bounce not triggering on home page
+      setOverlapFooter(scrollTop - 1 >= footerOffset);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [footerOffset]);
 
   return (
@@ -30,7 +32,9 @@ export default function ScrollButton({ footerOffset }: Props) {
           ? `relative motion-safe:animate-bounce left-[95vw]`
           : "fixed right-1"
       )}
-      onClick={() => scrollTo({ top: 0, left: 0, behavior: "smooth" })}
+      onClick={() => {
+        scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }}
     >
       <ArrowUpIcon className="w-7 text-white" />
     </button>
