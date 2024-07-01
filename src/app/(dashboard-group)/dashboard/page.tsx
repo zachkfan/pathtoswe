@@ -19,7 +19,7 @@ export default function Page() {
           Convenient Tracking of Your Applications All in One Place!
         </h3>
       </div>
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between w-full mb-4">
         <SortingCard
           status="Closed"
           icon={XMarkIcon}

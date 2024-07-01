@@ -5,7 +5,7 @@ const apply_button = ({ href }: { href: string }) => {
   return (
     <>
       <Link href={href} className=" hidden lg:block">
-        <button className="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1">
+        <button className="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1 hover:bg-black-gray/80">
           Apply
         </button>
       </Link>
@@ -15,7 +15,7 @@ const apply_button = ({ href }: { href: string }) => {
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content menu bg-base-100 rounded-box z-[1] w-32 p-2 shadow text-black-gray"
+          className="dropdown-content menu rounded-box z-[1] w-32 p-2 shadow text-white bg-black-gray"
         >
           <li>
             <Link href={href}>Apply Link</Link>
@@ -24,7 +24,7 @@ const apply_button = ({ href }: { href: string }) => {
             <a>Save</a>
           </li>
           <li>
-            <a>Hide</a>
+            <a> ide</a>
           </li>
         </ul>
       </div>

@@ -13,7 +13,7 @@ interface Props {
   applyLink: string;
 }
 
-const row = ({ company, role, location, datePosted, applyLink }: Props) => {
+const Row = ({ company, role, location, datePosted, applyLink }: Props) => {
   const [isHidden, setHidden] = useState(true);
 
   return (
@@ -23,8 +23,16 @@ const row = ({ company, role, location, datePosted, applyLink }: Props) => {
       <td>{location}</td>
       <td className="pr-0">{datePosted}</td>
       <td className="flex content-around gap-7 justify-center px-0">
-        <Save rowHidden={() => setHidden(!isHidden)}></Save>
-        <Hide rowHidden={() => setHidden(!isHidden)} />
+        <Save
+          rowHidden={() => {
+            setHidden(!isHidden);
+          }}
+        />
+        <Hide
+          rowHidden={() => {
+            setHidden(!isHidden);
+          }}
+        />
       </td>
       <td className="pl-0">
         <Apply href={applyLink}></Apply>
@@ -33,4 +41,4 @@ const row = ({ company, role, location, datePosted, applyLink }: Props) => {
   );
 };
 
-export default row;
+export default Row;
