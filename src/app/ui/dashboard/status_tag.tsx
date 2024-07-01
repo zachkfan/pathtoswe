@@ -5,23 +5,21 @@ const status_tag = ({
 }: {
   status: "Closed" | "Pending" | "Interviewed" | "Hired";
 }) => {
-  const color = () => {
-    switch (status) {
-      case "Closed":
-        return {
-          backgroundColor: "#FA5A7D",
-        };
-      case "Pending":
-        return { backgroundColor: "#FF947A" };
-      case "Interviewed":
-        return { backgroundColor: "#BF83FF" };
-      case "Hired":
-        return { backgroundColor: "#3CD856" };
-    }
+  const getStatusColor = (): React.CSSProperties => {
+    const statusColors: Record<string, string> = {
+      Closed: "#FA5A7D",
+      Pending: "#FF947A",
+      Interviewed: "#BF83FF",
+      Hired: "#3CD856",
+    };
+    return { backgroundColor: statusColors[status] };
   };
 
   return (
-    <span className="py-1 px-3 rounded-md font-sans text-sm" style={color()}>
+    <span
+      className="py-1 px-3 rounded-md font-sans text-sm"
+      style={getStatusColor()}
+    >
       {status}
     </span>
   );

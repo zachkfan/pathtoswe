@@ -1,3 +1,5 @@
+import Modal from "@/app/ui/modal";
+
 interface Props {
   company: string;
   role: string;
@@ -15,31 +17,29 @@ export default function DashboardCard({
   dateApplied,
   status,
 }: Props) {
-  const color = () => {
-    switch (status) {
-      case "Closed":
-        return {
-          backgroundColor: "#FA5A7D",
-        };
-      case "Pending":
-        return { backgroundColor: "#FF947A" };
-      case "Interviewed":
-        return { backgroundColor: "#BF83FF" };
-      case "Hired":
-        return { backgroundColor: "#3CD856" };
-    }
+  const getStatusColor = (): React.CSSProperties => {
+    const statusColors: Record<string, string> = {
+      Closed: "#FA5A7D",
+      Pending: "#FF947A",
+      Interviewed: "#BF83FF",
+      Hired: "#3CD856",
+    };
+    return { backgroundColor: statusColors[status] };
   };
   return (
     <div className="card card-side bg-white w-[45%] text-black drop-shadow-around">
       <figure>
-        <div className="w-18 h-52" style={color()}></div>
+        <div className="w-18 h-52" style={getStatusColor()}></div>
       </figure>
       <div className="card-body mt-4">
         <h4>{company}</h4>
         <h3 className="card-title text-2xl font-bold">{role}</h3>
-        <button className="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit">
-          View Application
-        </button>
+        <Modal
+          btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit"
+          btnContent={"View Application"}
+        >
+          View Applicationqrueurfbuaufe
+        </Modal>
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ import clsx from "clsx";
 export default function SideNav() {
   const [isOpen, setIsOpen] = useState(true);
 
+  // TODO: Add localState
   return (
     <div
       className={clsx(

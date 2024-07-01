@@ -24,6 +24,7 @@ export default function ScrollButton({ footerOffset }: Props) {
     };
   }, [footerOffset]);
 
+  // TODO: add localState
   return (
     <button
       className={clsx(
