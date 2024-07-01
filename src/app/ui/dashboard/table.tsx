@@ -21,6 +21,7 @@ const table = () => {
           location="NYC"
           datePosted="06/30/2024"
           dateApplied="06/31/2024"
+          applicationDashboard="https://www.google.com"
           status="Pending"
         ></Row>
         <Row
@@ -29,6 +30,7 @@ const table = () => {
           location="Redmond, Washington"
           datePosted="06/32/2024"
           dateApplied="07/19/2024"
+          applicationDashboard="https://facebook.com"
           status="Closed"
         ></Row>
         <Row
@@ -37,6 +39,7 @@ const table = () => {
           location="Taiwan"
           datePosted="06/32/2024"
           dateApplied="07/19/2024"
+          applicationDashboard="https://nvidia.com"
           status="Interviewed"
         ></Row>
         <Row
@@ -45,6 +48,7 @@ const table = () => {
           location="Chicago, IL"
           datePosted="06/32/2024"
           dateApplied="07/19/2024"
+          applicationDashboard="https://amazon.com"
           status="Hired"
         ></Row>
       </tbody>
