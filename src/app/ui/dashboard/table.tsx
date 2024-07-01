@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "./dashboard_row";
 
-const table = () => {
+const Table = () => {
   return (
     <table className="table table-pin-cols text-center bg-white text-concrete-gray">
       <thead>
@@ -56,4 +56,4 @@ const table = () => {
   );
 };
 
-export default table;
+export default Table;

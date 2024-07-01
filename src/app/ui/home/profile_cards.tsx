@@ -10,7 +10,7 @@ interface Props {
   email: string;
 }
 
-const profile_cards = ({
+const ProfileCards = ({
   image,
   imageAlt,
   name,
@@ -49,4 +49,4 @@ const profile_cards = ({
   );
 };
 
-export default profile_cards;
+export default ProfileCards;

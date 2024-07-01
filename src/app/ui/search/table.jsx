@@ -1,7 +1,7 @@
 import React from 'react'
 import Row from "./search_row"
 
-const table = () => {
+const Table = () => {
   return (
 <table className="table table-pin-cols text-center bg-white text-concrete-gray">
       <thead>
@@ -33,4 +33,4 @@ const table = () => {
     </table>  )
 }
 
-export default table
+export default Table;

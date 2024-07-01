@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import HomeNavLink from "./home_nav_links";
 
-const home_nav = () => {
+const HomeNav = () => {
   return (
     <div className="navbar bg-transparent">
       <div className="flex-1">
@@ -59,4 +59,4 @@ const home_nav = () => {
   );
 };
 
-export default home_nav;
+export default HomeNav;

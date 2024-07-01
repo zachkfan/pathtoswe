@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-const home_button = () => {
+const HomeButton = () => {
   return (
     <Link href="/search">
       <button className="text-black-gray bg-white cursor-pointer w-80 h-16 text-4xl text-center rounded-full font-black hover:scale-110 duration-100 animate-fadeInFromLeft2">
@@ -12,4 +12,4 @@ const home_button = () => {
   );
 };
 
-export default home_button;
+export default HomeButton;

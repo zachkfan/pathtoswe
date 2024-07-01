@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const apply_button = ({ href }: { href: string }) => {
+const ApplyButton = ({ href }: { href: string }) => {
   return (
     <>
       <Link href={href} className=" hidden lg:block">
@@ -32,4 +32,4 @@ const apply_button = ({ href }: { href: string }) => {
   );
 };
 
-export default apply_button;
+export default ApplyButton;

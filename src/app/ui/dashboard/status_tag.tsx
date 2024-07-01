@@ -1,6 +1,6 @@
 import React from "react";
 
-const status_tag = ({
+const StatusTag = ({
   status,
 }: {
   status: "Closed" | "Pending" | "Interviewed" | "Hired";
@@ -25,4 +25,4 @@ const status_tag = ({
   );
 };
 
-export default status_tag;
+export default StatusTag;

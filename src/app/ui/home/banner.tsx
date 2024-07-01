@@ -2,7 +2,7 @@ import React from "react";
 import HomeButton from "./home_button";
 import Nav from "./home_nav";
 
-const banner = () => {
+const Banner = () => {
   const bannerStyle = {
     backgroundImage: "url(/home_banner.jpg)",
     backgroundSize: "cover",
@@ -25,4 +25,4 @@ const banner = () => {
   );
 };
 
-export default banner;
+export default Banner;

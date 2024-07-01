@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import SignUpButton from "./body_signup";
 
-const home_body = () => {
+const HomeBody = () => {
   return (
     <div className="bg-concrete-gray px-[18%] py-24 grid grid-cols-12 gap-12">
       <div className="col-span-12 lg:col-span-5">
@@ -34,4 +34,4 @@ const home_body = () => {
   );
 };
 
-export default home_body;
+export default HomeBody;
