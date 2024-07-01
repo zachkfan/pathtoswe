@@ -5,13 +5,20 @@ import {
   UsersIcon,
   TagIcon,
 } from "@heroicons/react/24/solid";
-import Row from "@/app/ui/dashboard/dashboard_row";
+import Table from "@/app/ui/dashboard/table";
 import Card from "@/app/ui/dashboard/dashboard_card";
 
 export default function Page() {
   return (
     <>
-      <p>Dashboard Page</p>
+      <div className="flex flex-col text-center">
+        <h1 className="text-black-gray mx-auto text-5xl font-bold w-full">
+          Dashboard
+        </h1>
+        <h3 className="text-black-gray mx-auto text-xl font-semibold w-full py-6">
+          Convenient Tracking of Your Applications All in One Place!
+        </h3>
+      </div>
       <div className="flex justify-between w-full">
         <SortingCard
           status="Closed"
@@ -42,56 +49,7 @@ export default function Page() {
           iconBgColor="#3CD856"
         />
       </div>
-      <table className="table table-pin-cols text-center text-black mt-4">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Role</th>
-            <th>Location</th>
-            <th>Date Posted</th>
-            <th>Date Applied</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <Row
-            company="Google"
-            role="Software Engineering Intern"
-            location="NYC"
-            datePosted="06/30/2024"
-            dateApplied="06/31/2024"
-            applicationDashboard="https://www.google.com"
-            status="Pending"
-          ></Row>
-          <Row
-            company="Meta"
-            role="Product Management Intern"
-            location="Redmond, Washington"
-            datePosted="06/32/2024"
-            dateApplied="07/19/2024"
-            applicationDashboard="https://www.facebook.com"
-            status="Closed"
-          ></Row>
-          <Row
-            company="Nvidia"
-            role="Software Engineering Intern"
-            location="Taiwan"
-            datePosted="06/32/2024"
-            dateApplied="07/19/2024"
-            applicationDashboard="https://www.nvidia.com"
-            status="Interviewed"
-          ></Row>
-          <Row
-            company="Amazon"
-            role="Cloud Engineering Intern"
-            location="Chicago, IL"
-            datePosted="06/32/2024"
-            dateApplied="07/19/2024"
-            applicationDashboard="https://www.amazon.com"
-            status="Hired"
-          ></Row>
-        </tbody>
-      </table>
+      <Table />
       <div className="mt-4">
         <Card
           company="Google"
