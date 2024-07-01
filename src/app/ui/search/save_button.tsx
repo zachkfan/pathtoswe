@@ -3,7 +3,13 @@ import Image from "next/image";
 
 const hide_button = () => {
   return (
-    <Image src={"/save.svg"} alt={"Save Button"} height={24} width={24}></Image>
+    <Image
+      src={"/save.svg"}
+      alt={"Save Button"}
+      height={24}
+      width={24}
+      className="hidden lg:block"
+    ></Image>
   );
 };
 

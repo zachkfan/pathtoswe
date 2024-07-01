@@ -3,7 +3,7 @@ import Row from "./search_row"
 
 const table = () => {
   return (
-<table className="table table-pin-cols table-zebra text-center text-black">
+<table className="table table-pin-cols text-center bg-white">
       <thead>
         <tr>
           <th>Company</th>
@@ -14,7 +14,7 @@ const table = () => {
           <th className="pl-0">Apply Link</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className='text-black'>
         <Row
           company="Google"
           role="Software Engineer Intern"
