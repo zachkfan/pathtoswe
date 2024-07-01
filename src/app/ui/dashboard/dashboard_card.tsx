@@ -1,4 +1,5 @@
 import Modal from "@/app/ui/modal";
+import InfoModal from "@/app/ui/dashboard/info_modal";
 
 interface Props {
   company: string;
@@ -6,6 +7,7 @@ interface Props {
   location: string;
   datePosted: string;
   dateApplied: string;
+  applicationDashboard: string;
   status: "Closed" | "Pending" | "Interviewed" | "Hired";
 }
 
@@ -15,6 +17,7 @@ export default function DashboardCard({
   location,
   datePosted,
   dateApplied,
+  applicationDashboard,
   status,
 }: Props) {
   const getStatusColor = (): React.CSSProperties => {
@@ -38,7 +41,15 @@ export default function DashboardCard({
           btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit"
           btnContent={"View Application"}
         >
-          View Applicationqrueurfbuaufe
+          <InfoModal
+            company={company}
+            role={role}
+            location={location}
+            datePosted={datePosted}
+            dateApplied={dateApplied}
+            applicationDashboard={applicationDashboard}
+            status={status}
+          />
         </Modal>
       </div>
     </div>

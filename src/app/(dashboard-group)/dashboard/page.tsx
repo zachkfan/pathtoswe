@@ -42,7 +42,7 @@ export default function Page() {
           iconBgColor="#3CD856"
         />
       </div>
-      <table className="table table-pin-cols text-center text-black">
+      <table className="table table-pin-cols text-center text-black mt-4">
         <thead>
           <tr>
             <th>Company</th>
@@ -56,34 +56,38 @@ export default function Page() {
         <tbody>
           <Row
             company="Google"
-            role="SWE Intern"
+            role="Software Engineering Intern"
             location="NYC"
             datePosted="06/30/2024"
             dateApplied="06/31/2024"
+            applicationDashboard="https://www.google.com"
             status="Pending"
           ></Row>
           <Row
             company="Meta"
-            role="SWE Intern"
+            role="Product Management Intern"
             location="Redmond, Washington"
             datePosted="06/32/2024"
             dateApplied="07/19/2024"
+            applicationDashboard="https://www.facebook.com"
             status="Closed"
           ></Row>
           <Row
             company="Nvidia"
-            role="SWE Intern"
+            role="Software Engineering Intern"
             location="Taiwan"
             datePosted="06/32/2024"
             dateApplied="07/19/2024"
+            applicationDashboard="https://www.nvidia.com"
             status="Interviewed"
           ></Row>
           <Row
             company="Amazon"
-            role="Cloud Engineern Intern"
+            role="Cloud Engineering Intern"
             location="Chicago, IL"
             datePosted="06/32/2024"
             dateApplied="07/19/2024"
+            applicationDashboard="https://www.amazon.com"
             status="Hired"
           ></Row>
         </tbody>
@@ -95,6 +99,7 @@ export default function Page() {
           location="NYC"
           datePosted="06/30/2024"
           dateApplied="06/31/2024"
+          applicationDashboard="https://www.google.com"
           status="Pending"
         />
       </div>

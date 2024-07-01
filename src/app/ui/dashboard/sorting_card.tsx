@@ -16,7 +16,10 @@ export default function SortingCards({
   iconBgColor,
 }: Props) {
   return (
-    <div className="card w-52 h-52" style={{ backgroundColor: bgColor }}>
+    <div
+      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-52 h-52"
+      style={{ backgroundColor: bgColor }}
+    >
       <div className="card-body text-black gap-3">
         <div
           className="flex justify-center items-center w-12 h-12 rounded-full"
