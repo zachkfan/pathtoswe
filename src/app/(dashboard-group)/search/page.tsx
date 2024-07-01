@@ -1,5 +1,6 @@
 import React from "react";
-import Table from "@/app/ui/search/table";
+// import Table from "@/app/ui/search/table";
+import Tabs from "@/app/ui/search/tabs";
 
 export default function Page() {
   return (
@@ -10,7 +11,7 @@ export default function Page() {
       <h3 className="text-black-gray mx-auto text-xl font-semibold w-full py-6">
         Streamline Your Internship Search and Manage Applications Seamlessly!
       </h3>
-      <Table />
+      <Tabs />
     </div>
   );
 }

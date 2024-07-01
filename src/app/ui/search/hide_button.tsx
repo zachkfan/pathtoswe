@@ -1,15 +1,14 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { EyeSlashIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
-const hide_button = () => {
+const hide_button = ({ rowHidden }: { rowHidden: () => void }) => {
   return (
-    <Image
-      src={"/hide.svg"}
-      alt={"Hide Button"}
-      height={24}
-      width={24}
-      className="hidden lg:block"
-    ></Image>
+    <button onClick={() => setTimeout(rowHidden, 125)}>
+      <EyeSlashIcon className="w-6 text-black hidden hover:fill-red-500 lg:block" />
+    </button>
   );
 };
 

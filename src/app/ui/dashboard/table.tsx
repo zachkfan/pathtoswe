@@ -3,7 +3,7 @@ import Row from "./dashboard_row";
 
 const table = () => {
   return (
-    <table className="table table-pin-cols text-center bg-white">
+    <table className="table table-pin-cols text-center bg-white text-concrete-gray">
       <thead>
         <tr>
           <th>Company</th>

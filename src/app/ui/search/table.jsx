@@ -3,7 +3,7 @@ import Row from "./search_row"
 
 const table = () => {
   return (
-<table className="table table-pin-cols text-center bg-white">
+<table className="table table-pin-cols text-center bg-white text-concrete-gray">
       <thead>
         <tr>
           <th>Company</th>
@@ -26,7 +26,7 @@ const table = () => {
           company="Google"
           role="Software Engineer Intern"
           location="New York City"
-          datePosted="06/29/2024"
+          datePosted="06/31/2024"
           applyLink="https://www.google.com/"
         ></Row>
       </tbody>
