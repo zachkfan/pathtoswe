@@ -6,6 +6,7 @@ import SignLink from "../../ui/login_components/signup_link";
 import TextBox from "../../ui/login_components/text_box";
 import Button from "../../ui/login_components/button";
 import Image from "next/image";
+import { UserIcon, KeyIcon } from "@heroicons/react/24/solid";
 
 export default function Signin() {
   return (
@@ -13,8 +14,16 @@ export default function Signin() {
       <div className="flex-col justify-center px-16 py-16 w-1/2">
         <Header title={"Sign in"}></Header>
         <form>
-          <TextBox title={"Username or Email"}></TextBox>
-          <TextBox title={"Password"}></TextBox>
+          <TextBox
+            title={"Username or Email"}
+            icon={UserIcon}
+            inputType="text"
+          ></TextBox>
+          <TextBox
+            title={"Password"}
+            icon={KeyIcon}
+            inputType="password"
+          ></TextBox>
         </form>
         <Button login={"Sign in"}></Button>
         <OrDiv></OrDiv>

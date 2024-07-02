@@ -18,7 +18,7 @@ export default function ModalEdit({
   status,
 }: Props) {
   return (
-    <div className="flex flex-col gap-2 text-black items-start">
+    <div className="flex flex-col gap-2 text-black items-start w-96">
       <h4>{company}</h4>
       <h3 className="text-2xl font-bold">{role}</h3>
       <label className="form-control w-full max-w-xs">

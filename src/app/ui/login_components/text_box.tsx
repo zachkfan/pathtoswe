@@ -1,18 +1,28 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-    title: string;
+  title: string;
+  icon: React.ComponentType;
+  inputType: string;
 }
 
-const text_box = ({
-    title,
-}: Props) => {
-    return (
-        <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700">{ title }</label>
-            <input type="text" className="bg-white mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300" />
-        </div>
-    );
+const text_box = ({ title, icon: Icon, inputType }: Props) => {
+  return (
+    <>
+      <div className="mb-4">
+        <label className="input input-bordered flex items-center gap-2 bg-white">
+          <div className="w-5 h-5">
+            <Icon />
+          </div>
+          <input
+            type={inputType}
+            className="bg-white mt-1 w-full px-3 py-2rounded-md shadow-sm"
+            placeholder={title}
+          />
+        </label>
+      </div>
+    </>
+  );
 };
 
-export default text_box
+export default text_box;
