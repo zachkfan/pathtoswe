@@ -8,7 +8,7 @@ interface Props {
   href: string;
 }
 
-const social_media_icon = ({ image, imageAlt, href }: Props) => {
+const SocialMediaIcon = ({ image, imageAlt, href }: Props) => {
   return (
     <a href={href} target="_blank">
       <Image
@@ -22,4 +22,4 @@ const social_media_icon = ({ image, imageAlt, href }: Props) => {
   );
 };
 
-export default social_media_icon;
+export default SocialMediaIcon;

@@ -1,7 +1,14 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 
-const ApplyButton = ({ href }: { href: string }) => {
+const ApplyButton = ({
+  href,
+  rowHidden,
+}: {
+  href: string;
+  rowHidden: () => void;
+}) => {
   return (
     <>
       <Link href={href} className=" hidden lg:block">
@@ -21,10 +28,10 @@ const ApplyButton = ({ href }: { href: string }) => {
             <Link href={href}>Apply Link</Link>
           </li>
           <li>
-            <a>Save</a>
+            <a onClick={() => setTimeout(rowHidden, 125)}>Save</a>
           </li>
           <li>
-            <a> ide</a>
+            <a onClick={() => setTimeout(rowHidden, 125)}>Hide</a>
           </li>
         </ul>
       </div>

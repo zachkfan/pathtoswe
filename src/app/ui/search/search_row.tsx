@@ -6,6 +6,7 @@ import Apply from "./apply_button";
 import { useState } from "react";
 
 interface Props {
+  item_id: number;
   company: string;
   role: string;
   location: string;
@@ -13,11 +14,18 @@ interface Props {
   applyLink: string;
 }
 
-const Row = ({ company, role, location, datePosted, applyLink }: Props) => {
+const Row = ({
+  item_id,
+  company,
+  role,
+  location,
+  datePosted,
+  applyLink,
+}: Props) => {
   const [isHidden, setHidden] = useState(true);
 
   return (
-    <tr className={!isHidden ? "hidden" : "display"}>
+    <tr className={!isHidden ? "hidden" : "display"} key={item_id}>
       <td>{company}</td>
       <td>{role}</td>
       <td>{location}</td>
@@ -35,7 +43,12 @@ const Row = ({ company, role, location, datePosted, applyLink }: Props) => {
         />
       </td>
       <td className="pl-0">
-        <Apply href={applyLink}></Apply>
+        <Apply
+          href={applyLink}
+          rowHidden={() => {
+            setHidden(!isHidden);
+          }}
+        ></Apply>
       </td>
     </tr>
   );
