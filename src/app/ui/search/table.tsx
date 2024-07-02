@@ -30,6 +30,7 @@ const Table = ({ search }: { search: string }) => {
               datePosted={item.date_posted}
               applyLink={item.date_applied}
               item_id={item.id}
+              key={item.id}
             />
           ))}
       </tbody>

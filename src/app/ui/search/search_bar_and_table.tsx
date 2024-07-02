@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Table from "./table";
+import Modal from "@/app/ui/modal";
+import FilterModal from "./filter_modal";
 import { FunnelIcon } from "@heroicons/react/24/outline";
 
 const SearchBarAndTable = () => {
@@ -12,7 +14,7 @@ const SearchBarAndTable = () => {
           <input
             type="text"
             className="grow"
-            placeholder="Search"
+            placeholder="Search Company"
             onChange={(event) => setSearch(event.target.value)}
           />
           <svg
@@ -28,10 +30,16 @@ const SearchBarAndTable = () => {
             />
           </svg>
         </label>
-        <button className="btn btn-ghost ml-2 bg-concrete-gray">
-          <FunnelIcon className="h-6 w-6" />
-          Filter
-        </button>
+        <Modal
+          btnClassName="btn btn-ghost ml-2 bg-concrete-gray"
+          btnContent={
+            <>
+              <FunnelIcon className="h-6 w-6" /> Filter
+            </>
+          }
+        >
+          <FilterModal />
+        </Modal>
       </div>
       <Table search={search} />
     </>
