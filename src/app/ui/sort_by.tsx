@@ -1,15 +1,17 @@
-export default function SortBy() {
+import React from "react";
+import Select from "react-select";
+
+const UncontrolledSelect = () => {
   return (
-    <select
-      className="select select-sm select-bordered bg-white"
-      defaultValue="Pick your favorite Simpson"
-    >
-      <option>Pick your favorite Simpson</option>
-      <option>Homer</option>
-      <option>Marge</option>
-      <option>Bart</option>
-      <option>Lisa</option>
-      <option>Maggie</option>
-    </select>
+    <Select
+      defaultValue={{ value: "chocolate", label: "Chocolate" }}
+      options={[
+        { value: "chocolate", label: "Chocolate" },
+        { value: "strawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
+      ]}
+    />
   );
-}
+};
+
+export default UncontrolledSelect;
