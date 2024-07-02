@@ -2,7 +2,7 @@
 import React from "react";
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 
-const hide_button = ({ rowHidden }: { rowHidden: () => void }) => {
+const SaveButton = ({ rowHidden }: { rowHidden: () => void }) => {
   return (
     <button onClick={() => setTimeout(rowHidden, 125)}>
       {
@@ -12,4 +12,4 @@ const hide_button = ({ rowHidden }: { rowHidden: () => void }) => {
   );
 };
 
-export default hide_button;
+export default SaveButton;

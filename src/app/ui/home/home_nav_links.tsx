@@ -7,7 +7,7 @@ interface Props {
   href: string;
 }
 
-const home_nav_links = ({ title, href }: Props) => {
+const HomeNavLinks = ({ title, href }: Props) => {
   return (
     <li className="hover:bg-white hover:text-black-gray">
       <Link href={href}>{title}</Link>
@@ -15,4 +15,4 @@ const home_nav_links = ({ title, href }: Props) => {
   );
 };
 
-export default home_nav_links;
+export default HomeNavLinks;

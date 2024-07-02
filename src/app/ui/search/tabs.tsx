@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "./table";
 
-const tabs = () => {
+const Tabs = () => {
   return (
     <div role="tablist" className="tabs tabs-bordered pl-10">
       <input
@@ -41,4 +41,4 @@ const tabs = () => {
   );
 };
 
-export default tabs;
+export default Tabs;
