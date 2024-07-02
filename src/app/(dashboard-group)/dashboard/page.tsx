@@ -21,7 +21,7 @@ export default function Page() {
         </h3>
       </div>
       <SortBy />
-      <div className="flex gap-10 justify-center w-full my-4">
+      <div className="flex justify-between w-full my-4">
         <SortingCard
           status="Closed"
           icon={XMarkIcon}

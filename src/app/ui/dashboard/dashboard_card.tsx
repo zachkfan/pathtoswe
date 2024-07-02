@@ -30,9 +30,9 @@ export default function DashboardCard({
     return { backgroundColor: statusColors[status] };
   };
   return (
-    <div className="card card-side bg-white w-[45%] text-black drop-shadow-around">
+    <div className="card card-side bg-white lg:w-[45%] text-black drop-shadow-around">
       <figure>
-        <div className="w-18 h-52" style={getStatusColor()}></div>
+        <div className="w-18 h-[100%]" style={getStatusColor()}></div>
       </figure>
       <div className="card-body mt-4">
         <h4>{company}</h4>

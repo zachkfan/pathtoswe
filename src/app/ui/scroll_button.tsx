@@ -41,7 +41,7 @@ export default function ScrollButton({ footerOffset }: Props) {
         {
           "relative motion-safe:animate-bounce left-[95vw]":
             isOverlappingFooter,
-          "fixed right-[0.5vw]": !isOverlappingFooter,
+          "fixed left-[95vw]": !isOverlappingFooter,
         }
       )}
       onClick={scrollToTop}

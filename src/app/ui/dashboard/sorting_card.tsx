@@ -17,25 +17,29 @@ export default function SortingCards({
 }: Props) {
   return (
     <div
-      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-52 h-52"
+      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-36 h-36 xl:w-52 xl:h-52 flex justify-center"
       style={{ backgroundColor: bgColor }}
     >
-      <div className="card-body text-black gap-3">
+      <div className="card-body text-black gap-3 xl:p-8 p-4">
         <div
-          className="flex justify-center items-center w-12 h-12 rounded-full"
+          className="flex justify-center items-center w-8 h-8 xl:w-12 xl:h-12 rounded-full"
           style={{ backgroundColor: iconBgColor }}
         >
           <div
             className={clsx(
               "stroke-white text-white",
-              status === "Closed" ? "stroke-2 size-8" : "stroke-0 size-7"
+              status === "Closed"
+                ? "stroke-2 size-6 xl:size-8"
+                : "stroke-0 size-5 xl:size-7"
             )}
           >
             <Icon />
           </div>
         </div>
-        <h2 className="card-title font-extrabold text-2xl">{status}</h2>
-        <p>{applicationCount} applications</p>
+        <h2 className="card-title font-extrabold text-lg xl:text-2xl">
+          {status}
+        </h2>
+        <p className="text-xs xl:text-base">{applicationCount} applications</p>
       </div>
     </div>
   );
