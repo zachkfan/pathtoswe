@@ -5,7 +5,7 @@ const Table = () => {
   return (
 <table className="table table-pin-cols text-center bg-white text-concrete-gray">
       <thead>
-        <tr>
+        <tr className="text-sm text-gray-400 [&_*]:bg-white">
           <th>Company</th>
           <th>Role</th>
           <th>Location</th>
@@ -14,7 +14,7 @@ const Table = () => {
           <th className="pl-0">Apply Link</th>
         </tr>
       </thead>
-      <tbody className='text-black'>
+      <tbody className='text-black font-semibold'>
         <Row
           company="Google"
           role="Software Engineer Intern"
