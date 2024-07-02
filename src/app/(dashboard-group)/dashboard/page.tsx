@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/solid";
 import Table from "@/app/ui/dashboard/table";
 import Card from "@/app/ui/dashboard/dashboard_card";
+import SortBy from "@/app/ui/sort_by";
 
 export default function Page() {
   return (
@@ -19,7 +20,8 @@ export default function Page() {
           Convenient Tracking of Your Applications All in One Place!
         </h3>
       </div>
-      <div className="flex gap-10 justify-center w-full mb-4">
+      <SortBy />
+      <div className="flex gap-10 justify-center w-full my-4">
         <SortingCard
           status="Closed"
           icon={XMarkIcon}

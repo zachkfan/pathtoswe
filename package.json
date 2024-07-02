@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",
+    "@types/aria-query": "^5.0.4",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
