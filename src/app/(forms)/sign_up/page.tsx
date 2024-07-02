@@ -11,7 +11,7 @@ export default function Signup() {
     <div className="flex-col justify-center w-1/3 py-8 px-16 bg-white text-black rounded-lg">
       <Header title={"Sign up"}></Header>
       <form>
-        <TextBox title={"Name"}></TextBox>
+        <TextBox title={"Username"}></TextBox>
         <TextBox title={"Email"}></TextBox>
         <TextBox title={"Password"}></TextBox>
         <TextBox title={"Confirm Password"}></TextBox>
