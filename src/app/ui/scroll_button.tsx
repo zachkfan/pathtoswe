@@ -9,33 +9,42 @@ interface Props {
 }
 
 export default function ScrollButton({ footerOffset }: Props) {
-  const [overlapFooter, setOverlapFooter] = useState(false);
+  const [isOverlappingFooter, setIsOverlappingFooter] = useState(false);
 
   useEffect(() => {
+    const saved = sessionStorage.getItem("overlapped");
+    if (saved !== null) {
+      setIsOverlappingFooter(JSON.parse(saved) as boolean);
+    }
+
     const handleScroll = () => {
-      const scrollTop = window.innerHeight + window.scrollY;
-      // added magic number (1) to compensate for bounce not triggering on home page
-      setOverlapFooter(scrollTop - 1 >= footerOffset);
+      const scrollTop = window.scrollY + window.innerHeight;
+      const isScrolledPastFooter = scrollTop >= footerOffset;
+      setIsOverlappingFooter(isScrolledPastFooter);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [footerOffset]);
 
-  // TODO: add localState
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <button
       className={clsx(
         "btn btn-circle bg-black-gray opacity-20 bottom-corner bottom-2",
-        overlapFooter
-          ? `relative motion-safe:animate-bounce left-[95vw]`
-          : "fixed right-[0.5vw]"
+        {
+          "relative motion-safe:animate-bounce left-[95vw]":
+            isOverlappingFooter,
+          "fixed right-[0.5vw]": !isOverlappingFooter,
+        }
       )}
-      onClick={() => {
-        scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      }}
+      onClick={scrollToTop}
     >
       <ArrowUpIcon className="w-7 text-white" />
     </button>
