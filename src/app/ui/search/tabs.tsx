@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "./search_bar_and_table";
+import Search from "@/app/ui/search/search_bar_and_table";
 
 const Tabs = () => {
   return (
@@ -12,7 +12,7 @@ const Tabs = () => {
         aria-label="Search"
         defaultChecked
       />
-      <div role="tabpanel" className="tab-content py-10">
+      <div role="tabpanel" className="tab-content py-5">
         <Search />
       </div>
 
