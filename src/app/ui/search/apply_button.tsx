@@ -11,7 +11,7 @@ const ApplyButton = ({
 }) => {
   return (
     <>
-      <a href={href} className=" hidden lg:block">
+      <a href={href} target="_blank" className=" hidden lg:block">
         <button className="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1 hover:bg-black-gray/80">
           Apply
         </button>

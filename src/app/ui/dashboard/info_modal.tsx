@@ -33,7 +33,11 @@ export default function ModalContent({
         <p>
           Dashboard:{" "}
           {
-            <a href={applicationDashboard} className="link link-primary">
+            <a
+              href={applicationDashboard}
+              target="_blank"
+              className="link link-primary"
+            >
               {applicationDashboard}
             </a>
           }
