@@ -51,6 +51,7 @@ export default function ModalContent({
         btnContent={"Edit"}
         closeBtnClassName="btn btn-sm bg-black border-none text-black font-bold hover:bg-black/80 h-10 px-4 text-white"
         closeBtnContent={"Done"}
+        end={false}
       >
         <EditModal
           company={company}
@@ -60,6 +61,7 @@ export default function ModalContent({
           dateApplied={dateApplied}
           applicationDashboard={applicationDashboard}
           status={status}
+          type={"Edit"}
         />
       </ButtonModal>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import clsx from "clsx";
 
 // btnClassName: used to style the button user clicks to open the modal
 // btnContent: content within the button e.g. View Applicaiton Text
@@ -11,6 +12,7 @@ interface Props {
   closeBtnClassName: string;
   closeBtnContent: React.ReactNode;
   children: React.ReactNode;
+  end: boolean;
 }
 
 export default function Modal({
@@ -19,6 +21,7 @@ export default function Modal({
   closeBtnClassName,
   closeBtnContent,
   children,
+  end,
 }: Props) {
   const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -32,10 +35,15 @@ export default function Modal({
       >
         {btnContent}
       </button>
-      <dialog ref={modalRef} className="transition-none modal">
-        <div className="modal-box bg-white p-8 flex flex-row justify-between items-start">
+      <dialog ref={modalRef} className="transition-none modal overflow-auto">
+        <div
+          className={clsx(
+            "modal-box bg-white p-8 flex flex-row justify-between items-start overflow-auto",
+            { "flex-wrap": end }
+          )}
+        >
           {children}
-          <div className="modal-action mt-0">
+          <div className={clsx("modal-action mt-0", { "self-end, pt-5": end })}>
             <form method="dialog">
               <button className={closeBtnClassName}>{closeBtnContent}</button>
             </form>
