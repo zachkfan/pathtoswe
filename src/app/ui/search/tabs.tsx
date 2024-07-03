@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "@/app/ui/search/search_bar_and_table";
+import SearchAndTable from "@/app/ui/search/search_bar_and_table";
 
 const Tabs = () => {
   return (
@@ -13,7 +13,7 @@ const Tabs = () => {
         defaultChecked
       />
       <div role="tabpanel" className="tab-content py-5">
-        <Search />
+        <SearchAndTable />
       </div>
 
       <input

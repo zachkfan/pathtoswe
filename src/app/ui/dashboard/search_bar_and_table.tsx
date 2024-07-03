@@ -11,9 +11,11 @@ import React, { useState } from "react";
 import Table from "@/app/ui/dashboard/table";
 import SearchBar from "@/app/ui/search_bar";
 import SortBy from "@/app/ui/dashboard/sort_by";
+import Toggle from "@/app/ui/dashboard/toggle";
 
 const SearchBarAndTable = () => {
   const [search, setSearch] = useState("");
+  const [cardView, setCardView] = useState(true);
 
   return (
     <>
@@ -49,9 +51,12 @@ const SearchBarAndTable = () => {
       </div>
       <div className="flex flex-row items-center w-full justify-between">
         <SearchBar setSearch={setSearch} isDashboard={true} />
-        <SortBy />
+        <div className="flex flex-row items-center gap-3">
+          <Toggle cardView={cardView} setCardView={setCardView} />
+          <SortBy />
+        </div>
       </div>
-      <Table search={search} />
+      <Table search={search} cardView={cardView} />
     </>
   );
 };

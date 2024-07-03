@@ -1,5 +1,4 @@
 import SearchBarTable from "@/app/ui/dashboard/search_bar_and_table";
-import Card from "@/app/ui/dashboard/dashboard_card";
 
 export default function Page() {
   return (
@@ -13,17 +12,6 @@ export default function Page() {
         </h3>
       </div>
       <SearchBarTable />
-      <div className="mt-4">
-        <Card
-          company="Google"
-          role="Software Engineering Intern"
-          location="NYC"
-          datePosted="06/30/2024"
-          dateApplied="06/31/2024"
-          applicationDashboard="https://www.google.com"
-          status="Pending"
-        />
-      </div>
     </>
   );
 }

@@ -9,6 +9,7 @@ interface Props {
   dateApplied: string;
   applicationDashboard: string;
   status: "Closed" | "Pending" | "Interviewed" | "Hired";
+  item_id: number;
 }
 
 export default function DashboardCard({
@@ -19,6 +20,7 @@ export default function DashboardCard({
   dateApplied,
   applicationDashboard,
   status,
+  item_id,
 }: Props) {
   const getStatusColor = (): React.CSSProperties => {
     const statusColors: Record<string, string> = {
@@ -30,7 +32,10 @@ export default function DashboardCard({
     return { backgroundColor: statusColors[status] };
   };
   return (
-    <div className="card card-side bg-white lg:w-[45%] text-black drop-shadow-around">
+    <div
+      className="card card-side bg-white lg:w-[45%] text-black drop-shadow-around m-4"
+      key={item_id}
+    >
       <figure>
         <div className="w-18 h-[100%]" style={getStatusColor()}></div>
       </figure>
