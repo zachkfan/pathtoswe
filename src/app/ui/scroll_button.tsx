@@ -21,6 +21,10 @@ export default function ScrollButton({ footerOffset }: Props) {
       const scrollTop = window.scrollY + window.innerHeight;
       const isScrolledPastFooter = scrollTop >= footerOffset;
       setIsOverlappingFooter(isScrolledPastFooter);
+      sessionStorage.setItem(
+        "overlapped",
+        JSON.stringify(isScrolledPastFooter)
+      );
     };
 
     window.addEventListener("scroll", handleScroll);
