@@ -1,25 +1,162 @@
-export const data = [{"id":1,"company":"Tagpad","role":"Estimator","location":"Bitola","date_posted":"10/29/2023","date_applied":"12/05/2023","status":"saved"},
-    {"id":2,"company":"Zoomdog","role":"Engineer","location":"Gaofeng","date_posted":"01/05/2024","date_applied":"05/26/2024","status":"closed"},
-    {"id":3,"company":"Omba","role":"Surveyor","location":"Xiaohe","date_posted":"06/25/2024","date_applied":"03/19/2024","status":"closed"},
-    {"id":4,"company":"Dablist","role":"Estimator","location":"Fontinha","date_posted":"06/04/2024","date_applied":"12/21/2023","status":"pending"},
-    {"id":5,"company":"Geba","role":"Architect","location":"TytuvÄ—nÄ—liai","date_posted":"07/16/2023","date_applied":"06/26/2024","status":"hidden"},
-    {"id":6,"company":"Zoovu","role":"Electrician","location":"Mazha","date_posted":"01/15/2024","date_applied":"11/06/2023","status":"pending"},
-    {"id":7,"company":"Youspan","role":"Electrician","location":"Golubinci","date_posted":"09/24/2023","date_applied":"07/23/2023","status":"hidden"},
-    {"id":8,"company":"Avaveo","role":"Project Manager","location":"Honglong","date_posted":"12/28/2023","date_applied":"11/09/2023","status":"interviewed"},
-    {"id":9,"company":"Fivebridge","role":"Engineer","location":"Mawzaâ€˜","date_posted":"05/02/2024","date_applied":"04/11/2024","status":"saved"},
-    {"id":10,"company":"Twitterlist","role":"Construction Worker","location":"Faeanak Dua","date_posted":"07/09/2023","date_applied":"12/14/2023","status":"pending"},
-    {"id":11,"company":"Realcube","role":"Construction Foreman","location":"Mekkaw","date_posted":"02/08/2024","date_applied":"07/08/2023","status":"pending"},
-    {"id":12,"company":"Brainsphere","role":"Supervisor","location":"Novomykolayivka","date_posted":"06/10/2024","date_applied":"12/31/2023","status":"saved"},
-    {"id":13,"company":"Yambee","role":"Surveyor","location":"Kakanj","date_posted":"09/24/2023","date_applied":"05/12/2024","status":"hired"},
-    {"id":14,"company":"Twinder","role":"Subcontractor","location":"MukÅ","date_posted":"04/29/2024","date_applied":"01/31/2024","status":"closed"},
-    {"id":15,"company":"Devshare","role":"Estimator","location":"Huangcun","date_posted":"12/18/2023","date_applied":"05/23/2024","status":"closed"},
-    {"id":16,"company":"Quire","role":"Surveyor","location":"Nagrog Wetan","date_posted":"07/01/2024","date_applied":"03/19/2024","status":"closed"},
-    {"id":17,"company":"Skiba","role":"Surveyor","location":"Eindhoven","date_posted":"06/18/2024","date_applied":"09/07/2023","status":"hired"},
-    {"id":18,"company":"Browseblab","role":"Construction Worker","location":"Dabachang","date_posted":"07/14/2023","date_applied":"04/20/2024","status":"hired"},
-    {"id":19,"company":"Linklinks","role":"Construction Manager","location":"Jorong Lauk","date_posted":"12/03/2023","date_applied":"08/22/2023","status":"hired"},
-    {"id":20,"company":"Topicblab","role":"Construction Expeditor","location":"Feteira Grande","date_posted":"07/12/2023","date_applied":"10/24/2023","status":"hidden"},
-    {"id":21,"company":"Realcube","role":"Construction Manager","location":"Stony Hill","date_posted":"05/10/2024","date_applied":"01/24/2024","status":"hired"},
-    {"id":22,"company":"Skyndu","role":"Estimator","location":"Carolina","date_posted":"04/08/2024","date_applied":"10/08/2023","status":"hidden"},
-    {"id":23,"company":"Babbleblab","role":"Construction Manager","location":"Sandefjord","date_posted":"03/10/2024","date_applied":"01/05/2024","status":"pending"},
-    {"id":24,"company":"Plajo","role":"Engineer","location":"ZavrÄ","date_posted":"05/25/2024","date_applied":"12/29/2023","status":"saved"},
-    {"id":25,"company":"Blogtags","role":"Project Manager","location":"Hekou","date_posted":"01/22/2024","date_applied":"12/08/2023","status":"pending"}]
+export const data = [
+    {
+      "id": 1,
+      "company": "Rhyloo",
+      "role": "Senior Cost Accountant",
+      "location": "Abuyog",
+      "date_posted": "12/27/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 2,
+      "company": "Zoonder",
+      "role": "Project Manager",
+      "location": "Coromandel",
+      "date_posted": "08/22/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 3,
+      "company": "Cogidoo",
+      "role": "Operator",
+      "location": "São João de Caparica",
+      "date_posted": "02/27/2024",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 4,
+      "company": "Skinix",
+      "role": "Junior Executive",
+      "location": "Pointe Michel",
+      "date_posted": "07/18/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 5,
+      "company": "Tagopia",
+      "role": "Health Coach IV",
+      "location": "Biltine",
+      "date_posted": "09/05/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 6,
+      "company": "Skiptube",
+      "role": "Human Resources Manager",
+      "location": "Magisterial",
+      "date_posted": "08/07/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 7,
+      "company": "Livepath",
+      "role": "Media Manager IV",
+      "location": "Karangbadar Kidul",
+      "date_posted": "02/14/2024",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 8,
+      "company": "Divape",
+      "role": "Structural Engineer",
+      "location": "Porangatu",
+      "date_posted": "10/09/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 9,
+      "company": "Leenti",
+      "role": "Computer Systems Analyst I",
+      "location": "Cisitu",
+      "date_posted": "05/25/2024",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 10,
+      "company": "Quire",
+      "role": "Administrative Assistant I",
+      "location": "Vacaria",
+      "date_posted": "08/10/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 11,
+      "company": "Feednation",
+      "role": "Senior Cost Accountant",
+      "location": "Naikoten Dua",
+      "date_posted": "10/15/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 12,
+      "company": "Babbleset",
+      "role": "Nurse",
+      "location": "Eshowe",
+      "date_posted": "01/03/2024",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 13,
+      "company": "Chatterbridge",
+      "role": "Geological Engineer",
+      "location": "Rakiv Lis",
+      "date_posted": "12/13/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 14,
+      "company": "Eimbee",
+      "role": "Senior Cost Accountant",
+      "location": "Ad Dujayl",
+      "date_posted": "01/01/2024",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 15,
+      "company": "Yakitri",
+      "role": "Environmental Specialist",
+      "location": "Chivhu",
+      "date_posted": "11/16/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 16,
+      "company": "Photobug",
+      "role": "VP Quality Control",
+      "location": "Karis",
+      "date_posted": "12/13/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 17,
+      "company": "Meembee",
+      "role": "Computer Systems Analyst III",
+      "location": "Cachimayo",
+      "date_posted": "01/02/2024",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 18,
+      "company": "Voomm",
+      "role": "Help Desk Operator",
+      "location": "Navoiy",
+      "date_posted": "10/25/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 19,
+      "company": "Eabox",
+      "role": "VP Sales",
+      "location": "San Vicente",
+      "date_posted": "07/24/2023",
+      "apply_link": "https://www.google.com"
+    },
+    {
+      "id": 20,
+      "company": "Yabox",
+      "role": "Product Engineer",
+      "location": "Tessalit",
+      "date_posted": "01/21/2024",
+      "apply_link": "https://www.google.com"
+    }
+   ]

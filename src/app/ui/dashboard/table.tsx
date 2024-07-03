@@ -24,7 +24,7 @@ const Table = ({ search, cardView }: Props) => {
               location={item.location}
               datePosted={item.date_posted}
               dateApplied={item.date_applied}
-              applicationDashboard={"www.google.com"}
+              applicationDashboard={"https://www.google.com"}
               status={item.status as statusType}
               item_id={item.id}
               key={item.id}
@@ -59,7 +59,7 @@ const Table = ({ search, cardView }: Props) => {
                 location={item.location}
                 datePosted={item.date_posted}
                 dateApplied={item.date_applied}
-                applicationDashboard={"www.google.com"}
+                applicationDashboard={"https://www.google.com"}
                 status={item.status as statusType}
                 item_id={item.id}
                 key={item.id}

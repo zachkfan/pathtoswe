@@ -33,9 +33,9 @@ export default function ModalContent({
         <p>
           Dashboard:{" "}
           {
-            <Link href={applicationDashboard} className="link link-primary">
+            <a href={applicationDashboard} className="link link-primary">
               {applicationDashboard}
-            </Link>
+            </a>
           }
         </p>
         <p>

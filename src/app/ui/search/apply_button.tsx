@@ -11,11 +11,11 @@ const ApplyButton = ({
 }) => {
   return (
     <>
-      <Link href={href} className=" hidden lg:block">
+      <a href={href} className=" hidden lg:block">
         <button className="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1 hover:bg-black-gray/80">
           Apply
         </button>
-      </Link>
+      </a>
       <div className="dropdown block lg:hidden bg-black-gray text-white rounded-md text-sm w-32 px-7 py-1">
         <div tabIndex={0} role="button" className="bg-black-gray text-white">
           See More

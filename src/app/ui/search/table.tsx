@@ -28,7 +28,7 @@ const Table = ({ search }: { search: string }) => {
               role={item.role}
               location={item.location}
               datePosted={item.date_posted}
-              applyLink={item.date_applied}
+              applyLink={item.apply_link}
               item_id={item.id}
               key={item.id}
             />
