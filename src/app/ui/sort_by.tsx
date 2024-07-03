@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Select, { SingleValue } from "react-select";
+import Select, { SingleValue, components, ControlProps } from "react-select";
 
 // Define the type for options
 interface OptionType {
@@ -25,13 +25,20 @@ export default function SortBy() {
     setSelectedOption(option);
   };
 
+  const Control = ({ children, ...props }: ControlProps<OptionType, false>) => (
+    <components.Control {...props}>
+      <p className="pl-2">Sort By:</p> {children}
+    </components.Control>
+  );
+
   return (
     <Select
       defaultValue={options[0]}
       value={selectedOption}
       onChange={handleChange}
       options={options}
-      className="max-w-36 text-sm"
+      className="max-w-52 text-sm"
+      components={{ Control }}
     />
   );
 }
