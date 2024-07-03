@@ -1,6 +1,5 @@
-"use client";
-import React from "react";
-import Link from "next/link";
+import Modal from "@/app/ui/modal";
+import ApplyModal from "@/app/ui/search/apply_modal";
 
 const ApplyButton = ({
   href,
@@ -12,9 +11,12 @@ const ApplyButton = ({
   return (
     <>
       <a href={href} target="_blank" className=" hidden lg:block">
-        <button className="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1 hover:bg-black-gray/80">
-          Apply
-        </button>
+        <Modal
+          btnClassName="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1 hover:bg-black-gray/80"
+          btnContent={"Apply"}
+        >
+          <ApplyModal />
+        </Modal>
       </a>
       <div className="dropdown block lg:hidden bg-black-gray text-white rounded-md text-sm w-32 px-7 py-1">
         <div tabIndex={0} role="button" className="bg-black-gray text-white">
@@ -25,7 +27,9 @@ const ApplyButton = ({
           className="dropdown-content menu rounded-box z-[1] w-32 p-2 shadow text-white bg-black-gray"
         >
           <li>
-            <Link href={href}>Apply Link</Link>
+            <a href={href} target="_blank">
+              Apply Link
+            </a>
           </li>
           <li>
             <a onClick={() => setTimeout(rowHidden, 125)}>Save</a>
