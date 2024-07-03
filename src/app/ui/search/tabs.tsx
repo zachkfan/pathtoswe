@@ -3,7 +3,7 @@ import SearchAndTable from "@/app/ui/search/search_bar_and_table";
 
 const Tabs = () => {
   return (
-    <div role="tablist" className="tabs tabs-bordered pl-10">
+    <div role="tablist" className="tabs tabs-bordered px-10">
       <input
         type="radio"
         name="my_tabs_1"

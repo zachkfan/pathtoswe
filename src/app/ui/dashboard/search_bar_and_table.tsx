@@ -19,7 +19,7 @@ const SearchBarAndTable = () => {
 
   return (
     <>
-      <div className="flex justify-between w-full my-4">
+      <div className="flex justify-between w-full my-4 px-10">
         <SortingCard
           status="Closed"
           icon={XMarkIcon}
@@ -49,7 +49,7 @@ const SearchBarAndTable = () => {
           iconBgColor="#3CD856"
         />
       </div>
-      <div className="flex flex-row items-center w-full justify-between">
+      <div className="flex flex-row items-center w-full justify-between px-10">
         <SearchBar setSearch={setSearch} isDashboard={true} />
         <div className="flex flex-row items-center gap-3">
           <Toggle cardView={cardView} setCardView={setCardView} />
