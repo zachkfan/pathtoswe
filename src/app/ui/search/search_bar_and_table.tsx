@@ -15,7 +15,9 @@ const SearchBarAndTable = () => {
             type="text"
             className="grow"
             placeholder="Search Company"
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
