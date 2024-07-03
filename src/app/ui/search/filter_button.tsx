@@ -6,9 +6,9 @@ interface Props {
 
 const FilterButton = ({ children }: Props) => {
   const unClickedStyle =
-    "btn btn-ghost rounded-full w-[30%] px-[2.5%] border border-black";
+    "btn btn-ghost rounded-full w-[30%] px-[2.5%] bg-concrete-gray";
   const ClickedStyle =
-    "btn btn-ghost rounded-full w-[30%] px-[2.5%] border border-black bg-black-gray text-white";
+    "btn rounded-full w-[30%] px-[2.5%] bg-black-gray text-white";
   const [style, setStyle] = useState(unClickedStyle);
 
   return (
@@ -17,7 +17,7 @@ const FilterButton = ({ children }: Props) => {
         className={style}
         onClick={() => {
           style == unClickedStyle
-            ? (setStyle(ClickedStyle), console.log("clicked"))
+            ? setStyle(ClickedStyle)
             : setStyle(unClickedStyle);
         }}
       >

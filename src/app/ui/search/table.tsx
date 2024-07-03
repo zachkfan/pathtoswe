@@ -6,7 +6,7 @@ const Table = ({ search }: { search: string }) => {
   return (
     <table className="table table-pin-cols text-center bg-white text-concrete-gray">
       <thead>
-        <tr>
+        <tr className="[&_*]:bg-black-gray text-white">
           <th>Company</th>
           <th>Role</th>
           <th>Location</th>

@@ -10,10 +10,10 @@ const SearchBarAndTable = () => {
   return (
     <>
       <div className="flex pb-4">
-        <label className="input input-bordered flex items-center gap-2 w-[40%]">
+        <label className="input input-bordered flex items-center gap-2 w-[40%] bg-black-gray">
           <input
             type="text"
-            className="grow"
+            className="grow text-white"
             placeholder="Search Company"
             onChange={(event) => {
               setSearch(event.target.value);
@@ -33,7 +33,7 @@ const SearchBarAndTable = () => {
           </svg>
         </label>
         <Modal
-          btnClassName="btn btn-ghost ml-2 bg-concrete-gray"
+          btnClassName="btn btn-ghost ml-2 bg-concrete-gray text-black-gray"
           btnContent={
             <>
               <FunnelIcon className="h-6 w-6" /> Filter
