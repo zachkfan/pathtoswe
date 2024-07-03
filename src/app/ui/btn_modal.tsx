@@ -43,12 +43,16 @@ export default function Modal({
           )}
         >
           {children}
+
           <div className={clsx("modal-action mt-0", { "self-end, pt-5": end })}>
             <form method="dialog">
               <button className={closeBtnClassName}>{closeBtnContent}</button>
             </form>
           </div>
         </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
       </dialog>
     </>
   );
