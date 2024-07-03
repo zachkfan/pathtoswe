@@ -4,7 +4,7 @@ import Icon from "./home/social_media_icon";
 export default function Footer() {
   return (
     <footer className="footer bg-concrete-gray text-black-gray items-center p-4">
-      <aside className="grid-flow-col items-center">
+      <aside className="grid-flow-col items-center justify-self-center md:justify-self-start">
         <Image
           src="/big_concrete_gray_logo.png"
           width={36}
@@ -16,7 +16,7 @@ export default function Footer() {
           Copyright © {new Date().getFullYear()} PathToSWE. All right reserved
         </p>
       </aside>
-      <nav className="grid-flow-col gap-2 md:place-self-center md:justify-self-end">
+      <nav className="grid-flow-col gap-2 place-self-center md:place-self-center md:justify-self-end">
         <Icon
           image={"/linkedin.svg"}
           imageAlt={"Linkedin Icon"}

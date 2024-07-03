@@ -19,15 +19,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
         <SideNav />
-        <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
+        <div className="flex-grow px-6 md:overflow-y-auto md:px-12 md:pt-12">
           {children}
           <div className="mt-auto absolute w-full bottom-0 left-0">
             <ScrollButton footerOffset={offset} />
           </div>
+          <div ref={footerRef} className="mx-[-24px] md:mx-[-48px] md:mt-12">
+            <Footer />
+          </div>
         </div>
-      </div>
-      <div ref={footerRef}>
-        <Footer />
       </div>
     </>
   );
