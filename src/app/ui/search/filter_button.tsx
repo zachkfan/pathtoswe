@@ -12,8 +12,8 @@ const FilterButton = ({ children }: Props) => {
     <>
       <button
         className={clsx(
-          "btn btn-ghost rounded-full w-[30%] px-[2.5%] border border-black",
-          clicked && "bg-black-gray text-white"
+          "btn rounded-full w-[30%] px-[2.5%] border-0",
+          clicked ? "bg-black-gray text-white" : "bg-concrete-gray text-gray"
         )}
         onClick={() => {
           setClick(!clicked);
