@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import Select, { SingleValue } from "react-select";
 
 // Define the type for options
-type OptionType = {
+interface OptionType {
   value: string;
   label: string;
-};
+}
 
 const options: OptionType[] = [
   { value: "dateApplied", label: "Date Applied" },
