@@ -1,7 +1,8 @@
 import React from "react";
-import Row from "./dashboard_row";
+import Row, { statusType } from "./dashboard_row";
+import { data } from "./data";
 
-const Table = () => {
+const Table = ({ search }: { search: string }) => {
   return (
     <table className="table table-pin-cols text-center">
       <thead>
@@ -15,42 +16,25 @@ const Table = () => {
         </tr>
       </thead>
       <tbody className="text-black font-semibold">
-        <Row
-          company="Google"
-          role="SWE Intern"
-          location="NYC"
-          datePosted="06/30/2024"
-          dateApplied="06/31/2024"
-          applicationDashboard="https://www.google.com"
-          status="Pending"
-        ></Row>
-        <Row
-          company="Meta"
-          role="SWE Intern"
-          location="Redmond, Washington"
-          datePosted="06/32/2024"
-          dateApplied="07/19/2024"
-          applicationDashboard="https://facebook.com"
-          status="Closed"
-        ></Row>
-        <Row
-          company="Nvidia"
-          role="SWE Intern"
-          location="Taiwan"
-          datePosted="06/32/2024"
-          dateApplied="07/19/2024"
-          applicationDashboard="https://nvidia.com"
-          status="Interviewed"
-        ></Row>
-        <Row
-          company="Amazon"
-          role="Cloud Engineern Intern"
-          location="Chicago, IL"
-          datePosted="06/32/2024"
-          dateApplied="07/19/2024"
-          applicationDashboard="https://amazon.com"
-          status="Hired"
-        ></Row>
+        {data
+          .filter((item) => {
+            return search.toLowerCase() == ""
+              ? item
+              : item.company.toLowerCase().includes(search.toLowerCase());
+          })
+          .map((item) => (
+            <Row
+              company={item.company}
+              role={item.role}
+              location={item.location}
+              datePosted={item.date_posted}
+              dateApplied={item.date_applied}
+              applicationDashboard={"www.google.com"}
+              status={item.status as statusType}
+              item_id={item.id}
+              key={item.id}
+            />
+          ))}
       </tbody>
     </table>
   );

@@ -4,6 +4,8 @@ import Status from "./status_tag";
 import InfoModal from "@/app/ui/dashboard/info_modal";
 import { useRef, useState, useEffect } from "react";
 
+export type statusType = "Closed" | "Pending" | "Interviewed" | "Hired";
+
 interface Props {
   company: string;
   role: string;
@@ -11,7 +13,8 @@ interface Props {
   datePosted: string;
   dateApplied: string;
   applicationDashboard: string;
-  status: "Closed" | "Pending" | "Interviewed" | "Hired";
+  status: statusType;
+  item_id: number;
 }
 
 const DashboardRow = ({
@@ -22,6 +25,7 @@ const DashboardRow = ({
   dateApplied,
   applicationDashboard,
   status,
+  item_id,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -41,6 +45,7 @@ const DashboardRow = ({
       <tr
         className="hover:cursor-pointer hover:bg-concrete-gray transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300"
         onClick={toggleModal}
+        key={item_id}
       >
         <td>{company}</td>
         <td>{role}</td>
