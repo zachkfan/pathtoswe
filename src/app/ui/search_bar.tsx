@@ -14,7 +14,7 @@ const SearchBar = ({ setSearch, isDashboard }: Props) => {
       <div className={clsx("flex", { "pb-5": !isDashboard })}>
         <label
           className={clsx(
-            "input input-bordered flex items-center gap-2 xl:w-80",
+            "input input-bordered flex items-center gap-2 w-52 xl:w-80",
             isDashboard ? "bg-white" : "bg-black-gray"
           )}
         >
@@ -40,7 +40,7 @@ const SearchBar = ({ setSearch, isDashboard }: Props) => {
           </svg>
         </label>
         <Modal
-          btnClassName="btn btn-ghost ml-2 bg-concrete-gray text-black-gray"
+          btnClassName="btn btn-ghost ml-2 bg-concrete-gray text-black-gray w-14 xl:w-fit"
           btnContent={
             <>
               <FunnelIcon className="h-6 w-6" /> Filter

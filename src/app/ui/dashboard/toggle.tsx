@@ -20,8 +20,8 @@ export default function Toggle({ cardView, setCardView }: Props) {
       />
 
       {/* hamburger icon */}
-      <ListBulletIcon className="swap-on h-10 w-10" />
-      <RectangleStackIcon className="swap-off h-10 w-10" />
+      <ListBulletIcon className="swap-on h-8 w-8 xl:h-10 xl:w-10" />
+      <RectangleStackIcon className="swap-off h-8 w-8 xl:h-10 xl:w-10" />
     </label>
   );
 }

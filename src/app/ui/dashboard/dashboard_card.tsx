@@ -33,7 +33,7 @@ export default function DashboardCard({
   };
   return (
     <div
-      className="card card-side bg-white lg:w-[45%] text-black drop-shadow-around m-4"
+      className="card card-side bg-white lg:w-[45%] min-h-fit xl:h-52 text-black drop-shadow-around m-4"
       key={item_id}
     >
       <figure>
@@ -43,7 +43,7 @@ export default function DashboardCard({
         <h4>{company}</h4>
         <h3 className="card-title text-2xl font-bold">{role}</h3>
         <Modal
-          btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit"
+          btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit font-xs"
           btnContent={"View Application"}
         >
           <InfoModal

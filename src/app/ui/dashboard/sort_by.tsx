@@ -80,7 +80,7 @@ export default function SortBy() {
       value={selectedOption}
       onChange={handleChange}
       options={options}
-      className="w-52 text-sm"
+      className="w-40 xl:w-52 text-sm"
       components={{ Control }}
       styles={customStyles}
     />
