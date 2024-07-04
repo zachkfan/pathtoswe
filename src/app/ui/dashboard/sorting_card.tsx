@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 interface Props {
-  status: "Closed" | "Pending" | "Interviewed" | "Hired";
+  status: "All" | "Closed" | "Pending" | "Interviewed" | "Hired";
   icon: React.ComponentType;
   applicationCount: number;
   bgColor: string;
@@ -17,7 +17,7 @@ export default function SortingCards({
 }: Props) {
   return (
     <div
-      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-36 h-36 xl:w-52 xl:h-52 flex justify-center"
+      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-36 h-36 xl:w-48 xl:h-48 flex justify-center"
       style={{ backgroundColor: bgColor }}
     >
       <div className="card-body text-black gap-3 xl:p-8 p-4">

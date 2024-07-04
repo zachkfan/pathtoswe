@@ -2,6 +2,7 @@
 
 import SortingCard from "@/app/ui/dashboard/sorting_card";
 import {
+  RectangleStackIcon,
   XMarkIcon,
   DocumentTextIcon,
   UsersIcon,
@@ -21,7 +22,14 @@ const SearchBarAndTable = () => {
 
   return (
     <>
-      <div className="flex justify-between w-full my-4 px-10">
+      <div className="flex justify-between w-full mb-4">
+        <SortingCard
+          status="All"
+          icon={RectangleStackIcon}
+          applicationCount={2}
+          bgColor="#E8F7FF"
+          iconBgColor="#83CBFF"
+        />
         <SortingCard
           status="Closed"
           icon={XMarkIcon}
