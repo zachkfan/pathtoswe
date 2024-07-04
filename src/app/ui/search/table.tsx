@@ -64,7 +64,7 @@ const Table = ({ search }: { search: string }) => {
       <tfoot>
         <tr>
           <CustomTablePagination
-            className="text-black text-sm"
+            className="text-black text-xs lg:text-sm"
             rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
             colSpan={7}
             count={20} //TODO: switch with numbers of actual data
