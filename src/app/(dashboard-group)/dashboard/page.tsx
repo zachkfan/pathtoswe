@@ -1,5 +1,4 @@
 import SearchBarTable from "@/app/ui/dashboard/search_bar_and_table";
-import Card from "@/app/ui/dashboard/dashboard_card";
 
 export default function Page() {
   return (
