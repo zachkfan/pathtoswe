@@ -14,7 +14,7 @@ const SearchBar = ({ setSearch, isDashboard }: Props) => {
       <div className={clsx("flex", { "pb-5": !isDashboard })}>
         <label
           className={clsx(
-            "input input-bordered flex items-center gap-2 w-52 xl:w-80",
+            "input input-bordered flex items-center gap-2 w-36 lg:w-52 xl:w-80",
             isDashboard ? "bg-white" : "bg-black-gray"
           )}
         >

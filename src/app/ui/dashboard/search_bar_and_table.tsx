@@ -54,13 +54,13 @@ const SearchBarAndTable = () => {
       <div className="flex flex-row items-center w-full justify-between px-10">
         <SearchBar setSearch={setSearch} isDashboard={true} />
         <ButtonModal
-          btnClassName="rounded-lg relative w-52 h-10 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
+          btnClassName="rounded-lg relative w-10 xl:w-52 h-10 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
           closeBtnClassName="btn btn-sm bg-black border-none text-black font-bold hover:bg-black/80 h-10 px-4 w-40 text-white"
           closeBtnContent={"Add Application"}
           end={true}
           btnContent={
             <>
-              <span className="text-white font-semibold ml-8 transform group-hover:translate-x-32 transition-all duration-300">
+              <span className="text-white font-semibold ml-8 transform group-hover:translate-x-32 transition-all duration-300 xl:flex hidden">
                 Add Application
               </span>
               <span className="absolute right-0 h-full w-10 rounded-lg bg-black-gray flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300">
