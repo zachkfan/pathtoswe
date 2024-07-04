@@ -1,5 +1,4 @@
 import React from "react";
-// import Table from "@/app/ui/search/table";
 import Tabs from "@/app/ui/search/tabs";
 
 export default function Page() {
