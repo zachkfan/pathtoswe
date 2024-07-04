@@ -34,7 +34,7 @@ const Table = ({ search, cardView }: Props) => {
     );
   } else {
     return (
-      <table className="table table-pin-cols text-center">
+      <table className="table table-pin-cols text-center lg:table-md table-xs">
         <thead>
           <tr className="text-sm text-gray-400 [&_*]:bg-white">
             <th>Company</th>

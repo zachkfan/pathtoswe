@@ -4,7 +4,7 @@ import { data } from "./data";
 
 const Table = ({ search }: { search: string }) => {
   return (
-    <table className="table table-pin-cols text-center bg-white text-concrete-gray">
+    <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
       <thead>
         <tr className="[&_*]:bg-black-gray text-white">
           <th>Company</th>
