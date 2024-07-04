@@ -45,6 +45,8 @@ const Row = ({
       <td className="pl-0">
         <Apply
           href={applyLink}
+          company={company}
+          role={role}
           rowHidden={() => {
             setHidden(!isHidden);
           }}

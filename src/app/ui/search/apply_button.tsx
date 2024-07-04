@@ -3,9 +3,13 @@ import ApplyModal from "@/app/ui/search/apply_modal";
 
 const ApplyButton = ({
   href,
+  company,
+  role,
   rowHidden,
 }: {
   href: string;
+  company: string;
+  role: string;
   rowHidden: () => void;
 }) => {
   return (
@@ -15,7 +19,7 @@ const ApplyButton = ({
           btnClassName="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1 hover:bg-black-gray/80"
           btnContent={"Apply"}
         >
-          <ApplyModal />
+          <ApplyModal company={company} role={role} />
         </Modal>
       </a>
       <div className="dropdown block lg:hidden bg-black-gray text-white rounded-md text-sm w-32 px-7 py-1">
