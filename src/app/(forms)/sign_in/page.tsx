@@ -10,8 +10,8 @@ import { UserIcon, KeyIcon } from "@heroicons/react/24/solid";
 
 export default function Signin() {
   return (
-    <div className="flex items-center justify-between w-2/3 bg-white text-black rounded-lg overflow-hidden">
-      <div className="flex-col justify-center px-16 py-16 w-1/2">
+    <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden">
+      <div className="flex-col justify-center py-6 px-6 lg:px-8 xl:py-8 xl:px-16 w-1/2">
         <Header title={"Sign in"}></Header>
         <form>
           <TextBox
@@ -34,14 +34,13 @@ export default function Signin() {
           member={"Not a member?"}
         ></SignLink>
       </div>
-      <div className="w-1/2 h-full">
-        <Image
-          src="/Sign_in.png"
-          alt="Logo of Google"
-          width={5000}
-          height={5000}
-        ></Image>
-      </div>
+      <Image
+        src="/Sign_in.png"
+        alt="Gray and black art"
+        width={5000}
+        height={5000}
+        className="w-1/2 h-full"
+      ></Image>
     </div>
   );
 }

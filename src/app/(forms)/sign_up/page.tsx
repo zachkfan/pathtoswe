@@ -9,7 +9,7 @@ import { UserIcon, KeyIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
 export default function Signup() {
   return (
-    <div className="flex-col justify-center w-1/3 py-8 px-16 bg-white text-black rounded-lg">
+    <div className="flex flex-col justify-center w-1/2 lg:w-1/3 py-2 px-4 lg:py-4 lg:px-8 xl:py-8 xl:px-16 bg-white text-black rounded-lg">
       <Header title={"Sign up"}></Header>
       <form>
         <TextBox title={"Username"} icon={UserIcon} inputType="text"></TextBox>

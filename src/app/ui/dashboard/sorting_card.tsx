@@ -17,12 +17,12 @@ export default function SortingCards({
 }: Props) {
   return (
     <div
-      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-36 h-36 xl:w-48 xl:h-48 flex justify-center"
+      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-24 h-24 lg:w-36 lg:h-36 xl:w-48 xl:h-48 flex justify-center"
       style={{ backgroundColor: bgColor }}
     >
-      <div className="card-body text-black gap-3 xl:p-8 p-4">
+      <div className="card-body text-black lg:gap-3 xl:p-8 lg:p-4 p-2">
         <div
-          className="flex justify-center items-center w-8 h-8 xl:w-12 xl:h-12 rounded-full"
+          className="flex justify-center items-center w-6 h-6 lg:w-8 lg:h-8 xl:w-12 xl:h-12 rounded-full"
           style={{ backgroundColor: iconBgColor }}
         >
           <div
@@ -36,10 +36,12 @@ export default function SortingCards({
             <Icon />
           </div>
         </div>
-        <h2 className="card-title font-extrabold text-lg xl:text-2xl">
+        <h2 className="card-title font-extrabold text-base lg:text-lg xl:text-2xl">
           {status}
         </h2>
-        <p className="text-xs xl:text-base">{applicationCount} applications</p>
+        <p className="text-xs lg:text-sm xl:text-base">
+          {applicationCount} applications
+        </p>
       </div>
     </div>
   );

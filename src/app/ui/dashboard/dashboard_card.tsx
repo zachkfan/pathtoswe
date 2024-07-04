@@ -41,7 +41,9 @@ export default function DashboardCard({
       </figure>
       <div className="card-body mt-4">
         <h4>{company}</h4>
-        <h3 className="card-title text-2xl font-bold">{role}</h3>
+        <h3 className="card-title text-lg lg:text-xl xl:text-2xl font-bold">
+          {role}
+        </h3>
         <Modal
           btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit font-xs"
           btnContent={"View Application"}
