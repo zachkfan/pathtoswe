@@ -32,7 +32,9 @@ const ApplyButton = ({
         >
           <li>
             <a href={href} target="_blank">
-              Apply Link
+              <Modal btnClassName={""} btnContent={"Apply"}>
+                <ApplyModal company={company} role={role} />
+              </Modal>
             </a>
           </li>
           <li>
