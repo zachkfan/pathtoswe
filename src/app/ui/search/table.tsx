@@ -11,7 +11,7 @@ import CustomTablePagination from "@/app/ui/table_pagination";
 
 const Table = ({ search }: { search: string }) => {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
@@ -65,7 +65,7 @@ const Table = ({ search }: { search: string }) => {
         <tr>
           <CustomTablePagination
             className="text-black text-sm"
-            rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+            rowsPerPageOptions={[10, 15, 25, { label: "All", value: -1 }]}
             colSpan={7}
             count={20} //TODO: switch with numbers of actual data
             rowsPerPage={rowsPerPage}
