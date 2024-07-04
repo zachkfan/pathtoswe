@@ -20,7 +20,7 @@ const SearchBarAndTable = () => {
   const [cardView, setCardView] = useState(true);
 
   return (
-    <div className="text-start">
+    <>
       <div className="flex justify-between w-full my-4 px-10">
         <SortingCard
           status="Closed"
@@ -91,7 +91,7 @@ const SearchBarAndTable = () => {
         </div>
       </div>
       <Table search={search} cardView={cardView} />
-    </div>
+    </>
   );
 };
 

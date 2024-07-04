@@ -4,7 +4,7 @@ import Tabs from "@/app/ui/search/tabs";
 
 export default function Page() {
   return (
-    <div className="flex flex-col text-center min-h-screen">
+    <div className="flex flex-col text-center">
       <h1 className="text-black-gray mx-auto text-5xl font-bold w-full">
         Search List
       </h1>
