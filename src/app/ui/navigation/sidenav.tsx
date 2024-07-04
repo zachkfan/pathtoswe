@@ -19,7 +19,7 @@ export default function SideNav() {
     <div
       className={clsx(
         "transition-all duration-300 w-full flex-none",
-        isOpen ? "lg:w-64" : "w-24"
+        isOpen ? "lg:w-64" : "md:w-24"
       )}
     >
       <div

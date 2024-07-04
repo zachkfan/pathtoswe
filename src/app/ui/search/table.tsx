@@ -30,7 +30,7 @@ const Table = ({ search }: { search: string }) => {
   return (
     <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
       <thead>
-        <tr className="[&_*]:bg-black-gray text-white">
+        <tr className="text-sm [&_*]:bg-black-gray text-white">
           <th>Company</th>
           <th>Role</th>
           <th>Location</th>

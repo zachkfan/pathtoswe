@@ -43,7 +43,7 @@ const DashboardRow = ({
   return (
     <>
       <tr
-        className="text-base hover:cursor-pointer hover:bg-concrete-gray transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300"
+        className="h-14 text-base hover:cursor-pointer hover:bg-concrete-gray transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300"
         onClick={toggleModal}
         key={item_id}
       >

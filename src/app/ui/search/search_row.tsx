@@ -4,6 +4,7 @@ import Hide from "./hide_button";
 import Save from "./save_button";
 import Apply from "./apply_button";
 import { useState } from "react";
+import clsx from "clsx";
 
 interface Props {
   item_id: number;
@@ -25,7 +26,10 @@ const Row = ({
   const [isHidden, setHidden] = useState(true);
 
   return (
-    <tr className={!isHidden ? "hidden" : "display"} key={item_id}>
+    <tr
+      className={clsx("h-14", !isHidden ? "hidden " : "display")}
+      key={item_id}
+    >
       <td>{company}</td>
       <td>{role}</td>
       <td>{location}</td>
