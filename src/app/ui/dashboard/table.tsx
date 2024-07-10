@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Row, { statusType } from "./dashboard_row";
 import { data } from "./data";

@@ -1,5 +1,3 @@
-"use client";
-
 import { HomeIcon, ListBulletIcon, UserIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
