@@ -9,7 +9,7 @@ datasource db {
 }
 
 model internships {
-  id                   Int          @id
+  id                   Int          @id @default(autoincrement())
   company              String       @db.VarChar(255)
   role                 String       @db.VarChar(255)
   location             String       @db.VarChar(255)
@@ -22,7 +22,7 @@ model internships {
 }
 
 model join_table {
-  id            Int                @id
+  id            Int                @id @default(autoincrement())
   user_id       Int?
   internship_id Int?
   status        application_status
@@ -34,7 +34,7 @@ model join_table {
 }
 
 model users {
-  id          Int           @id
+  id          Int           @id @default(autoincrement())
   username    String        @unique @db.VarChar(255)
   email       String        @unique @db.VarChar(255)
   password    String        @db.VarChar(255)
