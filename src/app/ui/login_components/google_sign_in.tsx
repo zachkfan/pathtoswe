@@ -2,7 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { signIn } from "@/auth";
 
-const GoogleBox = () => {
+interface Props {
+  login: string;
+}
+
+const GoogleBox = ({ login }: Props) => {
   return (
     <form
       action={async () => {
@@ -23,7 +27,7 @@ const GoogleBox = () => {
             className="w-8 h-8"
           ></Image>
           <span className="text-gray-700 font-semibold w-full mr-9">
-            Sign in with Google
+            Sign {login} with Google
           </span>
         </button>
       </div>
