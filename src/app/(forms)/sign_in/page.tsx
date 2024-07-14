@@ -7,25 +7,42 @@ import TextBox from "../../ui/login_components/text_box";
 import Button from "../../ui/login_components/button";
 import Image from "next/image";
 import { UserIcon, KeyIcon } from "@heroicons/react/24/solid";
+import { signIn } from "@/auth";
+import { redirect } from "next/dist/server/api-utils";
 
 export default function Signin() {
+  const submitCredentials = async (event: any) => {
+    ("use server");
+    const formData = new FormData(event.target);
+    const credentials = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    const result = await signIn("credentials", {
+      ...credentials,
+      redirect: false,
+    });
+  };
   return (
     <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden">
       <div className="flex-col justify-center py-6 px-6 lg:px-8 xl:py-8 xl:px-16 w-1/2">
         <Header title={"Sign in"}></Header>
-        <form>
+        <form action={submitCredentials}>
           <TextBox
             title={"Username or Email"}
             icon={UserIcon}
             inputType="text"
+            name="email"
           ></TextBox>
           <TextBox
             title={"Password"}
             icon={KeyIcon}
             inputType="password"
+            name="password"
           ></TextBox>
+          <Button login={"Sign in"}></Button>
         </form>
-        <Button login={"Sign in"}></Button>
+
         <OrDiv></OrDiv>
         <GoogleBox login={"in"}></GoogleBox>
         <SignLink

@@ -17,16 +17,19 @@ export default function Signup() {
           title={"Email"}
           icon={EnvelopeIcon}
           inputType="email"
+          name="email"
         ></TextBox>
         <TextBox
           title={"Password"}
           icon={KeyIcon}
           inputType="password"
+          name="password"
         ></TextBox>
         <TextBox
           title={"Confirm Password"}
           icon={KeyIcon}
           inputType="password"
+          name="password2"
         ></TextBox>
       </form>
       <Button login={"Sign up"}></Button>

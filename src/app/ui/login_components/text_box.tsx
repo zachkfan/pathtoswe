@@ -1,12 +1,13 @@
 import React from "react";
 
 interface Props {
+  name: string;
   title: string;
   icon: React.ComponentType;
   inputType: string;
 }
 
-const text_box = ({ title, icon: Icon, inputType }: Props) => {
+const text_box = ({ name, title, icon: Icon, inputType }: Props) => {
   return (
     <>
       <div className="mb-4">
@@ -18,6 +19,7 @@ const text_box = ({ title, icon: Icon, inputType }: Props) => {
             type={inputType}
             className="bg-white mt-1 w-full px-3 py-2rounded-md shadow-sm"
             placeholder={title}
+            name={name}
           />
         </label>
       </div>
