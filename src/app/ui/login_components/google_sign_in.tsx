@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { signIn } from "@/auth";
 
 interface Props {
   login: string;
@@ -8,12 +7,7 @@ interface Props {
 
 const GoogleBox = ({ login }: Props) => {
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("google");
-      }}
-    >
+    <form>
       <div className="flex items-center justify-center">
         <button
           type="submit"

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import GoogleBox from "../../ui/login_components/google_sign_in";
 import Header from "../../ui/login_components/header";
@@ -7,27 +9,20 @@ import TextBox from "../../ui/login_components/text_box";
 import Button from "../../ui/login_components/button";
 import Image from "next/image";
 import { UserIcon, KeyIcon } from "@heroicons/react/24/solid";
-import { signIn } from "@/auth";
-import { redirect } from "next/dist/server/api-utils";
+import { useFormState } from "react-dom";
+import { authenticate } from "@/app/actions";
 
 export default function Signin() {
-  const submitCredentials = async (event: any) => {
-    ("use server");
-    const formData = new FormData(event.target);
-    const credentials = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
-    const result = await signIn("credentials", {
-      ...credentials,
-      redirect: false,
-    });
-  };
+  const [errorMessage, formAction, isPending] = useFormState(
+    authenticate,
+    undefined
+  );
+
   return (
     <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden">
       <div className="flex-col justify-center py-6 px-6 lg:px-8 xl:py-8 xl:px-16 w-1/2">
         <Header title={"Sign in"}></Header>
-        <form action={submitCredentials}>
+        <form action={formAction}>
           <TextBox
             title={"Username or Email"}
             icon={UserIcon}
@@ -42,6 +37,13 @@ export default function Signin() {
           ></TextBox>
           <Button login={"Sign in"}></Button>
         </form>
+        <div>
+          {errorMessage && (
+            <>
+              <p className="text-sm text-red-500">{errorMessage}</p>
+            </>
+          )}
+        </div>
 
         <OrDiv></OrDiv>
         <GoogleBox login={"in"}></GoogleBox>

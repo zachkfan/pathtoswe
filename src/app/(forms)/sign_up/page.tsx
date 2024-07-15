@@ -12,7 +12,12 @@ export default function Signup() {
     <div className="flex flex-col justify-center w-1/2 lg:w-1/3 py-2 px-4 lg:py-4 lg:px-8 xl:py-8 xl:px-16 bg-white text-black rounded-lg">
       <Header title={"Sign up"}></Header>
       <form>
-        <TextBox title={"Username"} icon={UserIcon} inputType="text"></TextBox>
+        <TextBox
+          title={"Username"}
+          icon={UserIcon}
+          inputType="text"
+          name="username"
+        ></TextBox>
         <TextBox
           title={"Email"}
           icon={EnvelopeIcon}
