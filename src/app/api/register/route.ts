@@ -39,7 +39,7 @@ export const POST = async (request: Request) => {
             })
         }
         const pwHash = await hash(password, 12)
-        const user = prisma.user.create({
+        const user = await prisma.user.create({
             data: {
                 name: name,
                 email: email,
@@ -47,8 +47,6 @@ export const POST = async (request: Request) => {
             }
             
         })
-
-        
         return new NextResponse("User has been created", {
             status: 201,
         })
