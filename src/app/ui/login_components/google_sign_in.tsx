@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
-
+import GoogleSignIn from "@/app/api/register/googleSignIn";
 interface Props {
   login: string;
 }
 
 const GoogleBox = ({ login }: Props) => {
   return (
-    <form>
+    <form action={GoogleSignIn}>
       <div className="flex items-center justify-center">
         <button
           type="submit"
