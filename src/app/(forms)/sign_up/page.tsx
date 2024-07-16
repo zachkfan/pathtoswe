@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import GoogleBox from "../../ui/login_components/google_sign_in";
 import Header from "../../ui/login_components/header";
@@ -7,7 +8,7 @@ import SignLink from "../../ui/login_components/signup_link";
 import TextBox from "../../ui/login_components/text_box";
 import Button from "../../ui/login_components/button";
 import { UserIcon, KeyIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
-// import { register } from "@/app/api/register/actions";
+import { redirect } from "next/navigation";
 
 export default function Signup() {
   async function handleSubmit(event: any) {
@@ -18,7 +19,7 @@ export default function Signup() {
       const email = formData.get("email");
       const password = formData.get("password");
       const password2 = formData.get("password2");
-      console.log(name, email, password);
+      console.log(name, email, password, password2);
       const response = await fetch("/api/register", {
         method: "POST",
         headers: {
@@ -28,10 +29,15 @@ export default function Signup() {
           name: name,
           email: email,
           password: password,
-          pasword2: password2,
+          password2: password2,
         }),
       });
-      setErrorMessage(response.statusText);
+      if (response.ok) {
+        console.log("hi");
+        redirect("/sign_in");
+      } else {
+        setErrorMessage(response.statusText);
+      }
     } catch (error) {
       return "Something Went Wrong";
     }
@@ -68,11 +74,9 @@ export default function Signup() {
         ></TextBox>
         <Button login={"Sign up"}></Button>
       </form>
-      <div>
+      <div className="flex justify-center">
         {errorMessage && (
-          <>
-            <p className="text-sm text-red-500">{errorMessage}</p>
-          </>
+          <p className="text-sm text-red-500 w-fit mt-3">{errorMessage}</p>
         )}
       </div>
       <OrDiv></OrDiv>

@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import clsx from "clsx";
+import { signOut } from "next-auth/react";
 
 export default function SideNav() {
   const [isOpen, setIsOpen] = useState(true);
@@ -65,26 +66,23 @@ export default function SideNav() {
         <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
           <NavLinks open={isOpen} />
           <div className="hidden h-auto w-full grow rounded-md md:block"></div>
-          <form>
-            {/* subject to change but keeping form since we need a function to sign user out on submit */}
-            <Link key={"Home"} href={"/"}>
-              <button
+          <form action={() => signOut()}>
+            <button
+              className={clsx(
+                "transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-concrete-gray hover:text-black-gray md:flex-none md:p-2 md:px-3",
+                { "md:justify-start": isOpen }
+              )}
+            >
+              <ArrowRightStartOnRectangleIcon className="w-6" />
+              <div
                 className={clsx(
-                  "transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-concrete-gray hover:text-black-gray md:flex-none md:p-2 md:px-3",
-                  { "md:justify-start": isOpen }
+                  "animate-fadeInFromRight",
+                  isOpen ? "md:block" : "hidden"
                 )}
               >
-                <ArrowRightStartOnRectangleIcon className="w-6" />
-                <div
-                  className={clsx(
-                    "animate-fadeInFromRight",
-                    isOpen ? "md:block" : "hidden"
-                  )}
-                >
-                  Sign&nbsp;Out
-                </div>
-              </button>
-            </Link>
+                Sign&nbsp;Out
+              </div>
+            </button>
           </form>
         </div>
       </div>

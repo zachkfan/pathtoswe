@@ -1,8 +1,20 @@
 import type { NextAuthConfig } from 'next-auth';
 import Google from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
-import {hash, compare} from 'bcryptjs'
-import prisma from "./app/libs/prismadb"
+import prisma from '@/app/lib/prismadb';
+import { z } from 'zod';
+import { User } from "@prisma/client"
+import bcrypt from 'bcryptjs';
+
+async function getUser(email: string): Promise<User | null> {
+  try {
+      const user: User | null = await prisma.user.findUnique({ where: { email } });
+      return user; 
+  } catch (error) {
+      console.error('Failed to fetch user:', error);
+      throw new Error('Failed to fetch user.');
+  }
+}
 
 export const authConfig = {
   pages: {signIn: '/sign_in'},
@@ -30,42 +42,25 @@ export const authConfig = {
         password:{label: "Password", type: "password", placeholder: "password"},
     },
     authorize: async(credentials) => {
-        const email = String(credentials.email);
-        const password = String(credentials.password);
-        const pwHash = await hash(password, 12)
-        
-        // if (!email || !password){
-        //   console.log("Email or password not provided")
-        //   throw new Error("no info provided")
-        // }
-        if (email && password) {
-        const user = 
-            await prisma.user.findUnique({
-            where:{
-            email : email
-            }
-        })
-        if (user != null) {
-            const isPasswordValid = await compare(user.password, pwHash);
-            return isPasswordValid ? user : null;
-        }
+        const parsedCredentials = z
+        .object({ email: z.string().email(), password: z.string().min(6) })
+        .safeParse(credentials);
+
+        if (parsedCredentials.success) {
+          const { email, password } = parsedCredentials.data;
+          const user = await getUser(email);
+          if (!user) return null;
+          console.log(user.password);
+          const passwordsMatch = await bcrypt.compare(password, user.password);
+          console.log(passwordsMatch);
+ 
+          if (passwordsMatch) return user;
         }
 
+        console.log('Invalid credentials');
         return null;
 
-        // if (!user) {
-        //   // No user found, so this is their first attempt to login
-        //   // meaning this is also the place you could do registration
-        //   throw new Error("User not found.")
-        // }
-        // const isPasswordValid = await compare(user.password, pwHash)
-        // //switch user.passwrod and pwHash later on cuz i didn't hash seeeded password
-
-        // if (!isPasswordValid){
-        //   throw new Error("Password not valid.")
-        // }
-
-        // // return user object with the their profile data
+        
     },
     }),] // Add providers with an empty array for now
 } satisfies NextAuthConfig;

@@ -10,7 +10,7 @@ import Button from "../../ui/login_components/button";
 import Image from "next/image";
 import { UserIcon, KeyIcon } from "@heroicons/react/24/solid";
 import { useFormState } from "react-dom";
-import { authenticate } from "@/app/actions";
+import { authenticate } from "@/app/api/register/credentialsSignIn";
 
 export default function Signin() {
   const [errorMessage, formAction, isPending] = useFormState(
@@ -35,13 +35,11 @@ export default function Signin() {
             inputType="password"
             name="password"
           ></TextBox>
-          <Button login={"Sign in"}></Button>
+          <Button login={"Sign in"} aria-disabled={isPending}></Button>
         </form>
-        <div>
+        <div className="flex justify-center">
           {errorMessage && (
-            <>
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
+            <p className="text-sm text-red-500 w-fit mt-3">{errorMessage}</p>
           )}
         </div>
 
