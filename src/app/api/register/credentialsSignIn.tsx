@@ -5,7 +5,7 @@ import { AuthError } from "next-auth";
 
 // do not remove prevState, it keeps track of the URL the user is on
 export async function authenticate(
-  prevState: string | undefined,
+  _prevState: string | undefined,
   formData: FormData
 ) {
   try {

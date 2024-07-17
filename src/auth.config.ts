@@ -9,9 +9,10 @@ import { CredentialsSignin } from "next-auth";
 
 async function getUser(email: string): Promise<User | null> {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const user: User | null = await prisma.user.findUnique({
       where: { email },
-    });
+    }) as User | null;;
     return user;
   } catch (error) {
     console.error("Failed to fetch user:", error);
@@ -78,14 +79,12 @@ export const authConfig = {
 
         const { email, password } = parsedCredentials.data;
         const user = await getUser(email);
-        if (user) {
+        if (user?.password) {
           const passwordsMatch = await bcrypt.compare(password, user.password);
           if (passwordsMatch) {
-            console.log("success!");
             return user;
           }
         }
-        console.log("Invalid Credentials");
         throw new CredentialsSignin("Invalid Email or Password");
       },
     }),

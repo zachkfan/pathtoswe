@@ -8,17 +8,23 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-        "project": ["tsconfig.json"]
-    },
+    "project": ["tsconfig.json"],
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
   "plugins": ["@typescript-eslint"],
   "root": true,
-  "rules":{
+  "env": {
+    "es2020": true,
+    "node": true,
+    "browser": true
+  },
+  "rules": {
     "@typescript-eslint/no-misused-promises": [
-    "error",
-    {
-      "checksVoidReturn": false
-    }
-  ]
-
-    }
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ]
+  }
 }

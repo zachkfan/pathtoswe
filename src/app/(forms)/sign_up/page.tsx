@@ -8,10 +8,10 @@ import SignLink from "../../ui/login_components/signup_link";
 import TextBox from "../../ui/login_components/text_box";
 import Button from "../../ui/login_components/button";
 import { UserIcon, KeyIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
-import { navigate } from "@/actions";
+import { navigate } from "@/app/lib/actions";
 
 export default function Signup() {
-  async function handleSubmit(event: any) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
       const formData = new FormData(event.currentTarget);
@@ -19,7 +19,6 @@ export default function Signup() {
       const email = formData.get("email");
       const password = formData.get("password");
       const password2 = formData.get("password2");
-      console.log(name, email, password, password2);
       const response = await fetch("/api/register", {
         method: "POST",
         headers: {
@@ -33,7 +32,7 @@ export default function Signup() {
         }),
       });
       if (response.ok) {
-        navigate("sign_in");
+        void navigate("sign_in");
       } else {
         setErrorMessage(response.statusText);
       }
