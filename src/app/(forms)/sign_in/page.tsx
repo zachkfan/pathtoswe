@@ -21,7 +21,7 @@ export default function Signin() {
         <Header title={"Sign in"}></Header>
         <form action={formAction}>
           <TextBox
-            title={"Username or Email"}
+            title={"Email"}
             icon={UserIcon}
             inputType="text"
             name="email"
