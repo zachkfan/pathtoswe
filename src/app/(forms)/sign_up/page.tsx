@@ -32,6 +32,8 @@ export default function Signup() {
         }),
       });
       if (response.ok) {
+        setRegisterSuccess(true);
+        await new Promise((resolve) => setTimeout(resolve, 3000));
         void navigate("sign_in");
       } else {
         setErrorMessage(response.statusText);
@@ -41,10 +43,29 @@ export default function Signup() {
     }
   }
 
+  const [registerSuccess, setRegisterSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   return (
     <>
-      {errorMessage && (
+      {registerSuccess && (
+        <div role="alert" className="alert alert-success absolute top-4 w-fit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>Account Created! Redirecting in 3 seconds.</span>
+        </div>
+      )}
+      {!registerSuccess && errorMessage && (
         <div
           role="alert"
           className="alert alert-error w-fit absolute bottom-20"
