@@ -33,7 +33,7 @@ const Row = ({
       <td>{company}</td>
       <td>{role}</td>
       <td>{location}</td>
-      <td className="pr-0">{datePosted}</td>
+      <td className="pr-0">{datePosted.substring(0, 10)}</td>
       <td className="flex content-around gap-7 justify-center px-0">
         <Save
           rowHidden={() => {
