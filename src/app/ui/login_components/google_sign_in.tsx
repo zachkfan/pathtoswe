@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import GoogleSignIn from "@/app/api/register/googleSignIn";
+import GoogleSignIn from "@/app/lib/googleSignIn";
 interface Props {
   login: string;
 }

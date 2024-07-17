@@ -8,6 +8,7 @@ export const POST = async (request: Request) => {
   try {
     const { username, email, password, password2 } =
       (await request.json()) as SignUpFormData;
+    console.log(username, email, password, password2);
     if (!email || !password || !username) {
       return new NextResponse("All Fields Not Filled", {
         status: 400,

@@ -15,7 +15,7 @@ export default function Signup() {
     event.preventDefault();
     try {
       const formData = new FormData(event.currentTarget);
-      const name = formData.get("username");
+      const username = formData.get("username");
       const email = formData.get("email");
       const password = formData.get("password");
       const password2 = formData.get("password2");
@@ -25,7 +25,7 @@ export default function Signup() {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          name: name,
+          username: username,
           email: email,
           password: password,
           password2: password2,
@@ -43,47 +43,65 @@ export default function Signup() {
 
   const [errorMessage, setErrorMessage] = useState("");
   return (
-    <div className="flex flex-col justify-center w-1/2 lg:w-1/3 py-2 px-4 lg:py-4 lg:px-8 xl:py-8 xl:px-16 bg-white text-black rounded-lg">
-      <Header title={"Sign up"}></Header>
-      <form onSubmit={handleSubmit}>
-        <TextBox
-          title={"Username"}
-          icon={UserIcon}
-          inputType="text"
-          name="username"
-        ></TextBox>
-        <TextBox
-          title={"Email"}
-          icon={EnvelopeIcon}
-          inputType="email"
-          name="email"
-        ></TextBox>
-        <TextBox
-          title={"Password"}
-          icon={KeyIcon}
-          inputType="password"
-          name="password"
-        ></TextBox>
-        <TextBox
-          title={"Confirm Password"}
-          icon={KeyIcon}
-          inputType="password"
-          name="password2"
-        ></TextBox>
-        <Button login={"Sign up"}></Button>
-      </form>
-      <div className="flex justify-center">
-        {errorMessage && (
-          <p className="text-sm text-red-500 w-fit mt-3">{errorMessage}</p>
-        )}
+    <>
+      {errorMessage && (
+        <div
+          role="alert"
+          className="alert alert-error w-fit absolute bottom-20"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>{errorMessage}</span>
+        </div>
+      )}
+      <div className="flex flex-col justify-center w-1/2 lg:w-1/3 py-2 px-4 lg:py-4 lg:px-8 xl:py-8 xl:px-16 bg-white text-black rounded-lg">
+        <Header title={"Sign up"}></Header>
+        <form onSubmit={handleSubmit}>
+          <TextBox
+            title={"Username"}
+            icon={UserIcon}
+            inputType="text"
+            name="username"
+          ></TextBox>
+          <TextBox
+            title={"Email"}
+            icon={EnvelopeIcon}
+            inputType="email"
+            name="email"
+          ></TextBox>
+          <TextBox
+            title={"Password"}
+            icon={KeyIcon}
+            inputType="password"
+            name="password"
+          ></TextBox>
+          <TextBox
+            title={"Confirm Password"}
+            icon={KeyIcon}
+            inputType="password"
+            name="password2"
+          ></TextBox>
+          <Button login={"Sign up"}></Button>
+        </form>
+        <OrDiv></OrDiv>
+        <GoogleBox login={"up"}></GoogleBox>
+        <SignLink
+          login={"Sign in"}
+          link={"/sign_in"}
+          member={"Already a member?"}
+        ></SignLink>
       </div>
-      <OrDiv></OrDiv>
-      <GoogleBox login={"up"}></GoogleBox>
-      <SignLink
-        login={"Sign in"}
-        link={"/sign_in"}
-        member={"Already a member?"}
-      ></SignLink>
-    </div>
+    </>
   );
 }
