@@ -22,9 +22,14 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-      if (isOnDashboard) {
+      const isOnAccount = nextUrl.pathname.startsWith('/account');
+      const isOnSignIn = nextUrl.pathname.startsWith('/sign_in');
+      const isOnSignUp = nextUrl.pathname.startsWith('/sign_up');
+      if (isOnDashboard || isOnAccount) {
         if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
+        return false; // redirect to /login
+      } else if (isLoggedIn && (isOnSignIn || isOnSignUp)) {
+        return Response.redirect(new URL('/dashboard', nextUrl));
       }
       return true;
     },
@@ -33,8 +38,7 @@ export const authConfig = {
     Google({
     clientId: process.env.AUTH_GOOGLE_ID,
     clientSecret: process.env.AUTH_GOOGLE_SECRET,
-  })
-  ,
+  }),
     CredentialsProvider({
       name: "credentials",
       credentials:{
@@ -50,11 +54,12 @@ export const authConfig = {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email);
           if (!user) return null;
-          console.log(user.password);
           const passwordsMatch = await bcrypt.compare(password, user.password);
-          console.log(passwordsMatch);
  
-          if (passwordsMatch) return user;
+          if (passwordsMatch) {
+            console.log('success!');
+            return user;
+          }
         }
 
         console.log('Invalid credentials');

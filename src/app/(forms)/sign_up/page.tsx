@@ -8,7 +8,7 @@ import SignLink from "../../ui/login_components/signup_link";
 import TextBox from "../../ui/login_components/text_box";
 import Button from "../../ui/login_components/button";
 import { UserIcon, KeyIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
-import { redirect } from "next/navigation";
+import { navigate } from "@/actions";
 
 export default function Signup() {
   async function handleSubmit(event: any) {
@@ -33,8 +33,7 @@ export default function Signup() {
         }),
       });
       if (response.ok) {
-        console.log("hi");
-        redirect("/sign_in");
+        navigate("sign_in");
       } else {
         setErrorMessage(response.statusText);
       }

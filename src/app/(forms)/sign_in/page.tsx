@@ -13,10 +13,7 @@ import { useFormState } from "react-dom";
 import { authenticate } from "@/app/api/register/credentialsSignIn";
 
 export default function Signin() {
-  const [errorMessage, formAction, isPending] = useFormState(
-    authenticate,
-    undefined
-  );
+  const [errorMessage, formAction] = useFormState(authenticate, undefined);
 
   return (
     <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden">
@@ -35,7 +32,7 @@ export default function Signin() {
             inputType="password"
             name="password"
           ></TextBox>
-          <Button login={"Sign in"} aria-disabled={isPending}></Button>
+          <Button login={"Sign in"}></Button>
         </form>
         <div className="flex justify-center">
           {errorMessage && (

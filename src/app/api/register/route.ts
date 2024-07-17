@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 import prisma from "@/app/lib/prismadb";
 import { hash } from "bcryptjs";
-import { data } from "@/app/ui/dashboard/data";
 
 export const POST = async (request: Request) => {
     try {
