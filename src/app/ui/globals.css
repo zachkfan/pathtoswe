@@ -15,4 +15,8 @@
     --tooltip-color: #000;
     --tooltip-text-color: #fff;
   }
+  .menu li > *:not(ul):not(.menu-title):not(details):active {
+    @apply bg-black-gray;
+    @apply text-white;
+  }
 }
