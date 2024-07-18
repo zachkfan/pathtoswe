@@ -38,7 +38,7 @@ export default function Signin() {
           <span>{errorMessage}</span>
         </div>
       )}
-      <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden">
+      <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden h-[60vh] lg:h-[80vh]">
         <div className="flex-col justify-center py-6 px-6 lg:px-8 xl:py-8 xl:px-16 w-1/2">
           <Header title={"Sign in"}></Header>
           <form action={formAction}>

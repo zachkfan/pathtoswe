@@ -89,7 +89,7 @@ export default function Signup() {
           <span>{errorMessage}</span>
         </div>
       )}
-      <div className="flex flex-col justify-center w-1/2 lg:w-1/3 py-2 px-4 lg:py-4 lg:px-8 xl:py-8 xl:px-16 bg-white text-black rounded-lg">
+      <div className="flex flex-col justify-center w-1/2 lg:w-1/3 py-2 px-4 lg:py-4 lg:px-8 xl:py-8 xl:px-16 bg-white text-black rounded-lg h-[60vh] lg:h-[80vh]">
         <Header title={"Sign up"}></Header>
         <form onSubmit={handleSubmit}>
           <TextBox
