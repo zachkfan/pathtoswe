@@ -8,6 +8,9 @@ export async function GET() {
     where: {
       open_for_application: true,
     },
+    orderBy: {
+      date_posted: "desc",
+    },
   })) as InternshipsType;
   return NextResponse.json({ internships });
 }
