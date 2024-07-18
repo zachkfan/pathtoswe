@@ -20,6 +20,7 @@ const text_box = ({ name, title, icon: Icon, inputType }: Props) => {
             className="bg-white mt-1 w-full px-3 py-2rounded-md shadow-sm"
             placeholder={title}
             name={name}
+            required
           />
         </label>
       </div>
