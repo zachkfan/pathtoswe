@@ -56,8 +56,13 @@ const Table = ({ search }: { search: string }) => {
   // if (typeof data === "string") {
   //   console.log(data);
   // } else {
-  if (error) return <div>Failed to load</div>;
-  if (!internships) return <div>Loading...</div>;
+  if (error) return <div className="text-lg">Failed to load</div>;
+  if (!internships)
+    return (
+      <div className="flex gap-2 justify-center text-lg">
+        Loading<span className="loading loading-spinner loading-sm"></span>
+      </div>
+    );
 
   return (
     <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
