@@ -13,7 +13,7 @@ import clsx from "clsx";
 import { signOut } from "next-auth/react";
 
 export default function SideNav() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   // TODO: Add localState
   return (

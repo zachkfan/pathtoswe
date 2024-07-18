@@ -65,7 +65,10 @@ export default function Signup() {
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>Account Created! Redirecting in 3 seconds.</span>
+          <span className="flex gap-1">
+            <p>Account Created! Redirecting in 3 seconds</p>
+            <span className="loading loading-spinner loading-xs"></span>
+          </span>
         </div>
       )}
       {!registerSuccess && errorMessage && (

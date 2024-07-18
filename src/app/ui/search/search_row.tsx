@@ -34,17 +34,19 @@ const Row = ({
       <td>{role}</td>
       <td>{location}</td>
       <td className="pr-0">{datePosted.substring(0, 10)}</td>
-      <td className="flex content-around gap-7 justify-center px-0">
-        <Save
-          rowHidden={() => {
-            setHidden(!isHidden);
-          }}
-        />
-        <Hide
-          rowHidden={() => {
-            setHidden(!isHidden);
-          }}
-        />
+      <td className="align-middle">
+        <div className="flex gap-7 justify-center">
+          <Save
+            rowHidden={() => {
+              setHidden(!isHidden);
+            }}
+          />
+          <Hide
+            rowHidden={() => {
+              setHidden(!isHidden);
+            }}
+          />
+        </div>
       </td>
       <td className="pl-0">
         <Apply
