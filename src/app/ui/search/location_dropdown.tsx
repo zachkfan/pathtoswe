@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LocationDropdown(location: string) {
+export default function LocationDropdown(location: { location: string }) {
   return (
     <div className="dropdown dropdown-bottom">
       <div tabIndex={0} role="button" className="btn m-1">

@@ -107,7 +107,7 @@ const Table = ({ search }: { search: string }) => {
             className="text-black text-sm"
             rowsPerPageOptions={[10, 15, 25, { label: "All", value: -1 }]}
             colSpan={7}
-            count={20} //TODO: switch with numbers of actual data
+            count={internships.length}
             rowsPerPage={rowsPerPage}
             page={page}
             slotProps={{

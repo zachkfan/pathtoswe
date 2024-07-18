@@ -1,10 +1,12 @@
 "use client";
+
 import React from "react";
 import Hide from "./hide_button";
 import Save from "./save_button";
 import Apply from "./apply_button";
 import { useState } from "react";
 import clsx from "clsx";
+import LocationDropdown from "./location_dropdown";
 
 interface Props {
   item_id: number;
@@ -32,7 +34,9 @@ const Row = ({
     >
       <td>{company}</td>
       <td>{role}</td>
-      <td>{location}</td>
+      <td>
+        <LocationDropdown location={location} />
+      </td>
       <td className="pr-0">{datePosted.substring(0, 10)}</td>
       <td className="align-middle">
         <div className="flex gap-7 justify-center">
