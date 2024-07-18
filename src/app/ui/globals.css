@@ -9,5 +9,10 @@
   h2 {
     @apply text-2xl;
   }
-
+}
+@layer components {
+  .tooltip {
+    --tooltip-color: #000;
+    --tooltip-text-color: #fff;
+  }
 }
