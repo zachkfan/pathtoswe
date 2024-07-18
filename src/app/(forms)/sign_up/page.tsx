@@ -9,6 +9,7 @@ import TextBox from "../../ui/login_components/text_box";
 import Button from "../../ui/login_components/button";
 import { UserIcon, KeyIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { navigate } from "@/app/lib/actions";
+import { SignUpResponseType } from "@/app/lib/types";
 
 export default function Signup() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -31,12 +32,14 @@ export default function Signup() {
           password2: password2,
         }),
       });
+
+      const result = (await response.json()) as SignUpResponseType;
       if (response.ok) {
         setRegisterSuccess(true);
         await new Promise((resolve) => setTimeout(resolve, 3000));
         void navigate("sign_in");
       } else {
-        setErrorMessage(response.statusText);
+        setErrorMessage(result.message);
       }
     } catch (error) {
       return "Something Went Wrong";

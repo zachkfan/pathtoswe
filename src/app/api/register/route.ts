@@ -1,18 +1,18 @@
 import { NextResponse } from "next/server";
 import prisma from "@/app/lib/prismadb";
 import { hash } from "bcryptjs";
-import { SignUpFormData } from "@/app/lib/types";
+import { SignUpFormDataType } from "@/app/lib/types";
 import { User } from "@prisma/client";
 
 export const POST = async (request: Request) => {
   try {
     const { username, email, password, password2 } =
-      (await request.json()) as SignUpFormData;
+      (await request.json()) as SignUpFormDataType;
     if (!email || !password || !username) {
-      return new NextResponse("All Fields Not Filled", {
-        status: 400,
-        statusText: "All Fields Not Filled",
-      });
+      return NextResponse.json(
+        { message: "All Fields Not Filled" },
+        { status: 400 }
+      );
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
@@ -23,24 +23,24 @@ export const POST = async (request: Request) => {
     })) as User | null;
 
     if (registered) {
-      return new NextResponse("User Already Exists", {
-        status: 400,
-        statusText: "User Already Exists",
-      });
+      return NextResponse.json(
+        { message: "User Already Exists" },
+        { status: 409 }
+      );
     }
 
     if (password.length < 6) {
-      return new NextResponse("Password is Too Short", {
-        status: 400,
-        statusText: "Password is Too Short",
-      });
+      return NextResponse.json(
+        { message: "Password is Too Short" },
+        { status: 400 }
+      );
     }
 
     if (password !== password2) {
-      return new NextResponse("Passwords Dont Match", {
-        status: 400,
-        statusText: "Passwords Dont Match",
-      });
+      return NextResponse.json(
+        { message: "Passwords Dont Match" },
+        { status: 400 }
+      );
     }
     const pwHash = await hash(password, 12);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
@@ -51,14 +51,15 @@ export const POST = async (request: Request) => {
         password: pwHash,
       },
     })) as User;
-    return new NextResponse("User has been created", {
-      status: 201,
-    });
+    return NextResponse.json(
+      { message: "User has been created" },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error creating user:", error);
-    return new NextResponse("Internal Server Error", {
-      status: 500,
-      statusText: "Internal Server Error",
-    });
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 };

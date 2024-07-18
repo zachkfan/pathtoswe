@@ -1,11 +1,11 @@
-export interface SignUpFormData {
+export interface SignUpFormDataType {
   username: string;
   email: string;
   password: string;
   password2: string;
 }
 
-export interface InternshipsType{
+export interface InternshipsType {
   id: number;
   company: string;
   role: string;
@@ -14,4 +14,8 @@ export interface InternshipsType{
   apply_link: string;
   created_by?: string;
   open_for_applications: boolean;
+}
+
+export interface SignUpResponseType {
+  message: string;
 }
