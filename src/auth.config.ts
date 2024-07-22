@@ -38,8 +38,11 @@ export const authConfig = {
       return true;
     },
     jwt({ token, user }) {
-      // User is available during sign-in
-      token.id = user.id;
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      if (user) {
+        // User is available during sign-in
+        token.id = user.id;
+      }
       return token;
     },
     session({ session, token }) {
