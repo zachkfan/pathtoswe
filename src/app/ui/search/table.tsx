@@ -23,8 +23,8 @@ import useSWR from "swr";
 //   }
 // };
 
-const fetcher = (...args: Parameters<typeof fetch>) =>
-  fetch(...args).then((res) => res.json());
+// const fetcher = (...args: Parameters<typeof fetch>) =>
+//   fetch(...args).then((res) => res.json());
 
 const fetchWithTab = ({ url, tab }: { url: string; tab: string }) => {
   return fetch(url, {
@@ -73,9 +73,6 @@ const Table = ({ search, tab }: { search: string; tab: string }) => {
       </div>
     );
 
-  for (var i = 0; i < internships.length; i++) {
-    console.log(internships[i]);
-  }
   return (
     <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
       <thead>

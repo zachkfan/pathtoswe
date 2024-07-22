@@ -15,7 +15,8 @@ export async function POST(request : Request) {
 
   const {tab} = await request.json() as {tab: string}
   if (tab == "Search"){
-  var internships = (await prisma.internships.findMany({
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  let internships = (await prisma.internships.findMany({
     where: {
       open_for_application: true,
       created_by: null,
@@ -33,11 +34,12 @@ export async function POST(request : Request) {
     // }))
     // const userId = (user?.id) as string
     const userId = session.user.id
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const editedInternships = (await prisma.join_table.findMany({
       where: {
         user_id: userId
       }
-    }));
+    })) as JoinTable[]
   const set = new Set(editedInternships.map((val: JoinTable) =>  val.internship_id))
     internships = internships.filter((arrVal : InternshipsType) => {
       return !set.has(arrVal.id)
@@ -66,6 +68,7 @@ export async function POST(request : Request) {
       // }))
       // const userId = (user?.id) as string
       const userId = session.user.id
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const internships = await prisma.internships.findMany({
       where: {
           join_table:{
@@ -76,7 +79,7 @@ export async function POST(request : Request) {
           }
         
       }
-    })
+    }) as InternshipsType[]
 
     return NextResponse.json({ internships });
   }  
@@ -101,7 +104,7 @@ export async function PUT(request : Request){
     }
     const {internshipId, status} = await request.json() as UserInternshipRequest;
     console.log({internshipId, status})
-    const userId = session?.user.id;
+    const userId = session.user.id;
     // console.log(session.user.id)
     // console.log(userId);
     //Maybe cahnge to take from user session instead of this?
@@ -112,7 +115,7 @@ export async function PUT(request : Request){
     // }))
     // const userId = (user?.id) as string
   
-
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     await prisma.join_table.upsert({
       where: {      
         user_id_internship_id: {

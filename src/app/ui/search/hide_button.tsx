@@ -8,7 +8,11 @@ const HideButton = ({
 }) => {
   return (
     <div className="tooltip" data-tip="Hide">
-      <button onClick={() => rowHidden("Hidden")}>
+      <button
+        onClick={() => {
+          rowHidden("Hidden");
+        }}
+      >
         <EyeSlashIcon className="w-6 text-black hidden hover:fill-black lg:block" />
       </button>
     </div>
