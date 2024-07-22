@@ -39,7 +39,7 @@ const Row = ({
       </td>
       <td className="pr-0">{datePosted.substring(0, 10)}</td>
       <td className="align-middle">
-        <div className="flex gap-7 justify-center">
+        <div className="flex gap-7 justify-center h-6">
           <Save
             rowHidden={() => {
               setHidden(!isHidden);
