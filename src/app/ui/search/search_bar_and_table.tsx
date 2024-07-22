@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import Table from "@/app/ui/search/table";
 import SearchBar from "@/app/ui/search_bar";
 
-const SearchBarAndTable = () => {
+const SearchBarAndTable = ({ tab }: { tab: string }) => {
   const [search, setSearch] = useState("");
 
   return (
     <>
       <SearchBar setSearch={setSearch} isDashboard={false} />
-      <Table search={search} />
+      <Table search={search} tab={tab} />
     </>
   );
 };
