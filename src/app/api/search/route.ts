@@ -114,6 +114,18 @@ export async function PUT(request : Request){
     //   }
     // }))
     // const userId = (user?.id) as string
+
+    const deleted = await prisma.join_table.delete({
+      where:{
+        status: status,
+        user_id_internship_id: {
+        user_id: userId,
+        internship_id: internshipId,
+        },
+      }
+    }) as JoinTable
+
+    if (!deleted){
   
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     await prisma.join_table.upsert({
@@ -133,7 +145,7 @@ export async function PUT(request : Request){
       }
 
     })
-
+}
 
     return new NextResponse("Success", {status: 200})
 
