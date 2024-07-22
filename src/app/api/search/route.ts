@@ -114,7 +114,8 @@ export async function PUT(request : Request){
     //   }
     // }))
     // const userId = (user?.id) as string
-
+    
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const deleted = await prisma.join_table.delete({
       where:{
         status: status,
