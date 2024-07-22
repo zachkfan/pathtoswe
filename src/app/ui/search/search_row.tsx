@@ -15,6 +15,7 @@ interface Props {
   location: string;
   datePosted: string;
   applyLink: string;
+  currentTab: "Search" | "Hidden" | "Saved";
 }
 
 //maybe change usersession to worldwide but for now leave
@@ -25,10 +26,11 @@ const Row = ({
   location,
   datePosted,
   applyLink,
+  currentTab,
 }: Props) => {
   const [isHidden, setHidden] = useState(true);
 
-  const hideRow = async (item_status: "Hidden" | "Saved") => {
+  const hideRow = async (item_status: "Search" | "Hidden" | "Saved") => {
     try {
       setHidden(!isHidden);
       await fetch("/api/search", {
@@ -56,8 +58,8 @@ const Row = ({
       <td className="pr-0">{datePosted.substring(0, 10)}</td>
       <td className="align-middle">
         <div className="flex gap-7 justify-center">
-          <Save rowHidden={hideRow} />
-          <Hide rowHidden={hideRow} />
+          <Save rowHidden={hideRow} currentTab={currentTab} />
+          <Hide rowHidden={hideRow} currentTab={currentTab} />
         </div>
       </td>
       <td className="pl-0">
