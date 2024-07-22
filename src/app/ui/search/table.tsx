@@ -26,18 +26,27 @@ import useSWR from "swr";
 const fetcher = (...args: Parameters<typeof fetch>) =>
   fetch(...args).then((res) => res.json());
 
-const Table = ({ search }: { search: string }) => {
+const fetchWithTab = ({ url, tab }: { url: string; tab: string }) => {
+  return fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tab: tab }),
+  }).then((res) => res.json());
+};
+
+const Table = ({ search, tab }: { search: string; tab: string }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const { data, error } = useSWR<{ internships: InternshipsType[] }, Error>(
-    "/api/search",
-    fetcher,
+    { url: "/api/search", tab: tab },
+    fetchWithTab,
     {
       revalidateOnFocus: false, // Disables revalidation when the window gains focus
       refreshInterval: 0, // Disables automatic revalidation
     }
   );
   const internships = data?.internships;
+  console.log(internships);
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
@@ -64,6 +73,9 @@ const Table = ({ search }: { search: string }) => {
       </div>
     );
 
+  for (var i = 0; i < internships.length; i++) {
+    console.log(internships[i]);
+  }
   return (
     <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
       <thead>

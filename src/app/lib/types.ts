@@ -19,3 +19,16 @@ export interface InternshipsType {
 export interface SignUpResponseType {
   message: string;
 }
+
+export interface JoinTable{
+  id : number;
+  user_id?: string;
+  internship_id?: number;
+  status: "Closed"|"Pending"|"Interviewed"|"Hired"|"Hidden"|"Saved";
+  internships: InternshipsType;
+}
+
+export interface UserInternshipRequest{
+  internshipId: number;
+  status: "Closed"|"Pending"|"Interviewed"|"Hired"|"Hidden"|"Saved";
+}

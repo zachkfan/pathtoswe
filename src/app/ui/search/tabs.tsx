@@ -13,7 +13,7 @@ const Tabs = () => {
         defaultChecked
       />
       <div role="tabpanel" className="tab-content py-5">
-        <SearchAndTable />
+        <SearchAndTable tab="Search"></SearchAndTable>
       </div>
 
       <input
@@ -23,8 +23,8 @@ const Tabs = () => {
         className="tab"
         aria-label="Saved"
       />
-      <div role="tabpanel" className="tab-content p-10">
-        No Jobs Saved Yet!
+      <div role="tabpanel" className="tab-content py-5">
+        <SearchAndTable tab="Saved"></SearchAndTable>
       </div>
 
       <input
@@ -34,8 +34,8 @@ const Tabs = () => {
         className="tab"
         aria-label="Hidden"
       />
-      <div role="tabpanel" className="tab-content p-10">
-        No Jobs Hidden Yet!
+      <div role="tabpanel" className="tab-content p-5">
+        <SearchAndTable tab="Hidden"></SearchAndTable>
       </div>
     </div>
   );

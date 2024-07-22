@@ -7,6 +7,9 @@ import Apply from "./apply_button";
 import { useState } from "react";
 import clsx from "clsx";
 import LocationDropdown from "./location_dropdown";
+import { auth } from "@/auth";
+import { useSession } from "next-auth/react";
+// import { fetcher } from "@/app/api/fetcher";
 
 interface Props {
   item_id: number;
@@ -17,6 +20,7 @@ interface Props {
   applyLink: string;
 }
 
+//maybe change usersession to worldwide but for now leave
 const Row = ({
   item_id,
   company,
@@ -26,6 +30,21 @@ const Row = ({
   applyLink,
 }: Props) => {
   const [isHidden, setHidden] = useState(true);
+
+  const hideRow = async (item_status: "Hidden" | "Saved") => {
+    try {
+      setHidden(!isHidden);
+      await fetch("/api/search", {
+        method: "PUT",
+        body: JSON.stringify({
+          internshipId: item_id,
+          status: item_status,
+        }),
+      });
+    } catch {
+      console.log("Error something went wrong");
+    }
+  };
 
   return (
     <tr
@@ -37,19 +56,11 @@ const Row = ({
       <td>
         <LocationDropdown location={location} />
       </td>
-      <td className="pr-0">{datePosted.substring(0, 10)}</td>
+      <td className="pr-0">{datePosted?.substring(0, 10)}</td>
       <td className="align-middle">
         <div className="flex gap-7 justify-center h-6">
-          <Save
-            rowHidden={() => {
-              setHidden(!isHidden);
-            }}
-          />
-          <Hide
-            rowHidden={() => {
-              setHidden(!isHidden);
-            }}
-          />
+          <Save rowHidden={hideRow} />
+          <Hide rowHidden={hideRow} />
         </div>
       </td>
       <td className="pl-0">
