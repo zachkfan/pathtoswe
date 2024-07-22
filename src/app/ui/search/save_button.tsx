@@ -1,10 +1,13 @@
 import React from "react";
 import { BookmarkIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 
 const SaveButton = ({
   rowHidden,
+  currentTab,
 }: {
   rowHidden: (item_status: "Hidden" | "Saved") => void;
+  currentTab: "Search" | "Hidden" | "Saved";
 }) => {
   return (
     <div className="tooltip" data-tip="Save">
@@ -14,7 +17,14 @@ const SaveButton = ({
         }}
       >
         {
-          <BookmarkIcon className=" w-6 text-black hidden hover:fill-black lg:block"></BookmarkIcon>
+          <BookmarkIcon
+            className={clsx(
+              " w-6 text-black hidden lg:block",
+              currentTab == "Saved"
+                ? "fill-black hover:fill-none"
+                : "hover:fill-black"
+            )}
+          ></BookmarkIcon>
         }
       </button>
     </div>
