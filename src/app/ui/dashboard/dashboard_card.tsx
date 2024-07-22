@@ -33,7 +33,7 @@ export default function DashboardCard({
   };
   return (
     <div
-      className="card card-side bg-white w-96 lg:w-[45%] min-h-fit xl:h-52 text-black drop-shadow-around m-4"
+      className="card card-side bg-white w-96 lg:w-[35vw] min-h-fit xl:h-56 text-black drop-shadow-around m-4"
       key={item_id}
     >
       <figure>
