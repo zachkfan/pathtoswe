@@ -25,7 +25,7 @@ export interface JoinTable{
   user_id?: string;
   internship_id?: number;
   status: "Closed"|"Pending"|"Interviewed"|"Hired"|"Hidden"|"Saved";
-  internships: InternshipsType;
+  internships?: InternshipsType;
 }
 
 export interface UserInternshipRequest{

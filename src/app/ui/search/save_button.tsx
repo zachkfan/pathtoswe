@@ -8,7 +8,11 @@ const SaveButton = ({
 }) => {
   return (
     <div className="tooltip" data-tip="Save">
-      <button onClick={() => rowHidden("Saved")}>
+      <button
+        onClick={() => {
+          rowHidden("Saved");
+        }}
+      >
         {
           <BookmarkIcon className=" w-6 text-black hidden hover:fill-black lg:block"></BookmarkIcon>
         }

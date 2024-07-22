@@ -7,9 +7,6 @@ import Apply from "./apply_button";
 import { useState } from "react";
 import clsx from "clsx";
 import LocationDropdown from "./location_dropdown";
-import { auth } from "@/auth";
-import { useSession } from "next-auth/react";
-// import { fetcher } from "@/app/api/fetcher";
 
 interface Props {
   item_id: number;
@@ -56,7 +53,7 @@ const Row = ({
       <td>
         <LocationDropdown location={location} />
       </td>
-      <td className="pr-0">{datePosted?.substring(0, 10)}</td>
+      <td className="pr-0">{datePosted.substring(0, 10)}</td>
       <td className="align-middle">
         <div className="flex gap-7 justify-center h-6">
           <Save rowHidden={hideRow} />
