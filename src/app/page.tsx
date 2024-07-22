@@ -1,7 +1,7 @@
 import Banner from "./ui/home/banner";
 import HomeBody from "./ui/home/home_body";
 import Card from "./ui/home/profile_cards";
-import HomeContainer from "./ui/home/home";
+import HomeContainer from "./ui/home/home_container";
 
 export default function Home() {
   return (
