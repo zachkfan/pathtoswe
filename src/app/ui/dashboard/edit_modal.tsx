@@ -53,6 +53,7 @@ export default function ModalEdit({
       <label className="form-control w-full max-w-xs">
         <div className="label">
           <span className="label-text text-black">Location:</span>
+          <span className="label-text-alt">ex. New York, NY; Boston, MA</span>
         </div>
         <input
           type="text"
@@ -63,6 +64,7 @@ export default function ModalEdit({
       <label className="form-control w-full max-w-xs">
         <div className="label">
           <span className="label-text text-black">Date Posted:</span>
+          <span className="label-text-alt">ex. 2024-07-23</span>
         </div>
         <input
           type="text"
@@ -73,6 +75,7 @@ export default function ModalEdit({
       <label className="form-control w-full max-w-xs">
         <div className="label">
           <span className="label-text text-black">Date Applied:</span>
+          <span className="label-text-alt">ex. 2024-07-24</span>
         </div>
         <input
           type="text"
@@ -83,6 +86,7 @@ export default function ModalEdit({
       <label className="form-control w-full max-w-xs">
         <div className="label">
           <span className="label-text text-black">Dashboard:</span>
+          <span className="label-text-alt">ex. www.google.com</span>
         </div>
         <input
           type="text"

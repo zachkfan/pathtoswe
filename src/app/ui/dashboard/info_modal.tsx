@@ -1,6 +1,7 @@
 import Status from "@/app/ui/dashboard/status_tag";
 import ButtonModal from "@/app/ui/btn_modal";
 import EditModal from "@/app/ui/dashboard/edit_modal";
+import { parseLocation } from "@/app/lib/utils";
 
 interface Props {
   company: string;
@@ -21,12 +22,15 @@ export default function ModalContent({
   applicationDashboard,
   status,
 }: Props) {
+  const parsedLocation = parseLocation(location);
+  const semicolonLocation = parsedLocation.join("; ");
+
   return (
     <div className="p-2 flex flex-row justify-between">
       <div className="flex flex-col gap-2 items-start">
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
-        <p>Location: {location}</p>
+        <p>Location: {semicolonLocation}</p>
         <p>Date Posted: {datePosted}</p>
         <p>Date Applied: {dateApplied}</p>
         <p>
@@ -55,8 +59,8 @@ export default function ModalContent({
         <EditModal
           company={company}
           role={role}
-          location={location}
-          datePosted={datePosted}
+          location={semicolonLocation}
+          datePosted={datePosted.substring(0, 10)}
           dateApplied={dateApplied}
           applicationDashboard={applicationDashboard}
           status={status}
