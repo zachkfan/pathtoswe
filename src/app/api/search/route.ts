@@ -1,13 +1,8 @@
 import prisma from "@/app/lib/prismadb";
+import { InternshipsType } from "@/app/lib/types";
 import { NextResponse } from "next/server";
-import {
-  JoinTableType,
-  InternshipsType,
-  UserInternshipRequestType,
-} from "@/app/lib/types";
+import { UserInternshipRequestType, JoinTableType } from "@/app/lib/types";
 import { auth } from "@/auth";
-
-// MAKE SURE THAT IF USER SESSION THING HAPPENS THEN CHANGE TO SESSION PROVIDER
 
 export async function POST(request: Request) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
@@ -28,12 +23,6 @@ export async function POST(request: Request) {
       })) as InternshipsType[];
 
       if (session) {
-        // const user = (await prisma.user.findUnique({
-        //   where: {
-        //     email: session.user.email
-        //   }
-        // }))
-        // const userId = (user?.id) as string
         const userId = session.user.id;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         const editedInternships = (await prisma.join_table.findMany({
@@ -51,22 +40,7 @@ export async function POST(request: Request) {
 
       return NextResponse.json({ internships }, { status: 200 });
     } else {
-      // const internships = await prisma.join_table.findMany({
-      //   where: {
-      //     status: tab
-      //   },
-      //   select: {
-      //     internships: true
-      //     }
-
-      // })
       if (session) {
-        // const user = (await prisma.user.findUnique({
-        //   where: {
-        //     email: session.user.email
-        //   }
-        // }))
-        // const userId = (user?.id) as string
         const userId = session.user.id;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         const internships = (await prisma.internships.findMany({
@@ -85,8 +59,8 @@ export async function POST(request: Request) {
         return NextResponse.json({ message: "No Account" }, { status: 400 });
       }
     }
-  } catch {
-    console.log("Broken shit");
+  } catch (error) {
+    console.error("Internal Server Error:", error); // Log error
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -105,16 +79,6 @@ export async function PUT(request: Request) {
       (await request.json()) as UserInternshipRequestType;
     console.log({ internshipId, status });
     const userId = session.user.id;
-    // console.log(session.user.id)
-    // console.log(userId);
-    //Maybe cahnge to take from user session instead of this?
-    // const user = (await prisma.user.findUnique({
-    //   where: {
-    //     email: session.user.email
-    //   }
-    // }))
-    // const userId = (user?.id) as string
-
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const exists = (await prisma.join_table.findUnique({
       where: {
@@ -158,7 +122,8 @@ export async function PUT(request: Request) {
     }
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
-  } catch {
+  } catch (error) {
+    console.error("Internal Server Error:", error); // Log error
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
