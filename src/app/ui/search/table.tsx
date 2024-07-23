@@ -1,6 +1,5 @@
 import React from "react";
 import Row from "./search_row";
-// import { data } from "./data";
 import { InternshipsType } from "@/app/lib/types";
 import FirstPageRoundedIcon from "@mui/icons-material/FirstPageRounded";
 import LastPageRoundedIcon from "@mui/icons-material/LastPageRounded";
@@ -8,23 +7,6 @@ import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import CustomTablePagination from "@/app/ui/table_pagination";
 import useSWR from "swr";
-
-// const getInternships = async (): Promise<InternshipsType[] | string> => {
-//   try {
-//     const res = await fetch("/api/search/", {
-//       cache: "no-store",
-//     });
-//     if (!res.ok) {
-//       throw new Error("Failed to Fetch Topics");
-//     }
-//     return (await res.json()) as InternshipsType[];
-//   } catch (error) {
-//     return "Something went wrong";
-//   }
-// };
-
-// const fetcher = (...args: Parameters<typeof fetch>) =>
-//   fetch(...args).then((res) => res.json());
 
 const fetchWithTab = ({
   url,
@@ -73,10 +55,6 @@ const Table = ({
     setPage(0);
   };
 
-  // const data = await getInternships();
-  // if (typeof data === "string") {
-  //   console.log(data);
-  // } else {
   if (error) return <div className="text-lg p-52">Failed to load</div>;
   if (!internships)
     return (
