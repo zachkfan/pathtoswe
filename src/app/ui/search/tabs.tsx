@@ -34,7 +34,7 @@ const Tabs = () => {
         className="tab"
         aria-label="Hidden"
       />
-      <div role="tabpanel" className="tab-content p-5">
+      <div role="tabpanel" className="tab-content py-5">
         <SearchAndTable tab="Hidden"></SearchAndTable>
       </div>
     </div>
