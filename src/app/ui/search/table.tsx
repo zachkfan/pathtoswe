@@ -71,75 +71,79 @@ const Table = ({
     return <div className="text-lg p-52">No {tab} Yet</div>;
   }
 
+  const filteredInternships = (
+    rowsPerPage > 0 && search == ""
+      ? internships.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      : internships
+  ).filter((item) => {
+    return search.toLowerCase() === ""
+      ? item
+      : item.company.toLowerCase().includes(search.toLowerCase()) ||
+          item.role.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
-    <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
-      <thead>
-        <tr className="text-sm [&_*]:bg-black-gray text-white">
-          <th className="w-[20%]">Company</th>
-          <th className="w-[35%]">Role</th>
-          <th className="w-[15%]">Location</th>
-          <th className="pr-0 w-[10%]">Date Posted</th>
-          <th className="w-[10%]"></th>
-          <th className="pl-0 w-[10%]">Apply Link</th>
-        </tr>
-      </thead>
-      <tbody className="text-black">
-        {(rowsPerPage > 0 && search == ""
-          ? internships.slice(
-              page * rowsPerPage,
-              page * rowsPerPage + rowsPerPage
-            )
-          : internships
-        )
-          .filter((item) => {
-            return search.toLowerCase() == ""
-              ? item
-              : item.company.toLowerCase().includes(search.toLowerCase()) ||
-                  item.role.toLowerCase().includes(search.toLowerCase());
-          })
-          .map((item) => (
-            <Row
-              company={item.company}
-              role={item.role}
-              location={item.location}
-              datePosted={item.date_posted}
-              applyLink={item.apply_link}
-              item_id={item.id}
-              key={item.id}
-              currentTab={tab}
-            />
-          ))}
-      </tbody>
-      <tfoot>
-        <tr>
-          <CustomTablePagination
-            className="text-black text-sm"
-            rowsPerPageOptions={[10, 15, 25, { label: "All", value: -1 }]}
-            colSpan={7}
-            count={internships.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            slotProps={{
-              select: {
-                "aria-label": "rows per page",
-              },
-              actions: {
-                showFirstButton: true,
-                showLastButton: true,
-                slots: {
-                  firstPageIcon: FirstPageRoundedIcon,
-                  lastPageIcon: LastPageRoundedIcon,
-                  nextPageIcon: ChevronRightRoundedIcon,
-                  backPageIcon: ChevronLeftRoundedIcon,
-                },
-              },
-            }}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </tr>
-      </tfoot>
-    </table>
+    <>
+      {filteredInternships.length === 0 ? (
+        <div className="text-lg p-52">No results found</div>
+      ) : (
+        <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
+          <thead>
+            <tr className="text-sm [&_*]:bg-black-gray text-white">
+              <th className="w-[20%]">Company</th>
+              <th className="w-[35%]">Role</th>
+              <th className="w-[15%]">Location</th>
+              <th className="pr-0 w-[10%]">Date Posted</th>
+              <th className="w-[10%]"></th>
+              <th className="pl-0 w-[10%]">Apply Link</th>
+            </tr>
+          </thead>
+          <tbody className="text-black">
+            {filteredInternships.map((item) => (
+              <Row
+                company={item.company}
+                role={item.role}
+                location={item.location}
+                datePosted={item.date_posted}
+                applyLink={item.apply_link}
+                item_id={item.id}
+                key={item.id}
+                currentTab={tab}
+              />
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <CustomTablePagination
+                className="text-black text-sm"
+                rowsPerPageOptions={[10, 15, 25, { label: "All", value: -1 }]}
+                colSpan={7}
+                count={internships.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                slotProps={{
+                  select: {
+                    "aria-label": "rows per page",
+                  },
+                  actions: {
+                    showFirstButton: true,
+                    showLastButton: true,
+                    slots: {
+                      firstPageIcon: FirstPageRoundedIcon,
+                      lastPageIcon: LastPageRoundedIcon,
+                      nextPageIcon: ChevronRightRoundedIcon,
+                      backPageIcon: ChevronLeftRoundedIcon,
+                    },
+                  },
+                }}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </tr>
+          </tfoot>
+        </table>
+      )}{" "}
+    </>
   );
 };
 
