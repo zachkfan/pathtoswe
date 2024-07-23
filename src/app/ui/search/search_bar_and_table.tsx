@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Table from "@/app/ui/search/table";
 import SearchBar from "@/app/ui/search_bar";
 
-const SearchBarAndTable = ({ tab }: { tab: string }) => {
+const SearchBarAndTable = ({ tab }: { tab: "Search" | "Hidden" | "Saved" }) => {
   const [search, setSearch] = useState("");
 
   return (

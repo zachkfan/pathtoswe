@@ -26,7 +26,13 @@ import useSWR from "swr";
 // const fetcher = (...args: Parameters<typeof fetch>) =>
 //   fetch(...args).then((res) => res.json());
 
-const fetchWithTab = ({ url, tab }: { url: string; tab: string }) => {
+const fetchWithTab = ({
+  url,
+  tab,
+}: {
+  url: string;
+  tab: "Search" | "Hidden" | "Saved";
+}) => {
   return fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -34,7 +40,13 @@ const fetchWithTab = ({ url, tab }: { url: string; tab: string }) => {
   }).then((res) => res.json());
 };
 
-const Table = ({ search, tab }: { search: string; tab: string }) => {
+const Table = ({
+  search,
+  tab,
+}: {
+  search: string;
+  tab: "Search" | "Hidden" | "Saved";
+}) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const { data, error } = useSWR<{ internships: InternshipsType[] }, Error>(
@@ -107,6 +119,7 @@ const Table = ({ search, tab }: { search: string; tab: string }) => {
               applyLink={item.apply_link}
               item_id={item.id}
               key={item.id}
+              currentTab={tab}
             />
           ))}
       </tbody>
