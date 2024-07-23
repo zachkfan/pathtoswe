@@ -8,6 +8,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import LocationDropdown from "./location_dropdown";
 import { SignUpResponseType } from "@/app/lib/types";
+import { mutate } from "swr";
 
 interface Props {
   item_id: number;
@@ -43,6 +44,7 @@ const Row = ({
       });
       if (response.ok) {
         setHidden(!isHidden);
+        await mutate({ url: "/api/search", tab: item_status });
       } else {
         const result = (await response.json()) as SignUpResponseType;
         setErrorMessage(result.message);

@@ -39,6 +39,7 @@ const Table = ({
       refreshInterval: 0, // Disables automatic revalidation
     }
   );
+
   const internships = data?.internships;
   const message = data?.message;
   if (message) {
