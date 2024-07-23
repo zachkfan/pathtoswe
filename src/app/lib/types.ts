@@ -20,6 +20,11 @@ export interface SignUpResponseType {
   message: string;
 }
 
+export interface TableResponseType{
+  internships?: InternshipsType[]
+  message?: string;
+}
+
 export interface JoinTableType {
   id: number;
   user_id?: string;

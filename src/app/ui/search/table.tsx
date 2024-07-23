@@ -1,12 +1,12 @@
 import React from "react";
 import Row from "./search_row";
-import { InternshipsType } from "@/app/lib/types";
 import FirstPageRoundedIcon from "@mui/icons-material/FirstPageRounded";
 import LastPageRoundedIcon from "@mui/icons-material/LastPageRounded";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import CustomTablePagination from "@/app/ui/table_pagination";
 import useSWR from "swr";
+import { TableResponseType } from "@/app/lib/types";
 
 const fetchWithTab = ({
   url,
@@ -31,7 +31,7 @@ const Table = ({
 }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const { data, error } = useSWR<{ internships: InternshipsType[] }, Error>(
+  const { data, error } = useSWR<TableResponseType, Error>(
     { url: "/api/search", tab: tab },
     fetchWithTab,
     {
@@ -40,7 +40,10 @@ const Table = ({
     }
   );
   const internships = data?.internships;
-  console.log(internships);
+  const message = data?.message;
+  if (message) {
+    return <div className="text-lg p-52">Not Logged In</div>;
+  }
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number

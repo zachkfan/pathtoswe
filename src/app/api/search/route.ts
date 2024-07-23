@@ -77,7 +77,7 @@ export async function PUT(request: Request) {
     if (!session) {
       console.log("No account");
       return NextResponse.json(
-        { message: "Not Authenticated" },
+        { message: "Not Signed In" },
         { status: 401 }
       );
     }

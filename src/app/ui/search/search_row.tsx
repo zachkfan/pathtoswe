@@ -7,6 +7,7 @@ import Apply from "./apply_button";
 import { useState } from "react";
 import clsx from "clsx";
 import LocationDropdown from "./location_dropdown";
+import { SignUpResponseType } from "@/app/lib/types";
 
 interface Props {
   item_id: number;
@@ -29,50 +30,82 @@ const Row = ({
   currentTab,
 }: Props) => {
   const [isHidden, setHidden] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const hideRow = async (item_status: "Search" | "Hidden" | "Saved") => {
     try {
-      setHidden(!isHidden);
-      await fetch("/api/search", {
+      const response = await fetch("/api/search", {
         method: "PUT",
         body: JSON.stringify({
           internshipId: item_id,
           status: item_status,
         }),
       });
-    } catch {
-      console.log("Error something went wrong");
+      if (response.ok) {
+        setHidden(!isHidden);
+      } else {
+        const result = (await response.json()) as SignUpResponseType;
+        setErrorMessage(result.message);
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 2000);
+      }
+    } catch (error) {
+      return "Something went wrong";
     }
   };
 
   return (
-    <tr
-      className={clsx("h-14", !isHidden ? "hidden " : "display")}
-      key={item_id}
-    >
-      <td>{company}</td>
-      <td>{role}</td>
-      <td>
-        <LocationDropdown location={location} />
-      </td>
-      <td className="pr-0">{datePosted.substring(0, 10)}</td>
-      <td className="align-middle">
-        <div className="flex gap-7 justify-center h-6">
-          <Save rowHidden={hideRow} currentTab={currentTab} />
-          <Hide rowHidden={hideRow} currentTab={currentTab} />
+    <>
+      {errorMessage && (
+        <div
+          role="alert"
+          className="alert alert-error w-fit fixed left-1/2 bottom-5 z-50"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>{errorMessage}</span>
         </div>
-      </td>
-      <td className="pl-0">
-        <Apply
-          href={applyLink}
-          company={company}
-          role={role}
-          rowHidden={() => {
-            setHidden(!isHidden);
-          }}
-        ></Apply>
-      </td>
-    </tr>
+      )}
+      <tr
+        className={clsx("h-14", !isHidden ? "hidden " : "display")}
+        key={item_id}
+      >
+        <td>{company}</td>
+        <td>{role}</td>
+        <td>
+          <LocationDropdown location={location} />
+        </td>
+        <td className="pr-0">{datePosted.substring(0, 10)}</td>
+        <td className="align-middle">
+          <div className="flex gap-7 justify-center h-6">
+            <Save rowHidden={hideRow} currentTab={currentTab} />
+            <Hide rowHidden={hideRow} currentTab={currentTab} />
+          </div>
+        </td>
+        <td className="pl-0">
+          <Apply
+            href={applyLink}
+            company={company}
+            role={role}
+            rowHidden={() => {
+              setHidden(!isHidden);
+            }}
+          ></Apply>
+        </td>
+      </tr>
+    </>
   );
 };
 
