@@ -6,42 +6,19 @@ import LastPageRoundedIcon from "@mui/icons-material/LastPageRounded";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import CustomTablePagination from "@/app/ui/table_pagination";
-import useSWR from "swr";
 import { JoinTableType } from "@/app/lib/types";
 
 interface Props {
   search: string;
   cardView: boolean;
+  data: JoinTableType[];
 }
 
-const fetchDashboardData = (url: string) => {
-  return fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }).then((res) => res.json());
-};
-
-const Table = ({ search, cardView }: Props) => {
+const Table = ({ search, cardView, data }: Props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const { data, error } = useSWR<JoinTableType[], Error>(
-    "/api/dashboard",
-    fetchDashboardData,
-    {
-      revalidateOnFocus: false, // Disables revalidation when the window gains focus
-      refreshInterval: 0, // Disables automatic revalidation
-    }
-  );
 
   const appliedInternships = data;
-
-  if (!appliedInternships)
-    return (
-      <div className="flex gap-2 justify-center text-lg p-44">
-        Loading<span className="loading loading-spinner loading-sm"></span>
-      </div>
-    );
-  if (error) return <div className="text-lg p-44">Failed to load</div>;
 
   if (!appliedInternships.length) {
     return (
@@ -67,7 +44,7 @@ const Table = ({ search, cardView }: Props) => {
 
   if (cardView) {
     return (
-      <div className="flex flex-row flex-wrap justify-evenly">
+      <div className="flex flex-row flex-wrap justify-between px-8">
         {appliedInternships
           .filter((item) => {
             return search.toLowerCase() == ""
