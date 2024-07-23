@@ -25,7 +25,7 @@ const fetchDashboardData = (url: string) => {
 const Table = ({ search, cardView }: Props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const { data, error } = useSWR<{ result: JoinTableType[] }, Error>(
+  const { data, error } = useSWR<JoinTableType[], Error>(
     "/api/dashboard",
     fetchDashboardData,
     {
@@ -34,7 +34,7 @@ const Table = ({ search, cardView }: Props) => {
     }
   );
 
-  const appliedInternships = data?.result;
+  const appliedInternships = data;
 
   if (!appliedInternships)
     return (
@@ -51,8 +51,6 @@ const Table = ({ search, cardView }: Props) => {
       </div>
     );
   }
-
-  console.log("Rendering internships:", appliedInternships[0].company);
 
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,

@@ -1,7 +1,7 @@
 import prisma from "@/app/lib/prismadb";
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
-import { JoinTableType, InternshipsType } from "@/app/lib/types";
+import { JoinTableType } from "@/app/lib/types";
 
 export async function POST() {
   try {
@@ -18,34 +18,25 @@ export async function POST() {
             in: ["Pending", "Hired", "Closed", "Interviewed"],
           },
         },
-        select: {
-          internships: true, // Include the related internship details
-          status: true,
-          date_applied: true,
+        include: {
+          internships: true, // Include related internship details
         },
         orderBy: {
           date_applied: "desc",
         },
-      })) as (JoinTableType & { internships: InternshipsType })[];
+      })) as JoinTableType[];
 
       //   console.log(`Join Table Entries: ${JSON.stringify(joinTableEntries)}`); // Log join table entries
 
-      if (!joinTableEntries.length) {
+      if (joinTableEntries.length === 0) {
         console.log("No entries found.");
         return NextResponse.json(
-          { message: "No data found", internships: [] },
+          { message: "No data found", data: [] },
           { status: 200 }
         );
       }
 
-      // Map join table entries to include internship details
-      const result = joinTableEntries.map((entry) => ({
-        ...entry.internships,
-        status: entry.status,
-        date_applied: entry.date_applied,
-      }));
-
-      return NextResponse.json({ result }, { status: 200 });
+      return NextResponse.json(joinTableEntries, { status: 200 });
     } else {
       return NextResponse.json({ message: "No Account" }, { status: 400 });
     }
