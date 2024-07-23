@@ -5,16 +5,15 @@ interface Props {
 
 export default function ApplyModal({ company, role }: Props) {
   return (
-    <div className="form-control">
+    <div className="form-control flex flex-col flex-wrap items-center">
       <label className="cursor-pointer label">
-        <span className="label-text text-black w-fit text-lg">
+        <div className="label-text text-black w-full text-lg">
           Add{" "}
           <p className="font-bold inline">
             {company} - {role}
           </p>{" "}
           to Dashboard?
-        </span>
-        <input type="checkbox" defaultChecked className="checkbox" />
+        </div>
       </label>
     </div>
   );

@@ -6,7 +6,7 @@ const SaveButton = ({
   rowHidden,
   currentTab,
 }: {
-  rowHidden: (item_status: "Hidden" | "Saved") => void;
+  rowHidden: (item_status: "Pending" | "Hidden" | "Saved") => void;
   currentTab: "Search" | "Hidden" | "Saved";
 }) => {
   return (

@@ -11,6 +11,7 @@ interface Props {
   btnContent: React.ReactNode;
   closeBtnClassName: string;
   closeBtnContent: React.ReactNode;
+  onCloseBtnClick?: (item_status: "Pending" | "Hidden" | "Saved") => void;
   children: React.ReactNode;
   end: boolean;
 }
@@ -20,6 +21,7 @@ export default function Modal({
   btnContent,
   closeBtnClassName,
   closeBtnContent,
+  onCloseBtnClick,
   children,
   end,
 }: Props) {
@@ -46,7 +48,19 @@ export default function Modal({
 
           <div className={clsx("modal-action mt-0", { "self-end, pt-5": end })}>
             <form method="dialog">
-              <button className={closeBtnClassName}>{closeBtnContent}</button>
+              {onCloseBtnClick && (
+                <button
+                  className={closeBtnClassName}
+                  onClick={() => {
+                    onCloseBtnClick("Pending");
+                  }}
+                >
+                  {closeBtnContent}
+                </button>
+              )}
+              {!onCloseBtnClick && (
+                <button className={closeBtnClassName}>{closeBtnContent}</button>
+              )}
             </form>
           </div>
         </div>
