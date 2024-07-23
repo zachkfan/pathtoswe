@@ -1,6 +1,5 @@
 import React from "react";
 import Row, { statusType } from "./dashboard_row";
-// import { data } from "./data";
 import Card from "./dashboard_card";
 import FirstPageRoundedIcon from "@mui/icons-material/FirstPageRounded";
 import LastPageRoundedIcon from "@mui/icons-material/LastPageRounded";
@@ -17,7 +16,7 @@ interface Props {
 
 const fetchDashboardData = (url: string) => {
   return fetch(url, {
-    method: "POST",
+    method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 };

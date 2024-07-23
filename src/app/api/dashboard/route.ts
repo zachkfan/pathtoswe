@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 import { JoinTableType } from "@/app/lib/types";
 
-export async function POST() {
+export async function GET() {
   try {
     const session = await auth();
     if (session) {

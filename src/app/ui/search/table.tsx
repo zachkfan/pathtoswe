@@ -66,6 +66,10 @@ const Table = ({
       </div>
     );
 
+  if (internships.length === 0) {
+    return <div className="text-lg p-52">No {tab} Yet</div>;
+  }
+
   return (
     <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
       <thead>
