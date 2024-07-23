@@ -33,7 +33,7 @@ const Row = ({
   const [isHidden, setHidden] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const hideRow = async (item_status: "Search" | "Hidden" | "Saved") => {
+  const hideRow = async (item_status: "Pending" | "Hidden" | "Saved") => {
     try {
       const response = await fetch("/api/search", {
         method: "PUT",
@@ -104,9 +104,7 @@ const Row = ({
             href={applyLink}
             company={company}
             role={role}
-            rowHidden={() => {
-              setHidden(!isHidden);
-            }}
+            rowHidden={hideRow}
           ></Apply>
         </td>
       </tr>
