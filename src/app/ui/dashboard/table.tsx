@@ -99,12 +99,12 @@ const Table = ({ search, cardView }: Props) => {
       <table className="table table-pin-cols text-center lg:table-md table-xs">
         <thead>
           <tr className="text-sm text-gray-400 [&_*]:bg-white">
-            <th>Company</th>
-            <th>Role</th>
-            <th>Location</th>
-            <th>Date Posted</th>
-            <th>Date Applied</th>
-            <th>Status</th>
+            <th className="w-[20%]">Company</th>
+            <th className="w-[25%]">Role</th>
+            <th className="w-[15%]">Location</th>
+            <th className="w-[15%]">Date Posted</th>
+            <th className="w-[15%]">Date Applied</th>
+            <th className="w-[10%]">Status</th>
           </tr>
         </thead>
         <tbody className="text-black font-semibold">

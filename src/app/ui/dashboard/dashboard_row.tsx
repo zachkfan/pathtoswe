@@ -3,6 +3,7 @@
 import Status from "./status_tag";
 import InfoModal from "@/app/ui/dashboard/info_modal";
 import { useRef, useState, useEffect } from "react";
+import LocationDropdown from "@/app/ui/location_dropdown";
 
 export type statusType = "Closed" | "Pending" | "Interviewed" | "Hired";
 
@@ -49,9 +50,11 @@ const DashboardRow = ({
       >
         <td>{company}</td>
         <td>{role}</td>
-        <td>{location}</td>
-        <td>{datePosted}</td>
-        <td>{dateApplied}</td>
+        <td>
+          <LocationDropdown location={location} format={"dashboard row"} />
+        </td>
+        <td>{datePosted.substring(0, 10)}</td>
+        <td>{dateApplied}</td> {/* TODO: add substring for date applied */}
         <td>
           <Status status={status} />
         </td>

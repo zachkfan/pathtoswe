@@ -75,12 +75,12 @@ const Table = ({
     <table className="table table-pin-cols text-center bg-white text-concrete-gray lg:table-md table-xs">
       <thead>
         <tr className="text-sm [&_*]:bg-black-gray text-white">
-          <th>Company</th>
-          <th>Role</th>
-          <th>Location</th>
-          <th className="pr-0">Date Posted</th>
-          <th></th>
-          <th className="pl-0">Apply Link</th>
+          <th className="w-[20%]">Company</th>
+          <th className="w-[35%]">Role</th>
+          <th className="w-[15%]">Location</th>
+          <th className="pr-0 w-[10%]">Date Posted</th>
+          <th className="w-[10%]"></th>
+          <th className="pl-0 w-[10%]">Apply Link</th>
         </tr>
       </thead>
       <tbody className="text-black">

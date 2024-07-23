@@ -1,10 +1,12 @@
 import React from "react";
+import clsx from "clsx";
 
 interface Props {
   location: string;
+  format: string;
 }
 
-export default function LocationDropdown({ location }: Props) {
+export default function LocationDropdown({ location, format }: Props) {
   function parseLocation(location: string): string[] {
     // Define multi-word cities with states and no states
     const multiWordCities = [
@@ -73,7 +75,10 @@ export default function LocationDropdown({ location }: Props) {
         <div
           tabIndex={0}
           role="button"
-          className="btn btn-sm px-5 py-1 bg-white border-0 rounded-md text-black font-normal hover:bg-concrete-gray"
+          className={clsx(
+            "btn btn-sm px-6 py-2 bg-transparent border-0 rounded-md text-black hover:bg-concrete-gray shadow-none",
+            { "font-normal": format === "search row" }
+          )}
         >
           {parsedLocation.length} locations
         </div>
