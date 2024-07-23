@@ -86,7 +86,8 @@ const Table = ({
           .filter((item) => {
             return search.toLowerCase() == ""
               ? item
-              : item.company.toLowerCase().includes(search.toLowerCase());
+              : item.company.toLowerCase().includes(search.toLowerCase()) ||
+                  item.role.toLowerCase().includes(search.toLowerCase());
           })
           .map((item) => (
             <Row

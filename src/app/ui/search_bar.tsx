@@ -21,7 +21,7 @@ const SearchBar = ({ setSearch, isDashboard }: Props) => {
           <input
             type="text"
             className={clsx("grow", isDashboard ? "text-black" : "text-white")}
-            placeholder="Search Company"
+            placeholder="Search Company or Role"
             onChange={(event) => {
               setSearch(event.target.value);
             }}

@@ -7,7 +7,7 @@ const FilterModal = () => {
     "Chicago, IL",
     "Seattle, WA",
     "Washington, D.C",
-    "Pao Alto, CA",
+    "Palo Alto, CA",
     "Toronto, Canada",
   ];
 
