@@ -44,8 +44,10 @@ const Row = ({
       });
       if (response.ok) {
         setHidden(!isHidden);
-        await mutate({ url: "/api/search", tab: item_status });
-        await mutate({ url: "/api/search", tab: currentTab });
+        await Promise.all([
+          mutate({ url: "/api/search", tab: item_status }),
+          mutate({ url: "/api/search", tab: currentTab }),
+        ]);
       } else {
         const result = (await response.json()) as SignUpResponseType;
         setErrorMessage(result.message);
