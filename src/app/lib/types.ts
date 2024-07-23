@@ -20,15 +20,16 @@ export interface SignUpResponseType {
   message: string;
 }
 
-export interface JoinTable{
-  id : number;
+export interface JoinTableType {
+  id: number;
   user_id?: string;
   internship_id?: number;
-  status: "Closed"|"Pending"|"Interviewed"|"Hired"|"Hidden"|"Saved";
+  status: "Closed" | "Pending" | "Interviewed" | "Hired" | "Hidden" | "Saved";
+  date_applied: string;
   internships?: InternshipsType;
 }
 
-export interface UserInternshipRequest{
+export interface UserInternshipRequestType {
   internshipId: number;
-  status: "Closed"|"Pending"|"Interviewed"|"Hired"|"Hidden"|"Saved";
+  status: "Closed" | "Pending" | "Interviewed" | "Hired" | "Hidden" | "Saved";
 }

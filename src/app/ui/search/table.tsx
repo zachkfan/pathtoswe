@@ -65,10 +65,10 @@ const Table = ({ search, tab }: { search: string; tab: string }) => {
   // if (typeof data === "string") {
   //   console.log(data);
   // } else {
-  if (error) return <div className="text-lg">Failed to load</div>;
+  if (error) return <div className="text-lg p-52">Failed to load</div>;
   if (!internships)
     return (
-      <div className="flex gap-2 justify-center text-lg">
+      <div className="flex gap-2 justify-center text-lg p-52">
         Loading<span className="loading loading-spinner loading-sm"></span>
       </div>
     );
