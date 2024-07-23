@@ -56,7 +56,10 @@ export async function POST(request: Request) {
 
         return NextResponse.json({ internships }, { status: 200 });
       } else {
-        return NextResponse.json({ message: "No Account" }, { status: 400 });
+        return NextResponse.json(
+          { message: "Not Authenticated" },
+          { status: 401 }
+        );
       }
     }
   } catch (error) {
@@ -73,7 +76,10 @@ export async function PUT(request: Request) {
     const session = await auth();
     if (!session) {
       console.log("No account");
-      return NextResponse.json({ message: "No Account" }, { status: 400 });
+      return NextResponse.json(
+        { message: "Not Authenticated" },
+        { status: 401 }
+      );
     }
     const { internshipId, status } =
       (await request.json()) as UserInternshipRequestType;

@@ -38,7 +38,10 @@ export async function POST() {
 
       return NextResponse.json(joinTableEntries, { status: 200 });
     } else {
-      return NextResponse.json({ message: "No Account" }, { status: 400 });
+      return NextResponse.json(
+        { message: "Not Authenticated" },
+        { status: 401 }
+      );
     }
   } catch (error) {
     console.error("Internal Server Error:", error); // Log error
