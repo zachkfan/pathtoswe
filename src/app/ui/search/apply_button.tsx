@@ -48,10 +48,22 @@ const ApplyButton = ({
             </a>
           </li>
           <li>
-            <a onClick={() => rowHidden("Saved")}>Save</a>
+            <a
+              onClick={() => {
+                rowHidden("Saved");
+              }}
+            >
+              Save
+            </a>
           </li>
           <li>
-            <a onClick={() => rowHidden("Hidden")}>Hide</a>
+            <a
+              onClick={() => {
+                rowHidden("Hidden");
+              }}
+            >
+              Hide
+            </a>
           </li>
         </ul>
       </div>
