@@ -7,7 +7,7 @@ import Apply from "./apply_button";
 import { useState } from "react";
 import clsx from "clsx";
 import LocationDropdown from "../location_dropdown";
-import { SignUpResponseType } from "@/app/lib/types";
+import { SignUpResponseType, InternshipsType } from "@/app/lib/types";
 import { mutate } from "swr";
 
 interface Props {
@@ -34,9 +34,9 @@ const Row = ({
 }: Props) => {
   const [isHidden, setHidden] = useState(true);
 
-  // TODO: implement optimistic update
   const hideRow = async (item_status: "Pending" | "Hidden" | "Saved") => {
-    try {
+    const previousStatus = currentTab;
+    const updateStatus = async () => {
       const response = await fetch("/api/search", {
         method: "PUT",
         body: JSON.stringify({
@@ -44,36 +44,55 @@ const Row = ({
           status: item_status,
         }),
       });
-      if (response.ok) {
-        // Log the status and currentTab for debugging
-        console.log(`Status: ${item_status}, Current Tab: ${currentTab}`);
-        showToast(
-          "Internship".concat(
-            " ",
-            (item_status === currentTab
-              ? "un".concat("", currentTab)
-              : item_status
-            ).toLowerCase()
-          ),
-          "success"
-        );
-        setHidden(!isHidden);
-        await Promise.all([
-          mutate({
-            url: "/api/search",
-            tab:
-              item_status === "Pending" || item_status === currentTab
-                ? "Search"
-                : item_status,
-          }),
-          mutate({ url: "/api/search", tab: currentTab }),
-        ]);
-      } else {
+
+      if (!response.ok) {
         const result = (await response.json()) as SignUpResponseType;
         showToast(result.message, "error");
+        throw new Error(result.message);
       }
+    };
+
+    try {
+      // Optimistically update the UI
+      await mutate(
+        { url: "/api/search", tab: previousStatus },
+        (data: InternshipsType[] = []) => {
+          console.log("Current data in mutate:", data);
+          return data.filter((item: InternshipsType) => item.id !== item_id);
+        },
+        false // don't revalidate yet
+      );
+
+      // Immediately hide the row
+      setHidden(false);
+
+      // Update the status on the server
+      await updateStatus();
+
+      // Revalidate to sync with the server
+      await Promise.all([
+        mutate({
+          url: "/api/search",
+          tab:
+            item_status === "Pending" || item_status === currentTab
+              ? "Search"
+              : item_status,
+        }),
+        mutate({ url: "/api/search", tab: currentTab }),
+      ]);
+
+      showToast(
+        "Internship ".concat(
+          item_status === previousStatus
+            ? "un" + previousStatus.toLowerCase()
+            : item_status.toLowerCase()
+        ),
+        "success"
+      );
     } catch (error) {
       showToast("Something went wrong", "error");
+      setHidden(true);
+      await mutate({ url: "/api/search", tab: previousStatus });
       return "Something went wrong";
     }
   };
