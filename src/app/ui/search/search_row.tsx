@@ -57,8 +57,18 @@ const Row = ({
       await mutate(
         { url: "/api/search", tab: previousStatus },
         (data: InternshipsType[] = []) => {
+          if (!Array.isArray(data)) {
+            console.error(
+              "Expected internships to be an array, but received:",
+              data
+            );
+            return data;
+          }
           console.log("Current data in mutate:", data);
-          return data.filter((item: InternshipsType) => item.id !== item_id);
+          const updatedInternships = data.filter(
+            (item: InternshipsType) => item.id !== item_id
+          );
+          return { ...data, internships: updatedInternships };
         },
         false // don't revalidate yet
       );
