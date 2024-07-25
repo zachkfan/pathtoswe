@@ -46,7 +46,13 @@ const Row = ({
       if (response.ok) {
         setHidden(!isHidden);
         await Promise.all([
-          mutate({ url: "/api/search", tab: item_status }),
+          mutate({
+            url: "/api/search",
+            tab:
+              item_status === "Pending" || item_status === currentTab
+                ? "Search"
+                : item_status,
+          }),
           mutate({ url: "/api/search", tab: currentTab }),
         ]);
       } else {

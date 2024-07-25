@@ -76,14 +76,10 @@ export async function PUT(request: Request) {
     const session = await auth();
     if (!session) {
       console.log("No account");
-      return NextResponse.json(
-        { message: "Not Signed In" },
-        { status: 401 }
-      );
+      return NextResponse.json({ message: "Not Signed In" }, { status: 401 });
     }
     const { internshipId, status } =
       (await request.json()) as UserInternshipRequestType;
-    console.log({ internshipId, status });
     const userId = session.user.id;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const exists = (await prisma.join_table.findUnique({
@@ -127,6 +123,7 @@ export async function PUT(request: Request) {
       })) as JoinTableType;
     }
 
+    console.log({ internshipId, status });
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (error) {
     console.error("Internal Server Error:", error); // Log error
