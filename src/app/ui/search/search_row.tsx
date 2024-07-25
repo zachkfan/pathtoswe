@@ -105,9 +105,7 @@ const Row = ({
             href={applyLink}
             company={company}
             role={role}
-            rowHidden={() => {
-              setHidden(!isHidden);
-            }}
+            rowHidden={hideRow}
           ></Apply>
         </td>
       </tr>

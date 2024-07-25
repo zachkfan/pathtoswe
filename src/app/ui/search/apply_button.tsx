@@ -1,4 +1,4 @@
-import Modal from "@/app/ui/modal";
+import ButtonModal from "@/app/ui/btn_modal";
 import ApplyModal from "@/app/ui/search/apply_modal";
 
 const ApplyButton = ({
@@ -10,17 +10,21 @@ const ApplyButton = ({
   href: string;
   company: string;
   role: string;
-  rowHidden: () => void;
+  rowHidden: (item_status: "Pending" | "Hidden" | "Saved") => void;
 }) => {
   return (
     <>
       <a href={href} target="_blank" className=" hidden lg:block">
-        <Modal
+        <ButtonModal
           btnClassName="bg-black-gray text-white rounded-md text-sm font-sans px-7 py-1 hover:bg-black-gray/80"
           btnContent={"Apply"}
+          closeBtnClassName="btn mx-auto w-[28rem] item-center font-black text-lg"
+          closeBtnContent="Yes"
+          onCloseBtnClick={rowHidden}
+          end={true}
         >
           <ApplyModal company={company} role={role} />
-        </Modal>
+        </ButtonModal>
       </a>
       <div className="dropdown block lg:hidden bg-black-gray text-white rounded-md text-sm w-32 px-7 py-1">
         <div tabIndex={0} role="button" className="bg-black-gray text-white">
@@ -32,16 +36,34 @@ const ApplyButton = ({
         >
           <li>
             <a href={href} target="_blank">
-              <Modal btnClassName={""} btnContent={"Apply"}>
+              <ButtonModal
+                btnClassName={""}
+                btnContent={"Apply"}
+                closeBtnClassName="btn mx-auto w-[28rem] item-center font-black text-lg"
+                closeBtnContent="Yes"
+                end={true}
+              >
                 <ApplyModal company={company} role={role} />
-              </Modal>
+              </ButtonModal>
             </a>
           </li>
           <li>
-            <a onClick={() => setTimeout(rowHidden, 125)}>Save</a>
+            <a
+              onClick={() => {
+                rowHidden("Saved");
+              }}
+            >
+              Save
+            </a>
           </li>
           <li>
-            <a onClick={() => setTimeout(rowHidden, 125)}>Hide</a>
+            <a
+              onClick={() => {
+                rowHidden("Hidden");
+              }}
+            >
+              Hide
+            </a>
           </li>
         </ul>
       </div>
