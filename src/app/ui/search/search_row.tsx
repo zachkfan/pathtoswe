@@ -34,7 +34,7 @@ const Row = ({
   const [errorMessage, setErrorMessage] = useState("");
 
   // TODO: implement optimistic update
-  const hideRow = async (item_status: "Search" | "Hidden" | "Saved") => {
+  const hideRow = async (item_status: "Pending" | "Hidden" | "Saved") => {
     try {
       const response = await fetch("/api/search", {
         method: "PUT",
