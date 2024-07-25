@@ -11,33 +11,18 @@ import Image from "next/image";
 import { UserIcon, KeyIcon } from "@heroicons/react/24/solid";
 import { useFormState } from "react-dom";
 import { authenticate } from "@/app/lib/credentialsSignIn";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Signin() {
   const [errorMessage, formAction] = useFormState(authenticate, undefined);
 
+  if (errorMessage) {
+    toast.error(errorMessage);
+  }
+
   return (
     <>
-      {errorMessage && (
-        <div
-          role="alert"
-          className="alert alert-error w-fit absolute bottom-24"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 shrink-0 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>{errorMessage}</span>
-        </div>
-      )}
+      <Toaster toastOptions={{ className: "text-black font-semibold" }} />
       <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden h-[60vh] lg:h-[79vh]">
         <div className="flex-col justify-center py-6 px-6 lg:px-8 xl:py-8 xl:px-16 w-1/2">
           <Header title={"Sign in"}></Header>
@@ -45,7 +30,7 @@ export default function Signin() {
             <TextBox
               title={"Email"}
               icon={UserIcon}
-              inputType="text"
+              inputType="email"
               name="email"
             ></TextBox>
             <TextBox

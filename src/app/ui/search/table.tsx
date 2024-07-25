@@ -25,9 +25,11 @@ const fetchWithTab = ({
 const Table = ({
   search,
   tab,
+  showToast,
 }: {
   search: string;
   tab: "Search" | "Hidden" | "Saved";
+  showToast: (message: string, type: "success" | "error") => void;
 }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -109,6 +111,7 @@ const Table = ({
                 item_id={item.id}
                 key={item.id}
                 currentTab={tab}
+                showToast={showToast}
               />
             ))}
           </tbody>

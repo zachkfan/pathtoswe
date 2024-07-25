@@ -18,6 +18,7 @@ interface Props {
   datePosted: string;
   applyLink: string;
   currentTab: "Search" | "Hidden" | "Saved";
+  showToast: (message: string, type: "success" | "error") => void;
 }
 
 //maybe change usersession to worldwide but for now leave
@@ -29,9 +30,9 @@ const Row = ({
   datePosted,
   applyLink,
   currentTab,
+  showToast,
 }: Props) => {
   const [isHidden, setHidden] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
 
   // TODO: implement optimistic update
   const hideRow = async (item_status: "Pending" | "Hidden" | "Saved") => {
@@ -44,6 +45,18 @@ const Row = ({
         }),
       });
       if (response.ok) {
+        // Log the status and currentTab for debugging
+        console.log(`Status: ${item_status}, Current Tab: ${currentTab}`);
+        showToast(
+          "Internship".concat(
+            " ",
+            (item_status === currentTab
+              ? "un".concat("", currentTab)
+              : item_status
+            ).toLowerCase()
+          ),
+          "success"
+        );
         setHidden(!isHidden);
         await Promise.all([
           mutate({
@@ -57,39 +70,16 @@ const Row = ({
         ]);
       } else {
         const result = (await response.json()) as SignUpResponseType;
-        setErrorMessage(result.message);
-        setTimeout(() => {
-          setErrorMessage("");
-        }, 2000);
+        showToast(result.message, "error");
       }
     } catch (error) {
+      showToast("Something went wrong", "error");
       return "Something went wrong";
     }
   };
 
   return (
     <>
-      {errorMessage && (
-        <div
-          role="alert"
-          className="alert alert-error w-fit fixed left-1/2 bottom-5 z-50"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 shrink-0 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>{errorMessage}</span>
-        </div>
-      )}
       <tr
         className={clsx("h-14", !isHidden ? "hidden " : "display")}
         key={item_id}

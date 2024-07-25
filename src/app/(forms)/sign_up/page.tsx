@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import GoogleBox from "../../ui/login_components/google_sign_in";
 import Header from "../../ui/login_components/header";
 import OrDiv from "../../ui/login_components/or_div";
@@ -10,6 +10,7 @@ import Button from "../../ui/login_components/button";
 import { UserIcon, KeyIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { navigate } from "@/app/lib/actions";
 import { SignUpResponseType } from "@/app/lib/types";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Signup() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -32,66 +33,22 @@ export default function Signup() {
           password2: password2,
         }),
       });
-
       const result = (await response.json()) as SignUpResponseType;
       if (response.ok) {
-        setRegisterSuccess(true);
+        toast.success("Account Created! Redirecting in 3 seconds");
         await new Promise((resolve) => setTimeout(resolve, 3000));
         void navigate("sign_in");
       } else {
-        setErrorMessage(result.message);
+        toast.error(result.message);
       }
     } catch (error) {
+      toast.error("Something Went Wrong");
       return "Something Went Wrong";
     }
   }
-
-  const [registerSuccess, setRegisterSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   return (
     <>
-      {registerSuccess && (
-        <div role="alert" className="alert alert-success absolute top-4 w-fit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 shrink-0 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span className="flex gap-1">
-            <p>Account Created! Redirecting in 3 seconds</p>
-            <span className="loading loading-spinner loading-xs"></span>
-          </span>
-        </div>
-      )}
-      {!registerSuccess && errorMessage && (
-        <div
-          role="alert"
-          className="alert alert-error w-fit absolute bottom-20"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 shrink-0 stroke-current"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>{errorMessage}</span>
-        </div>
-      )}
+      <Toaster toastOptions={{ className: "text-black font-semibold" }} />
       <div className="flex flex-col justify-center w-1/2 lg:w-1/3 py-2 px-4 lg:py-4 lg:px-8 xl:py-8 xl:px-16 bg-white text-black rounded-lg h-[60vh] lg:h-[70vh]">
         <Header title={"Sign up"}></Header>
         <form onSubmit={handleSubmit}>
