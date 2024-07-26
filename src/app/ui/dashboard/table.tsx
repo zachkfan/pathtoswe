@@ -82,7 +82,7 @@ const Table = ({ search, cardView, tab }: Props) => {
 
   if (cardView) {
     return (
-      <div className="flex flex-row flex-wrap justify-between px-8">
+      <div className="flex flex-row flex-wrap justify-between lg:px-0 xl:px-8">
         {appliedInternships
           .filter((item) => {
             return search.toLowerCase() == ""

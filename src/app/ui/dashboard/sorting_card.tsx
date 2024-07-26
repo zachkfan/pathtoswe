@@ -22,7 +22,7 @@ export default function SortingCards({
   return (
     <div
       className={clsx(
-        "shadow-md transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-[1.15] duration-300 card w-24 h-24 lg:w-36 lg:h-36 xl:w-48 xl:h-48 flex justify-center",
+        "shadow-md transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-[1.15] duration-300 card w-24 h-24 lg:w-32 lg:h-32 xl:w-48 xl:h-48 flex justify-center",
         {
           "-translate-y-1 scale-[1.15] saturate-200 ": selected,
         }

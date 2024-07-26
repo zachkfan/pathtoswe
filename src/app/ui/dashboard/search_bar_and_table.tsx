@@ -25,7 +25,7 @@ const SearchBarAndTable = () => {
 
   return (
     <>
-      <div className="flex justify-between w-full my-4 px-8">
+      <div className="flex justify-between w-full my-4 lg:px-0 xl:px-8">
         <SortingCard
           status="All"
           icon={RectangleStackIcon}
@@ -82,7 +82,7 @@ const SearchBarAndTable = () => {
           selected={tab === "Hired"}
         />
       </div>
-      <div className="flex flex-row items-center w-full justify-between px-8 py-4">
+      <div className="flex flex-row items-center w-full justify-between lg:px-0 xl:px-8 py-4">
         <SearchBar setSearch={setSearch} isDashboard={true} />
         <div className="flex flex-row items-center gap-6">
           <ButtonModal
