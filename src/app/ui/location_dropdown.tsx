@@ -19,12 +19,12 @@ export default function LocationDropdown({ location, format }: Props) {
     return <p>{location}</p>;
   } else {
     return (
-      <div className="dropdown dropdown-hover dropdown-bottom text-black">
+      <div className="dropdown dropdown-hover dropdown-bottom text-black h-7">
         <div
           tabIndex={0}
           role="button"
           className={clsx(
-            "btn btn-sm px-6 py-2 bg-transparent border-0 rounded-md text-black hover:bg-concrete-gray shadow-none",
+            "btn btn-sm px-5 py-2 bg-transparent border-0 rounded-md text-black hover:bg-transparent shadow-none",
             { "font-normal": format === "search row" }
           )}
         >
@@ -32,11 +32,11 @@ export default function LocationDropdown({ location, format }: Props) {
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content menu bg-white rounded-box z-[1] w-52 p-2 shadow"
+          className="translate-y-1 dropdown-content menu bg-white rounded-box z-[1] w-44 p-2 shadow"
         >
           {parsedLocation.map((city) => (
             <li key={city}>
-              <a>{city}</a>
+              <p>{city}</p>
             </li>
           ))}
         </ul>
