@@ -66,7 +66,7 @@ export default function SideNav() {
         <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
           <NavLinks open={isOpen} />
           <div className="hidden h-auto w-full grow rounded-md md:block"></div>
-          <form action={() => signOut()}>
+          <form action={() => signOut({ callbackUrl: "/", redirect: true })}>
             <button
               className={clsx(
                 "transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-concrete-gray hover:text-black-gray md:flex-none md:p-2 md:px-3",

@@ -11,7 +11,7 @@ const FilterModal = () => {
     "Toronto, Canada",
   ];
 
-  const roles = ["SWE", "Quant", "AI/ML"];
+  const roles = ["SWE", "Quant", "AI/ML", "Data", "UI/UX"];
   return (
     <div className="flex flex-row flex-wrap content-evenly gap-3 place-content-center">
       <h4 className="w-full">Locations: </h4>
