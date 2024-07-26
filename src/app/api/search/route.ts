@@ -9,7 +9,9 @@ export async function POST(request: Request) {
   try {
     const session = await auth();
 
-    const { tab } = (await request.json()) as { tab: string };
+    const { tab } = (await request.json()) as {
+      tab: "Search" | "Hidden" | "Saved";
+    };
     if (tab == "Search") {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       let internships = (await prisma.internships.findMany({

@@ -3,11 +3,23 @@ import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 import { JoinTableType } from "@/app/lib/types";
 
-export async function GET() {
+export async function POST(request: Request) {
   try {
     const session = await auth();
     if (session) {
+      const { tab } = (await request.json()) as {
+        tab: "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
+      };
+
       const userId = session.user.id;
+
+      let statusArray: string[];
+
+      if (tab === "All") {
+        statusArray = ["Pending", "Hired", "Closed", "Interviewed"];
+      } else {
+        statusArray = [tab];
+      }
 
       // Inner query to get the internship_ids, status, date_applied, and include internship details
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
@@ -15,7 +27,7 @@ export async function GET() {
         where: {
           user_id: userId,
           status: {
-            in: ["Pending", "Hired", "Closed", "Interviewed"],
+            in: statusArray,
           },
         },
         include: {

@@ -15,53 +15,27 @@ import SortBy from "@/app/ui/dashboard/sort_by";
 import Toggle from "@/app/ui/dashboard/toggle";
 import ButtonModal from "../btn_modal";
 import ModalEdit from "./edit_modal";
-import useSWR from "swr";
-import { JoinTableType } from "@/app/lib/types";
 
-const fetchDashboardData = async (url: string) => {
-  const res = await fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
+type TabType = "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
 
 const SearchBarAndTable = () => {
   const [search, setSearch] = useState("");
   const [cardView, setCardView] = useState(true);
-  const { data, error } = useSWR<JoinTableType[], Error>(
-    "/api/dashboard",
-    fetchDashboardData,
-    {
-      revalidateOnFocus: false, // Disables revalidation when the window gains focus
-      refreshInterval: 0, // Disables automatic revalidation
-    }
-  );
-
-  if (!data) {
-    return (
-      <div className="flex gap-2 justify-center text-lg p-44">
-        Loading<span className="loading loading-spinner loading-sm"></span>
-      </div>
-    );
-  }
-
-  if (error) {
-    return <div className="text-lg p-44">Failed to load</div>;
-  }
+  const [tab, setTab] = useState<TabType>("All");
 
   return (
     <>
-      <div className="flex justify-between w-full mb-4 px-8">
+      <div className="flex justify-between w-full my-4 px-8">
         <SortingCard
           status="All"
           icon={RectangleStackIcon}
           applicationCount={2}
           bgColor="#E8F7FF"
           iconBgColor="#83CBFF"
+          onClick={() => {
+            setTab("All");
+          }}
+          selected={tab === "All"}
         />
         <SortingCard
           status="Closed"
@@ -69,6 +43,10 @@ const SearchBarAndTable = () => {
           applicationCount={2}
           bgColor="#FFE2E5"
           iconBgColor="#FA5A7D"
+          onClick={() => {
+            setTab("Closed");
+          }}
+          selected={tab === "Closed"}
         />
         <SortingCard
           status="Pending"
@@ -76,6 +54,10 @@ const SearchBarAndTable = () => {
           applicationCount={15}
           bgColor="#FFF4DE"
           iconBgColor="#FF947A"
+          onClick={() => {
+            setTab("Pending");
+          }}
+          selected={tab === "Pending"}
         />
         <SortingCard
           status="Interviewed"
@@ -83,6 +65,10 @@ const SearchBarAndTable = () => {
           applicationCount={7}
           bgColor="#F3E8FF"
           iconBgColor="#BF83FF"
+          onClick={() => {
+            setTab("Interviewed");
+          }}
+          selected={tab === "Interviewed"}
         />
         <SortingCard
           status="Hired"
@@ -90,6 +76,10 @@ const SearchBarAndTable = () => {
           applicationCount={3}
           bgColor="#DCFCE7"
           iconBgColor="#3CD856"
+          onClick={() => {
+            setTab("Hired");
+          }}
+          selected={tab === "Hired"}
         />
       </div>
       <div className="flex flex-row items-center w-full justify-between px-8 py-4">
@@ -131,7 +121,7 @@ const SearchBarAndTable = () => {
           <SortBy />
         </div>
       </div>
-      <Table search={search} cardView={cardView} data={data} />
+      <Table search={search} cardView={cardView} tab={tab} />
     </>
   );
 };

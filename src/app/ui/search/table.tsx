@@ -61,7 +61,10 @@ const Table = ({
     setPage(0);
   };
 
-  if (error) return <div className="text-lg p-52">Failed to load</div>;
+  if (error)
+    return (
+      <div className="flex justify-center text-lg p-52">Failed to load</div>
+    );
   if (!internships)
     return (
       <div className="flex gap-2 justify-center text-lg p-52">

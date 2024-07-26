@@ -7,16 +7,54 @@ import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import CustomTablePagination from "@/app/ui/table_pagination";
 import { JoinTableType } from "@/app/lib/types";
+import useSWR from "swr";
 
 interface Props {
   search: string;
   cardView: boolean;
-  data: JoinTableType[];
+  tab: "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
 }
 
-const Table = ({ search, cardView, data }: Props) => {
+const Table = ({ search, cardView, tab }: Props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const fetchDashboardData = ({
+    url,
+    tab,
+  }: {
+    url: string;
+    tab: "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
+  }) => {
+    return fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tab: tab }),
+    }).then((res) => res.json());
+  };
+
+  const { data, error } = useSWR<JoinTableType[], Error>(
+    { url: "/api/dashboard", tab: tab },
+    fetchDashboardData,
+    {
+      revalidateOnFocus: false, // Disables revalidation when the window gains focus
+      refreshInterval: 0, // Disables automatic revalidation
+    }
+  );
+
+  if (error) {
+    return (
+      <div className="flex justify-center text-lg p-44 m-auto">
+        Failed to load
+      </div>
+    );
+  }
+  if (!data) {
+    return (
+      <div className="flex gap-2 justify-center text-lg p-44">
+        Loading<span className="loading loading-spinner loading-sm"></span>
+      </div>
+    );
+  }
 
   const appliedInternships = data;
 

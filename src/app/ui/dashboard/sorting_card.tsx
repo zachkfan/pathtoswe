@@ -6,6 +6,8 @@ interface Props {
   applicationCount: number;
   bgColor: string;
   iconBgColor: string;
+  onClick: () => void;
+  selected: boolean;
 }
 
 export default function SortingCards({
@@ -14,13 +16,21 @@ export default function SortingCards({
   applicationCount,
   bgColor,
   iconBgColor,
+  onClick,
+  selected,
 }: Props) {
   return (
     <div
-      className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-105 duration-300 card w-24 h-24 lg:w-36 lg:h-36 xl:w-52 xl:h-52 flex justify-center"
+      className={clsx(
+        "shadow-md transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-[1.15] duration-300 card w-24 h-24 lg:w-36 lg:h-36 xl:w-48 xl:h-48 flex justify-center",
+        {
+          "-translate-y-1 scale-[1.15] saturate-200 ": selected,
+        }
+      )}
       style={{ backgroundColor: bgColor }}
+      onClick={onClick}
     >
-      <div className="card-body text-black lg:gap-3 xl:p-9 lg:p-4 p-2">
+      <div className="card-body text-black lg:gap-3 xl:p-7 lg:p-4 p-2">
         <div
           className="flex justify-center items-center w-6 h-6 lg:w-8 lg:h-8 xl:w-12 xl:h-12 rounded-full"
           style={{ backgroundColor: iconBgColor }}
