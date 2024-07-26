@@ -3,9 +3,11 @@ import clsx from "clsx";
 
 interface Props {
   children: string;
+  setFilter: (filter: string[]) => void;
+  filter: string[];
 }
 
-const FilterButton = ({ children }: Props) => {
+const FilterButton = ({ children, setFilter, filter }: Props) => {
   const [clicked, setClick] = useState(false);
 
   return (
@@ -17,6 +19,11 @@ const FilterButton = ({ children }: Props) => {
         )}
         onClick={() => {
           setClick(!clicked);
+          setFilter(
+            clicked
+              ? filter.filter((f) => f !== children)
+              : [...filter, children]
+          );
         }}
       >
         {children}

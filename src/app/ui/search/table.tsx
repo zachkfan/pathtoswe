@@ -8,31 +8,31 @@ import CustomTablePagination from "@/app/ui/table_pagination";
 import useSWR from "swr";
 import { TableResponseType } from "@/app/lib/types";
 
-const fetchWithTab = ({
-  url,
-  tab,
-}: {
-  url: string;
-  tab: "Search" | "Hidden" | "Saved";
-}) => {
-  return fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ tab: tab }),
-  }).then((res) => res.json());
-};
-
-const Table = ({
-  search,
-  tab,
-  showToast,
-}: {
+export interface Props {
   search: string;
+  filter: string[];
   tab: "Search" | "Hidden" | "Saved";
   showToast: (message: string, type: "success" | "error") => void;
-}) => {
+}
+
+const Table = ({ search, filter, tab, showToast }: Props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const fetchWithTab = ({
+    url,
+    tab,
+  }: {
+    url: string;
+    tab: "Search" | "Hidden" | "Saved";
+  }) => {
+    return fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tab: tab }),
+    }).then((res) => res.json());
+  };
+
   const { data, error } = useSWR<TableResponseType, Error>(
     { url: "/api/search", tab: tab },
     fetchWithTab,
@@ -76,16 +76,30 @@ const Table = ({
     return <div className="text-lg p-52">No {tab} Yet</div>;
   }
 
-  const filteredInternships = (
-    rowsPerPage > 0 && search == ""
-      ? internships.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-      : internships
-  ).filter((item) => {
-    return search.toLowerCase() === ""
-      ? item
-      : item.company.toLowerCase().includes(search.toLowerCase()) ||
-          item.role.toLowerCase().includes(search.toLowerCase());
-  });
+  const filteredInternships = internships
+    .filter((item) => {
+      return search.toLowerCase() === ""
+        ? item
+        : item.company.toLowerCase().includes(search.toLowerCase()) ||
+            item.role.toLowerCase().includes(search.toLowerCase());
+    })
+    .filter((item) => {
+      if (filter.length === 0) return item;
+      return filter.some((activeFilter) => {
+        return (
+          item.role.toLowerCase().includes(activeFilter.toLowerCase()) ||
+          item.location.toLowerCase().includes(activeFilter.toLowerCase())
+        );
+      });
+    });
+
+  const paginatedInternships =
+    rowsPerPage > 0
+      ? filteredInternships.slice(
+          page * rowsPerPage,
+          page * rowsPerPage + rowsPerPage
+        )
+      : filteredInternships;
 
   return (
     <>
@@ -104,7 +118,7 @@ const Table = ({
             </tr>
           </thead>
           <tbody className="text-black">
-            {filteredInternships.map((item) => (
+            {paginatedInternships.map((item) => (
               <Row
                 company={item.company}
                 role={item.role}
@@ -124,7 +138,7 @@ const Table = ({
                 className="text-black text-sm"
                 rowsPerPageOptions={[10, 15, 25, { label: "All", value: -1 }]}
                 colSpan={7}
-                count={internships.length}
+                count={filteredInternships.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 slotProps={{

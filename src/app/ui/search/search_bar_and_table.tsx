@@ -12,11 +12,17 @@ const SearchBarAndTable = ({
   showToast: (message: string, type: "success" | "error") => void;
 }) => {
   const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState<string[]>([]);
 
   return (
     <>
-      <SearchBar setSearch={setSearch} isDashboard={false} />
-      <Table search={search} tab={tab} showToast={showToast} />
+      <SearchBar
+        setFilter={setFilter}
+        filter={filter}
+        setSearch={setSearch}
+        isDashboard={false}
+      />
+      <Table search={search} filter={filter} tab={tab} showToast={showToast} />
     </>
   );
 };

@@ -4,11 +4,13 @@ import { FunnelIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
 interface Props {
+  setFilter: (filter: string[]) => void;
+  filter: string[];
   setSearch: (search: string) => void;
   isDashboard: boolean;
 }
 
-const SearchBar = ({ setSearch, isDashboard }: Props) => {
+const SearchBar = ({ setFilter, filter, setSearch, isDashboard }: Props) => {
   return (
     <>
       <div className={clsx("flex", { "pb-5": !isDashboard })}>
@@ -47,7 +49,7 @@ const SearchBar = ({ setSearch, isDashboard }: Props) => {
             </>
           }
         >
-          <FilterModal />
+          <FilterModal setFilter={setFilter} filter={filter} />
         </Modal>
       </div>
     </>
