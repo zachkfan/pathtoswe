@@ -17,7 +17,7 @@ interface Props {
 
 const Table = ({ search, cardView, tab }: Props) => {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const fetchDashboardData = ({
     url,
     tab,
