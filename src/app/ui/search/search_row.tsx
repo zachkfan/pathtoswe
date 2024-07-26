@@ -7,7 +7,11 @@ import Apply from "./apply_button";
 import { useState } from "react";
 import clsx from "clsx";
 import LocationDropdown from "../location_dropdown";
-import { SignUpResponseType, InternshipsType } from "@/app/lib/types";
+import {
+  SignUpResponseType,
+  TableResponseType,
+  InternshipsType,
+} from "@/app/lib/types";
 import { mutate } from "swr";
 
 interface Props {
@@ -53,19 +57,11 @@ const Row = ({
     };
 
     try {
-      // Optimistically update the UI
+      // // Optimistically update the UI
       await mutate(
         { url: "/api/search", tab: previousStatus },
-        (data: InternshipsType[] = []) => {
-          if (!Array.isArray(data)) {
-            console.error(
-              "Expected internships to be an array, but received:",
-              data
-            );
-            return data;
-          }
-          console.log("Current data in mutate:", data);
-          const updatedInternships = data.filter(
+        (data: TableResponseType = {}) => {
+          const updatedInternships = data.internships?.filter(
             (item: InternshipsType) => item.id !== item_id
           );
           return { ...data, internships: updatedInternships };
