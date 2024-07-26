@@ -61,7 +61,7 @@ const Table = ({ search, cardView, tab }: Props) => {
   if (!appliedInternships.length) {
     return (
       <div className="flex justify-center text-lg p-44">
-        No internships yet!
+        No applications yet!
       </div>
     );
   }

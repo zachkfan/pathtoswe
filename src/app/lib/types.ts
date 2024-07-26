@@ -20,8 +20,8 @@ export interface SignUpResponseType {
   message: string;
 }
 
-export interface TableResponseType{
-  internships?: InternshipsType[]
+export interface TableResponseType {
+  internships?: InternshipsType[];
   message?: string;
 }
 
@@ -37,4 +37,19 @@ export interface JoinTableType {
 export interface UserInternshipRequestType {
   internshipId: number;
   status: "Closed" | "Pending" | "Interviewed" | "Hired" | "Hidden" | "Saved";
+}
+
+export interface ApplicationCountsType {
+  All: number;
+  Pending: number;
+  Closed: number;
+  Interviewed: number;
+  Hired: number;
+}
+
+export interface StatusCountType {
+  status: "Pending" | "Closed" | "Interviewed" | "Hired";
+  _count: {
+    status: number;
+  };
 }

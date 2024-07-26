@@ -50,7 +50,7 @@ export default function SortingCards({
           {status}
         </h2>
         <p className="text-xs lg:text-sm xl:text-base">
-          {applicationCount} applications
+          {applicationCount} application{applicationCount > 1 ? "s" : ""}
         </p>
       </div>
     </div>
