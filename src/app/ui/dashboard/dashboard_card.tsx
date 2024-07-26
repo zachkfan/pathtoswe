@@ -33,19 +33,19 @@ export default function DashboardCard({
   };
   return (
     <div
-      className="card card-side bg-white w-96 lg:w-[47%] min-h-fit xl:h-56 text-black drop-shadow-around my-4"
+      className="card card-side bg-white w-[47%] h-44 lg:h-52 xl:h-60 text-black drop-shadow-around my-2 lg:my-4"
       key={item_id}
     >
-      <figure>
-        <div className="w-18 h-[100%]" style={getStatusColor()}></div>
+      <figure className="w-[13%]">
+        <div className="w-full h-[100%]" style={getStatusColor()}></div>
       </figure>
-      <div className="card-body mt-4">
-        <h4>{company}</h4>
-        <h3 className="card-title text-lg lg:text-xl xl:text-2xl font-bold">
+      <div className="card-body w-[87%] mt-4 p-3 lg:p-6 xl:p-8">
+        <h4 className="text-sm lg:text-base">{company}</h4>
+        <h3 className="card-title text-base lg:text-xl xl:text-2xl font-bold">
           {role}
         </h3>
         <Modal
-          btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-2 w-fit font-xs"
+          btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-auto w-fit text-xs xl:text-sm"
           btnContent={"View Application"}
         >
           <InfoModal
