@@ -28,7 +28,7 @@ const FilterModal = ({
 
   return (
     <div className="flex flex-row flex-wrap content-evenly gap-3 place-content-center">
-      <h4 className="w-full">Locations: </h4>
+      <h4 className="w-full text-black-gray">Locations: </h4>
       {Object.keys(locations).map((location) => (
         <FilterButton
           key={location}
@@ -39,7 +39,7 @@ const FilterModal = ({
           {location}
         </FilterButton>
       ))}
-      <h4 className="w-full">Roles: </h4>
+      <h4 className="w-full text-black-gray">Roles: </h4>
       {Object.keys(roles).map((role) => (
         <FilterButton
           key={role}
