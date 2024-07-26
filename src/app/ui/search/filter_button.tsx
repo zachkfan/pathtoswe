@@ -5,9 +5,10 @@ interface Props {
   children: string;
   setFilter: (filter: string[]) => void;
   filter: string[];
+  value: string[];
 }
 
-const FilterButton = ({ children, setFilter, filter }: Props) => {
+const FilterButton = ({ children, setFilter, filter, value }: Props) => {
   const [clicked, setClick] = useState(false);
 
   return (
@@ -21,8 +22,8 @@ const FilterButton = ({ children, setFilter, filter }: Props) => {
           setClick(!clicked);
           setFilter(
             clicked
-              ? filter.filter((f) => f !== children)
-              : [...filter, children]
+              ? filter.filter((f) => !value.includes(f))
+              : [...filter, ...value]
           );
         }}
       >

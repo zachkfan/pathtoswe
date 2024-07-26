@@ -53,3 +53,5 @@ export interface StatusCountType {
     status: number;
   };
 }
+
+export type FilterType = Record<string, string[]>;
