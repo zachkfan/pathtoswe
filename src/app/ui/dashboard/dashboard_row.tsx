@@ -54,7 +54,7 @@ const DashboardRow = ({
           <LocationDropdown location={location} format={"dashboard row"} />
         </td>
         <td>{datePosted.substring(0, 10)}</td>
-        <td>{dateApplied}</td> {/* TODO: add substring for date applied */}
+        <td>{dateApplied.substring(0, 10)}</td>
         <td>
           <Status status={status} />
         </td>

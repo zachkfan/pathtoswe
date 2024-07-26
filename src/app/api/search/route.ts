@@ -105,11 +105,17 @@ export async function PUT(request: Request) {
         },
         update: {
           status: status,
+          ...(status == "Pending" && {
+            date_applied: new Date().toISOString(),
+          }),
         },
         create: {
           user_id: userId,
           internship_id: internshipId,
           status: status,
+          ...(status == "Pending" && {
+            date_applied: new Date().toISOString(),
+          }),
         },
       });
     } else {

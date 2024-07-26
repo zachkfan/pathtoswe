@@ -31,8 +31,8 @@ export default function ModalContent({
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
         <p>Location: {semicolonLocation}</p>
-        <p>Date Posted: {datePosted}</p>
-        <p>Date Applied: {dateApplied}</p>
+        <p>Date Posted: {datePosted.substring(0, 10)}</p>
+        <p>Date Applied: {dateApplied.substring(0, 10)}</p>
         <p>
           Dashboard:{" "}
           {
@@ -61,7 +61,7 @@ export default function ModalContent({
           role={role}
           location={semicolonLocation}
           datePosted={datePosted.substring(0, 10)}
-          dateApplied={dateApplied}
+          dateApplied={dateApplied.substring(0, 10)}
           applicationDashboard={applicationDashboard}
           status={status}
           type={"Edit"}
