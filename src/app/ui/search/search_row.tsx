@@ -89,7 +89,9 @@ const Row = ({
 
       showToast(
         "Internship ".concat(
-          item_status === previousStatus
+          item_status === "Pending"
+            ? "applied"
+            : item_status === previousStatus
             ? "un" + previousStatus.toLowerCase()
             : item_status.toLowerCase()
         ),
