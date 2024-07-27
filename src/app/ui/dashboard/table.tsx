@@ -6,12 +6,12 @@ import LastPageRoundedIcon from "@mui/icons-material/LastPageRounded";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import CustomTablePagination from "@/app/ui/table_pagination";
-import { JoinTableType } from "@/app/lib/types";
+import { JoinTableType, FiltersType } from "@/app/lib/types";
 import useSWR from "swr";
 
 interface Props {
   search: string;
-  filter: string[];
+  filter: FiltersType;
   cardView: boolean;
   tab: "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
 }
@@ -92,17 +92,19 @@ const Table = ({ search, filter, cardView, tab }: Props) => {
             item.internships?.role.toLowerCase().includes(search.toLowerCase());
     })
     .filter((item) => {
-      if (filter.length === 0) return item;
-      return filter.some((activeFilter) => {
-        return (
-          item.internships?.role
-            .toLowerCase()
-            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-            .includes(activeFilter.toLowerCase()) ||
-          item.internships?.location
-            .toLowerCase()
-            .includes(activeFilter.toLowerCase())
-        );
+      if (filter.locations.length === 0) return item;
+      return filter.locations.some((activeLocationFilter) => {
+        return item.internships?.location
+          .toLowerCase()
+          .includes(activeLocationFilter.toLowerCase());
+      });
+    })
+    .filter((item) => {
+      if (filter.roles.length === 0) return item;
+      return filter.roles.some((activeRoleFilter) => {
+        return item.internships?.role
+          .toLowerCase()
+          .includes(activeRoleFilter.toLowerCase());
       });
     });
 

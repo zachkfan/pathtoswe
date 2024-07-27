@@ -16,7 +16,7 @@ import Toggle from "@/app/ui/dashboard/toggle";
 import ButtonModal from "../btn_modal";
 import ModalEdit from "./edit_modal";
 import useSWR from "swr";
-import { ApplicationCountsType } from "@/app/lib/types";
+import { ApplicationCountsType, FiltersType } from "@/app/lib/types";
 
 type TabType = "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
 
@@ -24,7 +24,10 @@ const SearchBarAndTable = () => {
   const [search, setSearch] = useState("");
   const [cardView, setCardView] = useState(true);
   const [tab, setTab] = useState<TabType>("All");
-  const [filter, setFilter] = useState<string[]>([]);
+  const [filter, setFilter] = useState<FiltersType>({
+    locations: [],
+    roles: [],
+  });
 
   const fetchApplicationCount = (url: string) =>
     fetch(url, {
