@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { FiltersType } from "@/app/lib/types";
 
 interface Props {
   children: string;
-  setFilter: (filter: string[]) => void;
-  filter: string[];
+  setFilter: (filter: FiltersType) => void;
+  filter: FiltersType;
   value: string[];
+  type: "location" | "role";
 }
 
-const FilterButton = ({ children, setFilter, filter, value }: Props) => {
+const FilterButton = ({ children, setFilter, filter, value, type }: Props) => {
   const [clicked, setClick] = useState(false);
 
   return (
@@ -22,11 +24,22 @@ const FilterButton = ({ children, setFilter, filter, value }: Props) => {
         )}
         onClick={() => {
           setClick(!clicked);
-          setFilter(
-            clicked
-              ? filter.filter((f) => !value.includes(f))
-              : [...filter, ...value]
-          );
+          if (type === "location") {
+            setFilter({
+              ...filter,
+              locations: clicked
+                ? filter.locations.filter((f) => !value.includes(f))
+                : [...filter.locations, ...value],
+            });
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+          } else if (type === "role") {
+            setFilter({
+              ...filter,
+              roles: clicked
+                ? filter.roles.filter((f) => !value.includes(f))
+                : [...filter.roles, ...value],
+            });
+          }
         }}
       >
         {children}

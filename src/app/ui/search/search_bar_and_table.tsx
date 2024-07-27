@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Table from "@/app/ui/search/table";
 import SearchBar from "@/app/ui/search_bar";
+import { FiltersType } from "@/app/lib/types";
 
 const SearchBarAndTable = ({
   tab,
@@ -12,7 +13,10 @@ const SearchBarAndTable = ({
   showToast: (message: string, type: "success" | "error") => void;
 }) => {
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<string[]>([]);
+  const [filter, setFilter] = useState<FiltersType>({
+    locations: [],
+    roles: [],
+  });
 
   return (
     <>

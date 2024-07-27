@@ -1,17 +1,16 @@
 import React from "react";
 import FilterButton from "./filter_button";
-import { FilterType } from "@/app/lib/types";
+import { SingleFilterType, FiltersType } from "@/app/lib/types";
 
 const FilterModal = ({
   setFilter,
   filter,
 }: {
-  setFilter: (filter: string[]) => void;
-  filter: string[];
+  setFilter: (filter: FiltersType) => void;
+  filter: FiltersType;
 }) => {
   // TODO: Add more filters or more related words
-  // TODO: Location and rolei flters should be && instead of ||, needs to satisfy both
-  const locations: FilterType = {
+  const locations: SingleFilterType = {
     "New York, NY": ["New York", "NYC"],
     "Chicago, IL": ["Chicago"],
     "Seattle, WA": ["Seattle"],
@@ -19,7 +18,7 @@ const FilterModal = ({
     "Palo Alto, CA": ["Palo Alto"],
     Canada: ["Canada"],
   };
-  const roles: FilterType = {
+  const roles: SingleFilterType = {
     SWE: ["Software Engineer", "SWE", "Develop"],
     Quant: ["Quant"],
     "AI/ML": ["AI", "ML", "Artificial Intelligence", "Machine Learning"],
@@ -36,6 +35,7 @@ const FilterModal = ({
           value={locations[location]}
           setFilter={setFilter}
           filter={filter}
+          type={"location"}
         >
           {location}
         </FilterButton>
@@ -47,6 +47,7 @@ const FilterModal = ({
           value={roles[role]}
           setFilter={setFilter}
           filter={filter}
+          type="role"
         >
           {role}
         </FilterButton>

@@ -2,10 +2,11 @@ import Modal from "@/app/ui/modal";
 import FilterModal from "@/app/ui/search/filter_modal";
 import { FunnelIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import { FiltersType } from "@/app/lib/types";
 
 interface Props {
-  setFilter: (filter: string[]) => void;
-  filter: string[];
+  setFilter: (filter: FiltersType) => void;
+  filter: FiltersType;
   setSearch: (search: string) => void;
   isDashboard: boolean;
 }

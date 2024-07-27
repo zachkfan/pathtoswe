@@ -6,11 +6,11 @@ import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import CustomTablePagination from "@/app/ui/table_pagination";
 import useSWR from "swr";
-import { TableResponseType } from "@/app/lib/types";
+import { TableResponseType, FiltersType } from "@/app/lib/types";
 
 export interface Props {
   search: string;
-  filter: string[];
+  filter: FiltersType;
   tab: "Search" | "Hidden" | "Saved";
   showToast: (message: string, type: "success" | "error") => void;
 }
@@ -84,12 +84,17 @@ const Table = ({ search, filter, tab, showToast }: Props) => {
             item.role.toLowerCase().includes(search.toLowerCase());
     })
     .filter((item) => {
-      if (filter.length === 0) return item;
-      return filter.some((activeFilter) => {
-        return (
-          item.role.toLowerCase().includes(activeFilter.toLowerCase()) ||
-          item.location.toLowerCase().includes(activeFilter.toLowerCase())
-        );
+      if (filter.locations.length === 0) return item;
+      return filter.locations.some((activeLocationFilter) => {
+        return item.location
+          .toLowerCase()
+          .includes(activeLocationFilter.toLowerCase());
+      });
+    })
+    .filter((item) => {
+      if (filter.roles.length === 0) return item;
+      return filter.roles.some((activeRoleFilter) => {
+        return item.role.toLowerCase().includes(activeRoleFilter.toLowerCase());
       });
     });
 
