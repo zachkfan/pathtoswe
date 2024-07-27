@@ -11,11 +11,12 @@ import useSWR from "swr";
 
 interface Props {
   search: string;
+  filter: string[];
   cardView: boolean;
   tab: "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
 }
 
-const Table = ({ search, cardView, tab }: Props) => {
+const Table = ({ search, filter, cardView, tab }: Props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const fetchDashboardData = ({
@@ -80,37 +81,58 @@ const Table = ({ search, cardView, tab }: Props) => {
     setPage(0);
   };
 
+  const filteredInternships = appliedInternships
+    .filter((item) => {
+      return search.toLowerCase() === ""
+        ? item
+        : item.internships?.company
+            .toLowerCase()
+            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+            .includes(search.toLowerCase()) ||
+            item.internships?.role.toLowerCase().includes(search.toLowerCase());
+    })
+    .filter((item) => {
+      if (filter.length === 0) return item;
+      return filter.some((activeFilter) => {
+        return (
+          item.internships?.role
+            .toLowerCase()
+            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+            .includes(activeFilter.toLowerCase()) ||
+          item.internships?.location
+            .toLowerCase()
+            .includes(activeFilter.toLowerCase())
+        );
+      });
+    });
+
+  const paginatedInternships =
+    rowsPerPage > 0
+      ? filteredInternships.slice(
+          page * rowsPerPage,
+          page * rowsPerPage + rowsPerPage
+        )
+      : filteredInternships;
+
   if (cardView) {
     return (
       <div className="flex flex-row flex-wrap justify-between lg:px-0 xl:px-8">
-        {appliedInternships
-          .filter((item) => {
-            return search.toLowerCase() == ""
-              ? item
-              : item.internships?.company
-                  .toLowerCase()
-                  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-                  .includes(search.toLowerCase()) ||
-                  item.internships?.role
-                    .toLowerCase()
-                    .includes(search.toLowerCase());
-          })
-          .map(
-            (item) =>
-              item.internships && (
-                <Card
-                  company={item.internships.company}
-                  role={item.internships.role}
-                  location={item.internships.location}
-                  datePosted={item.internships.date_posted}
-                  dateApplied={item.date_applied}
-                  applicationDashboard={"https://www.google.com"}
-                  status={item.status as statusType}
-                  item_id={item.internships.id}
-                  key={item.internships.id}
-                />
-              )
-          )}
+        {filteredInternships.map(
+          (item) =>
+            item.internships && (
+              <Card
+                company={item.internships.company}
+                role={item.internships.role}
+                location={item.internships.location}
+                datePosted={item.internships.date_posted}
+                dateApplied={item.date_applied}
+                applicationDashboard={"https://www.google.com"}
+                status={item.status as statusType}
+                item_id={item.internships.id}
+                key={item.internships.id}
+              />
+            )
+        )}
       </div>
     );
   } else {
@@ -127,40 +149,22 @@ const Table = ({ search, cardView, tab }: Props) => {
           </tr>
         </thead>
         <tbody className="text-black font-semibold">
-          {(rowsPerPage > 0
-            ? appliedInternships.slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage
+          {paginatedInternships.map(
+            (item) =>
+              item.internships && (
+                <Row
+                  company={item.internships.company}
+                  role={item.internships.role}
+                  location={item.internships.location}
+                  datePosted={item.internships.date_posted}
+                  dateApplied={item.date_applied}
+                  applicationDashboard={"https://www.google.com"}
+                  status={item.status as statusType}
+                  item_id={item.internships.id}
+                  key={item.internships.id}
+                />
               )
-            : appliedInternships
-          )
-            .filter((item) => {
-              return search.toLowerCase() == ""
-                ? item
-                : item.internships?.company
-                    .toLowerCase()
-                    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-                    .includes(search.toLowerCase()) ||
-                    item.internships?.role
-                      .toLowerCase()
-                      .includes(search.toLowerCase());
-            })
-            .map(
-              (item) =>
-                item.internships && (
-                  <Row
-                    company={item.internships.company}
-                    role={item.internships.role}
-                    location={item.internships.location}
-                    datePosted={item.internships.date_posted}
-                    dateApplied={item.date_applied}
-                    applicationDashboard={"https://www.google.com"}
-                    status={item.status as statusType}
-                    item_id={item.internships.id}
-                    key={item.internships.id}
-                  />
-                )
-            )}
+          )}
         </tbody>
         <tfoot>
           <tr>

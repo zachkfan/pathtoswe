@@ -10,6 +10,7 @@ const FilterModal = ({
   filter: string[];
 }) => {
   // TODO: Add more filters or more related words
+  // TODO: Location and rolei flters should be && instead of ||, needs to satisfy both
   const locations: FilterType = {
     "New York, NY": ["New York", "NYC"],
     "Chicago, IL": ["Chicago"],

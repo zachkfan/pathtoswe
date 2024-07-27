@@ -24,6 +24,7 @@ const SearchBarAndTable = () => {
   const [search, setSearch] = useState("");
   const [cardView, setCardView] = useState(true);
   const [tab, setTab] = useState<TabType>("All");
+  const [filter, setFilter] = useState<string[]>([]);
 
   const fetchApplicationCount = (url: string) =>
     fetch(url, {
@@ -114,7 +115,12 @@ const SearchBarAndTable = () => {
         />
       </div>
       <div className="flex flex-row items-center w-full justify-between lg:px-0 xl:px-8 py-4">
-        <SearchBar setSearch={setSearch} isDashboard={true} />
+        <SearchBar
+          setFilter={setFilter}
+          filter={filter}
+          setSearch={setSearch}
+          isDashboard={true}
+        />
         <div className="flex flex-row items-center gap-6">
           <ButtonModal
             btnClassName="rounded-lg relative w-10 xl:w-52 h-10 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
@@ -152,7 +158,7 @@ const SearchBarAndTable = () => {
           <SortBy />
         </div>
       </div>
-      <Table search={search} cardView={cardView} tab={tab} />
+      <Table search={search} filter={filter} cardView={cardView} tab={tab} />
     </>
   );
 };
