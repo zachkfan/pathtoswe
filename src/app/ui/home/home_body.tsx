@@ -4,7 +4,7 @@ import SignUpButton from "./body_signup";
 
 const HomeBody = () => {
   return (
-    <div className="bg-concrete-gray px-[18%] py-24 grid grid-cols-12 gap-12">
+    <div className="bg-concrete-gray px-[18%] py-24 grid grid-cols-12 gap-12 text-black-gray">
       <div className="col-span-12 lg:col-span-5">
         <h2 className="text-3xl pb-5 font-semibold">PathToSWE</h2>
         <h1 className="text-4xl font-bold pb-5">

@@ -19,7 +19,7 @@ const ProfileCards = ({
   email,
 }: Props) => {
   return (
-    <div className="card bg-concrete-gray shadow-xl w-full hover:scale-110 duration-100">
+    <div className="card bg-concrete-gray shadow-xl w-full hover:scale-110 duration-100 text-black-gray">
       <figure>
         <Image
           src={image}
@@ -30,7 +30,7 @@ const ProfileCards = ({
         />
       </figure>
       <div className="card-body pb-4">
-        <h2 className="card-title mx-auto">{name}</h2>
+        <h2 className="card-title mx-auto font-bold">{name}</h2>
         <p className="font-serif font-light">{description}</p>
         <div className="card-actions justify-end">
           <Icon
