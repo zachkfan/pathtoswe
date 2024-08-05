@@ -11,7 +11,6 @@ import {
 import React, { useState } from "react";
 import Table from "@/app/ui/dashboard/table";
 import SearchBar from "@/app/ui/search_bar";
-import SortBy from "@/app/ui/dashboard/sort_by";
 import Toggle from "@/app/ui/dashboard/toggle";
 import ButtonModal from "../btn_modal";
 import ModalEdit from "./edit_modal";
@@ -124,9 +123,9 @@ const SearchBarAndTable = () => {
           setSearch={setSearch}
           isDashboard={true}
         />
-        <div className="flex flex-row items-center gap-6">
+        <div className="flex flex-row gap-4">
           <ButtonModal
-            btnClassName="rounded-lg relative w-10 xl:w-52 h-10 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
+            btnClassName="rounded-lg relative w-10 xl:w-52 h-12 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
             closeBtnClassName="btn btn-sm bg-black border-none text-black font-bold hover:bg-black/80 h-10 px-4 w-40 text-white"
             closeBtnContent={"Add Application"}
             end={true}
@@ -158,7 +157,6 @@ const SearchBarAndTable = () => {
             <ModalEdit type={"Add"} />
           </ButtonModal>
           <Toggle cardView={cardView} setCardView={setCardView} />
-          <SortBy />
         </div>
       </div>
       <Table search={search} filter={filter} cardView={cardView} tab={tab} />
