@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Nunito, Playfair_Display } from "next/font/google";
+import { Nunito_Sans, Playfair_Display } from "next/font/google";
 import "./ui/globals.css";
 import { StrictMode } from "react";
 
-const nunito = Nunito({
+const nunito = Nunito_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-nunito",
