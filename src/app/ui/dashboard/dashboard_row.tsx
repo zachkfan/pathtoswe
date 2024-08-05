@@ -59,7 +59,6 @@ const DashboardRow = ({
           <Status status={status} />
         </td>
       </tr>
-      {/* TODO: fix expand animation when opening modal */}
       {isOpen && (
         <dialog ref={modalRef} className="modal">
           <div className="modal-box bg-white justify-start items-center p-6 text-base">

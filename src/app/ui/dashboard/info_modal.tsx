@@ -27,7 +27,7 @@ export default function ModalContent({
 
   return (
     <div className="flex flex-row justify-between">
-      <div className="p-2 flex flex-col gap-3 items-start">
+      <div className="p-2 flex flex-col gap-3 items-start text-start">
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
         <p>Location: {semicolonLocation}</p>
