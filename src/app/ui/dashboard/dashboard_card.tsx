@@ -46,7 +46,9 @@ export default function DashboardCard({
           <h3 className="card-title text-base lg:text-xl xl:text-2xl font-bold">
             {role}
           </h3>
-          <h4 className="text-sm lg:text-base">{parseDate(dateApplied)}</h4>
+          <h4 className="text-sm lg:text-base">{`Applied on ${parseDate(
+            dateApplied
+          )}`}</h4>
         </div>
         <Modal
           btnClassName="card-actions btn-circle btn-ghost items-center justify-center btn-sm"

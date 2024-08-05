@@ -20,7 +20,7 @@ export default function ModalEdit({
   type,
 }: Props) {
   return (
-    <div className="flex flex-col gap-2 text-black items-start w-96">
+    <div className="p-2 flex flex-col gap-2 text-black items-start w-96">
       {type == "Add" ? (
         <label className="form-control w-full max-w-xs">
           <div className="label">
