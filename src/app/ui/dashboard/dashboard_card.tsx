@@ -1,5 +1,6 @@
 import Modal from "@/app/ui/modal";
 import InfoModal from "@/app/ui/dashboard/info_modal";
+import { parseDate } from "@/app/lib/utils";
 
 interface Props {
   company: string;
@@ -39,14 +40,34 @@ export default function DashboardCard({
       <figure className="w-[13%]">
         <div className="w-full h-[100%]" style={getStatusColor()}></div>
       </figure>
-      <div className="card-body w-[87%] mt-4 p-3 lg:p-6 xl:p-8">
-        <h4 className="text-sm lg:text-base">{company}</h4>
-        <h3 className="card-title text-base lg:text-xl xl:text-2xl font-bold">
-          {role}
-        </h3>
+      <div className="card-body w-[87%] flex flex-row justify-between items-start">
+        <div className="flex flex-col gap-3 my-auto">
+          <h4 className="text-sm lg:text-base">{company}</h4>
+          <h3 className="card-title text-base lg:text-xl xl:text-2xl font-bold">
+            {role}
+          </h3>
+          <h4 className="text-sm lg:text-base">{parseDate(dateApplied)}</h4>
+        </div>
         <Modal
-          btnClassName="card-actions btn btn-ghost items-center p-0 font-extrabold mt-auto w-fit text-xs xl:text-sm"
-          btnContent={"View Application"}
+          btnClassName="card-actions btn-circle btn-ghost items-center justify-center btn-sm"
+          btnContent={
+            <>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6 lg:size-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                />
+              </svg>
+            </>
+          }
         >
           <InfoModal
             company={company}
