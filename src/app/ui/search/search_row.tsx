@@ -20,7 +20,7 @@ interface Props {
   role: string;
   location: string;
   datePosted: string;
-  applyLink: string;
+  applyLink?: string;
   currentTab: "Search" | "Hidden" | "Saved";
   showToast: (message: string, type: "success" | "error") => void;
 }
@@ -125,7 +125,7 @@ const Row = ({
         </td>
         <td className="pl-0">
           <Apply
-            href={applyLink}
+            href={applyLink ? applyLink : company + ".com"}
             company={company}
             role={role}
             rowHidden={hideRow}
