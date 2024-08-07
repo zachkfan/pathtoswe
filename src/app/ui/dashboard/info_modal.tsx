@@ -7,10 +7,11 @@ interface Props {
   company: string;
   role: string;
   location: string;
-  datePosted: string;
+  datePosted?: string;
   dateApplied: string;
-  applicationDashboard: string;
+  applicationDashboard?: string;
   status: "Closed" | "Pending" | "Interviewed" | "Hired";
+  item_id: number;
 }
 
 export default function ModalContent({
@@ -21,6 +22,7 @@ export default function ModalContent({
   dateApplied,
   applicationDashboard,
   status,
+  item_id,
 }: Props) {
   const parsedLocation = parseLocation(location);
   const semicolonLocation = parsedLocation.join("; ");
@@ -31,7 +33,7 @@ export default function ModalContent({
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
         <p>Location: {semicolonLocation}</p>
-        <p>Date Posted: {datePosted.substring(0, 10)}</p>
+        <p>Date Posted: {datePosted?.substring(0, 10)}</p>
         <p>Date Applied: {dateApplied.substring(0, 10)}</p>
         <p>
           Dashboard:{" "}
@@ -52,19 +54,20 @@ export default function ModalContent({
       <ButtonModal
         btnClassName="btn btn-sm btn-ghost bg-gray-200 border-none text-black font-bold hover:bg-gray-200/80 h-10 px-4"
         btnContent={"Edit"}
-        closeBtnClassName="btn btn-sm bg-black border-none text-black font-bold hover:bg-black/80 h-10 px-4 text-white"
-        closeBtnContent={"Done"}
+        closeBtnClassName="text-black font-bold px-2"
+        closeBtnContent={"X"}
         end={false}
       >
         <EditModal
           company={company}
           role={role}
           location={semicolonLocation}
-          datePosted={datePosted.substring(0, 10)}
+          datePosted={datePosted?.substring(0, 10)}
           dateApplied={dateApplied.substring(0, 10)}
           applicationDashboard={applicationDashboard}
           status={status}
           type={"Edit"}
+          item_id={item_id}
         />
       </ButtonModal>
     </div>

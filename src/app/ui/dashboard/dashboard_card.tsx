@@ -5,9 +5,9 @@ interface Props {
   company: string;
   role: string;
   location: string;
-  datePosted: string;
+  datePosted?: string;
   dateApplied: string;
-  applicationDashboard: string;
+  applicationDashboard?: string;
   status: "Closed" | "Pending" | "Interviewed" | "Hired";
   item_id: number;
 }
@@ -56,6 +56,7 @@ export default function DashboardCard({
             dateApplied={dateApplied}
             applicationDashboard={applicationDashboard}
             status={status}
+            item_id={item_id}
           />
         </Modal>
       </div>
