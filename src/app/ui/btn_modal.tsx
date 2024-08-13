@@ -47,7 +47,7 @@ export default function Modal({
           {children}
 
           <div className={clsx("modal-action mt-0", { "self-end, pt-5": end })}>
-            <form method="dialog">
+            <form method="dialog" id="close-modal" name="close-modal">
               {onCloseBtnClick && (
                 <button
                   className={closeBtnClassName}
@@ -58,6 +58,7 @@ export default function Modal({
                   {closeBtnContent}
                 </button>
               )}
+
               {!onCloseBtnClick && (
                 <button className={closeBtnClassName}>{closeBtnContent}</button>
               )}

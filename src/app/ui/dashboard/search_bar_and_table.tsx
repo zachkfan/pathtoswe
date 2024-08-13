@@ -12,10 +12,9 @@ import React, { useState } from "react";
 import Table from "@/app/ui/dashboard/table";
 import SearchBar from "@/app/ui/search_bar";
 import Toggle from "@/app/ui/dashboard/toggle";
-import ButtonModal from "../btn_modal";
-import ModalEdit from "./edit_modal";
 import useSWR from "swr";
 import { ApplicationCountsType, FiltersType } from "@/app/lib/types";
+import AddApplicationButton from "./add_application_btn";
 
 type TabType = "All" | "Pending" | "Closed" | "Hired" | "Interviewed";
 
@@ -156,6 +155,8 @@ const SearchBarAndTable = () => {
           >
             <ModalEdit type={"Add"} />
           </ButtonModal>
+        <div className="flex flex-row items-center gap-6">
+          <AddApplicationButton />
           <Toggle cardView={cardView} setCardView={setCardView} />
         </div>
       </div>

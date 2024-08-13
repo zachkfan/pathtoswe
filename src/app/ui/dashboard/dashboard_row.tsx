@@ -11,9 +11,9 @@ interface Props {
   company: string;
   role: string;
   location: string;
-  datePosted: string;
+  datePosted?: string;
   dateApplied: string;
-  applicationDashboard: string;
+  applicationDashboard?: string;
   status: statusType;
   item_id: number;
 }
@@ -53,7 +53,7 @@ const DashboardRow = ({
         <td>
           <LocationDropdown location={location} format={"dashboard row"} />
         </td>
-        <td>{datePosted.substring(0, 10)}</td>
+        <td>{datePosted?.substring(0, 10)}</td>
         <td>{dateApplied.substring(0, 10)}</td>
         <td>
           <Status status={status} />
@@ -70,6 +70,7 @@ const DashboardRow = ({
               dateApplied={dateApplied}
               applicationDashboard={applicationDashboard}
               status={status}
+              item_id={item_id}
             />
           </div>
           <form

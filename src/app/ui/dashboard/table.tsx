@@ -128,7 +128,7 @@ const Table = ({ search, filter, cardView, tab }: Props) => {
                 location={item.internships.location}
                 datePosted={item.internships.date_posted}
                 dateApplied={item.date_applied}
-                applicationDashboard={"https://www.google.com"}
+                applicationDashboard={item.application_dashboard}
                 status={item.status as statusType}
                 item_id={item.internships.id}
                 key={item.internships.id}
@@ -160,7 +160,7 @@ const Table = ({ search, filter, cardView, tab }: Props) => {
                   location={item.internships.location}
                   datePosted={item.internships.date_posted}
                   dateApplied={item.date_applied}
-                  applicationDashboard={"https://www.google.com"}
+                  applicationDashboard={item.application_dashboard}
                   status={item.status as statusType}
                   item_id={item.internships.id}
                   key={item.internships.id}

@@ -11,7 +11,7 @@ export interface InternshipsType {
   role: string;
   location: string;
   date_posted: string;
-  apply_link: string;
+  apply_link?: string;
   created_by?: string;
   open_for_applications: boolean;
 }
@@ -31,6 +31,7 @@ export interface JoinTableType {
   internship_id?: number;
   status: "Closed" | "Pending" | "Interviewed" | "Hired" | "Hidden" | "Saved";
   date_applied: string;
+  application_dashboard?: string;
   internships?: InternshipsType;
 }
 
@@ -52,6 +53,18 @@ export interface StatusCountType {
   _count: {
     status: number;
   };
+}
+
+export interface UpsertApplicationRequest{
+  company: string;
+  role: string;
+  location: string;
+  datePosted: string;
+  dateApplied: string;
+  applicationDashboard: string;
+  status: ("Closed" | "Pending" | "Interviewed" | "Hired");
+  addOrEdit: "Edit" | "Add"
+  internship_id: number
 }
 
 export type SingleFilterType = Record<string, string[]>;
