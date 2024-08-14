@@ -26,6 +26,7 @@ interface Props {
 }
 
 //maybe change usersession to worldwide but for now leave
+//maybe change usersession to worldwide but for now leave
 const Row = ({
   item_id,
   company,
