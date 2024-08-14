@@ -4,10 +4,10 @@ import ModalEdit from "./edit_modal";
 export default function AddApplicationButton() {
   return (
     <ButtonModal
-      btnClassName="rounded-lg relative w-10 xl:w-52 h-10 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
-      closeBtnClassName="text-black text-xl font-bold px-2"
-      closeBtnContent={"X"}
-      end={false}
+      btnClassName="rounded-lg relative w-10 xl:w-52 h-12 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
+      closeBtnClassName="btn btn-sm bg-black border-none text-black font-bold hover:bg-black/80 h-10 px-4 w-40 text-white"
+      closeBtnContent={"Add Application"}
+      end={true}
       btnContent={
         <>
           <span className="text-white font-semibold ml-8 transform group-hover:translate-x-32 transition-all duration-300 xl:flex hidden">

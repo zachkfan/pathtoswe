@@ -80,35 +80,6 @@ export default function ModalEdit({
     }
   }
   return (
-    <div className="p-2 flex flex-col gap-2 text-black items-start w-96 text-start">
-      {type == "Add" ? (
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text text-black">Company:</span>
-          </div>
-          <input
-            type="text"
-            placeholder="Input Company"
-            className="input input-bordered w-full max-w-xs bg-white"
-          />
-        </label>
-      ) : (
-        <h4>{company}</h4>
-      )}
-      {type == "Add" ? (
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text text-black">Role:</span>
-          </div>
-          <input
-            type="text"
-            placeholder="Input Role"
-            className="input input-bordered w-full max-w-xs bg-white"
-          />
-        </label>
-      ) : (
-        <h3 className="text-2xl font-bold">{role}</h3>
-      )}
     <>
       {/* TO DO POSITION TOASTER BETTER FOR ADDING APPLICATIOn */}
       <Toaster
@@ -119,7 +90,7 @@ export default function ModalEdit({
         position="bottom-center"
       />
       <form
-        className="flex flex-col gap-2 text-black items-start w-full"
+        className="flex flex-col gap-2 text-black items-start w-96 text-start"
         onSubmit={handleSubmit}
       >
         {type == "Add" ? (

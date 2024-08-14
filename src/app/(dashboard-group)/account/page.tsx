@@ -32,7 +32,6 @@ export default async function Page() {
           </label>
           <div className="mt-5 flex flex-row justify-between">
             <input
-              k
               type="submit"
               value="Save Changes"
               className="btn btn-info "
