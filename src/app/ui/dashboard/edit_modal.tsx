@@ -80,14 +80,16 @@ export default function ModalEdit({
     }
   }
   return (
-    <>
+    <div className="flex flex-col">
       {/* TO DO POSITION TOASTER BETTER FOR ADDING APPLICATIOn */}
       <Toaster
+        gutter={16}
+        containerStyle={{ position: "sticky", top: 18 }}
         toastOptions={{
           className: "text-black font-semibold",
           duration: 3000,
         }}
-        position="bottom-center"
+        position="bottom-right"
       />
       <form
         className="flex flex-col gap-2 text-black items-start w-96 text-start"
@@ -218,6 +220,6 @@ export default function ModalEdit({
           )}
         </div>
       </form>
-    </>
+    </div>
   );
 }
