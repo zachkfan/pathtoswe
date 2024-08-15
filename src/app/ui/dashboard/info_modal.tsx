@@ -44,7 +44,7 @@ export default function ModalContent({
         <p>Date Applied: {dateApplied.substring(0, 10) || "N/A"}</p>
         <p>
           Dashboard:{" "}
-          {
+          {applicationDashboard ? (
             <a
               href={applicationDashboard}
               target="_blank"
@@ -52,7 +52,9 @@ export default function ModalContent({
             >
               {applicationDashboard}
             </a>
-          }
+          ) : (
+            "N/A"
+          )}
         </p>
         <p>
           Status: <Status status={status} />
