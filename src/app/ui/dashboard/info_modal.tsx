@@ -55,7 +55,22 @@ export default function ModalContent({
         btnClassName="btn btn-sm btn-ghost bg-gray-200 border-none text-black font-bold hover:bg-gray-200/80 h-10 px-4"
         btnContent={"Edit"}
         closeBtnClassName="text-black font-bold px-2"
-        closeBtnContent={"X"}
+        closeBtnContent={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        }
         end={false}
       >
         <EditModal

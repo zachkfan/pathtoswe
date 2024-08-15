@@ -6,7 +6,22 @@ export default function AddApplicationButton() {
     <ButtonModal
       btnClassName="rounded-lg relative w-10 xl:w-52 h-12 cursor-pointer flex items-center border border-white bg-black-gray group hover:bg-black-gray active:bg-black-gray active:border-green-500"
       closeBtnClassName="text-black text-xl font-bold px-2"
-      closeBtnContent={"X"}
+      closeBtnContent={
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      }
       end={false}
       btnContent={
         <>
