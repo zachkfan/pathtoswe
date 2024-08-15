@@ -53,8 +53,8 @@ const DashboardRow = ({
         <td>
           <LocationDropdown location={location} format={"dashboard row"} />
         </td>
-        <td>{datePosted?.substring(0, 10)}</td>
-        <td>{dateApplied.substring(0, 10)}</td>
+        <td>{datePosted?.substring(0, 10) ?? "N/A"}</td>
+        <td>{dateApplied.substring(0, 10) || "N/A"}</td>
         <td>
           <Status status={status} />
         </td>
