@@ -61,7 +61,7 @@ const DashboardRow = ({
       </tr>
       {isOpen && (
         <dialog ref={modalRef} className="modal">
-          <div className="modal-box bg-white justify-start items-center p-6 text-base">
+          <div className="modal-box bg-white justify-start items-center p-6 text-base font-normal">
             <InfoModal
               company={company}
               role={role}

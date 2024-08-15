@@ -6,7 +6,7 @@ import { parseLocation } from "@/app/lib/utils";
 interface Props {
   company: string;
   role: string;
-  location: string;
+  location: string | null;
   datePosted?: string;
   dateApplied: string;
   applicationDashboard?: string;
@@ -24,11 +24,18 @@ export default function ModalContent({
   status,
   item_id,
 }: Props) {
-  const parsedLocation = parseLocation(location);
-  const semicolonLocation = parsedLocation.join("; ");
+  let semicolonLocation: string;
+
+  if (location !== null) {
+    const parsedLocation: string[] = parseLocation(location);
+    semicolonLocation = parsedLocation.join("; ");
+  } else {
+    semicolonLocation = "N/A";
+  }
 
   return (
     <div className="flex flex-row justify-between">
+      {/* TODO: Add date picker */}
       <div className="p-2 flex flex-col gap-3 items-start text-start">
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
