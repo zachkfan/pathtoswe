@@ -40,8 +40,8 @@ export default function ModalContent({
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
         <p>Location: {semicolonLocation}</p>
-        <p>Date Posted: {datePosted?.substring(0, 10)}</p>
-        <p>Date Applied: {dateApplied.substring(0, 10)}</p>
+        <p>Date Posted: {datePosted?.substring(0, 10) ?? "N/A"}</p>
+        <p>Date Applied: {dateApplied.substring(0, 10) || "N/A"}</p>
         <p>
           Dashboard:{" "}
           {

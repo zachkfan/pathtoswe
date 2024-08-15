@@ -121,68 +121,88 @@ export async function POST(request: Request) {
   }
 }
 
-export async function PUT(request: Request){
-  try{
+export async function PUT(request: Request) {
+  try {
     const session = await auth();
-    if (session){
-    const userId = session.user.id
-    const {company, role, location,datePosted, dateApplied, applicationDashboard, status, addOrEdit,internship_id} = (await request.json()) as UpsertApplicationRequest
-    console.log(company,role,location, datePosted, dateApplied, applicationDashboard, status)
-    if (addOrEdit == "Edit"){
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-      await prisma.join_table.update({
-        where:{
-          user_id_internship_id: {
-            user_id: userId,
-            internship_id: internship_id,
+    if (session) {
+      const userId = session.user.id;
+      const {
+        company,
+        role,
+        location,
+        datePosted,
+        dateApplied,
+        applicationDashboard,
+        status,
+        addOrEdit,
+        internship_id,
+      } = (await request.json()) as UpsertApplicationRequest;
+      console.log(
+        company,
+        role,
+        location,
+        datePosted,
+        dateApplied,
+        applicationDashboard,
+        status
+      );
+      if (addOrEdit == "Edit") {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        await prisma.join_table.update({
+          where: {
+            user_id_internship_id: {
+              user_id: userId,
+              internship_id: internship_id,
+            },
           },
-        },
-        data: {
-          dateApplied: dateApplied || undefined,
-          application_dashboard: applicationDashboard || undefined,
-          status: status
-        }
-      })
-    }
-    //addorEdit == Add
-    else{
-
-      if (!company || !role){
-        return NextResponse.json({message: "Company or Role Field Not Filled"},{status: 400})
+          data: {
+            dateApplied: dateApplied || undefined,
+            application_dashboard: applicationDashboard || undefined,
+            status: status,
+          },
+        });
       }
-
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-      const newInternship = await prisma.internships.create({
-        data:{
-          company: company,
-          role: role,
-          location: location || null,
-          date_posted: datePosted || null,
-          created_by: userId,
-          open_for_application: true
+      //addorEdit == Add
+      else {
+        if (!company || !role) {
+          return NextResponse.json(
+            { message: "Company or Role Field Not Filled" },
+            { status: 400 }
+          );
         }
-      }) as InternshipsType
 
-      console.log("Internship Successfully Created")
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    await prisma.join_table.create({
-      data:{
-        users: {connect: {id: userId}},
-        internships: {connect: {id: newInternship.id}},
-        // user_id_internship_id: {
-        //   user_id: userId,
-        //   internship_id: internship_id,
-        // },
-        status: status,
-        date_applied: dateApplied || (new Date).toISOString(),
-        application_dashboard: applicationDashboard || null,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        const newInternship = (await prisma.internships.create({
+          data: {
+            company: company,
+            role: role,
+            location: location || null,
+            date_posted: new Date(datePosted).toISOString() || null,
+            created_by: userId,
+            open_for_application: true,
+          },
+        })) as InternshipsType;
 
+        console.log("Internship Successfully Created");
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        await prisma.join_table.create({
+          data: {
+            users: { connect: { id: userId } },
+            internships: { connect: { id: newInternship.id } },
+            // user_id_internship_id: {
+            //   user_id: userId,
+            //   internship_id: internship_id,
+            // },
+            status: status,
+            date_applied: dateApplied
+              ? new Date(dateApplied).toISOString()
+              : new Date().toISOString().split("T")[0] + "T00:00:00.000Z",
+            application_dashboard: applicationDashboard || null,
+          },
+        });
+        console.log("Join Table successfully created");
       }
-    })
-    console.log("Join Table successfully created")
-  }
-  }
-    else{
+    } else {
       return NextResponse.json(
         { message: "Not Authenticated" },
         { status: 401 }
@@ -190,69 +210,65 @@ export async function PUT(request: Request){
     }
 
     return NextResponse.json(
-      {message: "Changes Successfully Saved"},
-      {status: 200}
-    )
-  }
-  catch(error){
+      { message: "Changes Successfully Saved" },
+      { status: 200 }
+    );
+  } catch (error) {
     console.error("Internal Server Error:", error); // Log error
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
-    );  
+    );
   }
 }
 
-export async function DELETE(request: Request){
-  try{
-    const session = await auth()
-    if(session)
-    {const userId = session.user.id
-    const {id} = await request.json() as {id: string}
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    const toBeDeleted = await prisma.internships.findUnique({
-      where:{
-        id: id,
-      }
-    }) as InternshipsType
-
-    if (toBeDeleted.created_by){
+export async function DELETE(request: Request) {
+  try {
+    const session = await auth();
+    if (session) {
+      const userId = session.user.id;
+      const { id } = (await request.json()) as { id: string };
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-      await prisma.internships.delete({
-        where:{
+      const toBeDeleted = (await prisma.internships.findUnique({
+        where: {
           id: id,
-          created_by:userId
-        }
-      })
-    }else{
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-      await prisma.join_table.delete({
-        where:{
-          user_id_internship_id: {
-            user_id: userId,
-            internship_id: id,
+        },
+      })) as InternshipsType;
+
+      if (toBeDeleted.created_by) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        await prisma.internships.delete({
+          where: {
+            id: id,
+            created_by: userId,
           },
-        }
-      })
-    }
-  
-  
-  }else{
+        });
+      } else {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        await prisma.join_table.delete({
+          where: {
+            user_id_internship_id: {
+              user_id: userId,
+              internship_id: id,
+            },
+          },
+        });
+      }
+    } else {
       return NextResponse.json(
         { message: "Not Authenticated" },
         { status: 401 }
       );
     }
     return NextResponse.json(
-      {message: "Successfully Deleted"},
-      {status: 200}
-    )
-    
-  }catch (error){
+      { message: "Successfully Deleted" },
+      { status: 200 }
+    );
+  } catch (error) {
     console.error("Internal Server Error:", error); // Log error
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
-    );  
+    );
   }
 }
