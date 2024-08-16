@@ -177,7 +177,7 @@ export async function PUT(request: Request) {
             company: company,
             role: role,
             location: location || null,
-            date_posted: new Date(datePosted).toISOString() || null,
+            date_posted: datePosted ? new Date(datePosted).toISOString() : null,
             created_by: userId,
             open_for_application: true,
           },

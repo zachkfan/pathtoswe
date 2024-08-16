@@ -26,7 +26,6 @@ interface Props {
 }
 
 //maybe change usersession to worldwide but for now leave
-//maybe change usersession to worldwide but for now leave
 const Row = ({
   item_id,
   company,
@@ -58,7 +57,7 @@ const Row = ({
     };
 
     try {
-      // // Optimistically update the UI
+      // Optimistically update the UI
       await mutate(
         { url: "/api/search", tab: previousStatus },
         (data: TableResponseType = {}) => {
