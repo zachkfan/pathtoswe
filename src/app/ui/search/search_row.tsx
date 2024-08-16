@@ -85,6 +85,8 @@ const Row = ({
               : item_status,
         }),
         mutate({ url: "/api/search", tab: currentTab }),
+        mutate({ url: "/api/dashboard", tab: "All" }),
+        mutate({ url: "/api/dashboard", tab: "Pending" }),
       ]);
 
       showToast(
