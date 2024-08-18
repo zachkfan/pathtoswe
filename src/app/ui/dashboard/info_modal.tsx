@@ -36,7 +36,7 @@ export default function ModalContent({
   return (
     <div className="flex flex-row justify-between">
       {/* TODO: Add date picker */}
-      <div className="p-2 flex flex-col gap-3 items-start text-start">
+      <div className="p-2 flex flex-col gap-3 items-start text-start w-full">
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
         <p className="flex justify-between w-full">
