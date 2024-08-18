@@ -116,6 +116,7 @@ export default function ModalEdit({
           <label className="form-control w-full max-w-sm">
             <div className="label">
               <span className="label-text text-black">Company:</span>
+              <span className="label-text-alt">ex. Google</span>
             </div>
             <input
               type="text"
@@ -130,6 +131,9 @@ export default function ModalEdit({
           <label className="form-control w-full max-w-sm">
             <div className="label">
               <span className="label-text text-black">Role:</span>
+              <span className="label-text-alt">
+                ex. Software Engineer Intern
+              </span>
             </div>
             <input
               type="text"
@@ -161,7 +165,9 @@ export default function ModalEdit({
           <label className="form-control w-full max-w-sm">
             <div className="label">
               <span className="label-text text-black">Date Posted:</span>
-              <span className="label-text-alt">ex. 2024-07-23</span>
+              <span className="label-text-alt">
+                ex. {new Date().toISOString().substring(0, 10)}
+              </span>
             </div>
             <input
               type="text"
@@ -173,7 +179,9 @@ export default function ModalEdit({
         <label className="form-control w-full max-w-sm">
           <div className="label">
             <span className="label-text text-black">Date Applied:</span>
-            <span className="label-text-alt">ex. 2024-07-24</span>
+            <span className="label-text-alt">
+              ex. {new Date().toISOString().substring(0, 10)}
+            </span>
           </div>
           <input
             type="text"
