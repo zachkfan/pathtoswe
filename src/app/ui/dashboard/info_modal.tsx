@@ -39,11 +39,19 @@ export default function ModalContent({
       <div className="p-2 flex flex-col gap-3 items-start text-start">
         <h4>{company}</h4>
         <h3 className="text-2xl font-bold">{role}</h3>
-        <p>Location: {semicolonLocation}</p>
-        <p>Date Posted: {datePosted?.substring(0, 10) ?? "N/A"}</p>
-        <p>Date Applied: {dateApplied.substring(0, 10) || "N/A"}</p>
-        <p>
-          Dashboard:{" "}
+        <p className="flex justify-between w-full">
+          <span className="font-semibold">Location:</span> {semicolonLocation}
+        </p>
+        <p className="flex justify-between w-full">
+          <span className="font-semibold">Date Posted:</span>{" "}
+          {datePosted?.substring(0, 10) ?? "N/A"}
+        </p>
+        <p className="flex justify-between w-full">
+          <span className="font-semibold">Date Applied:</span>{" "}
+          {dateApplied.substring(0, 10) || "N/A"}
+        </p>
+        <p className="flex justify-between w-full">
+          <span className="font-semibold">Dashboard:</span>{" "}
           {applicationDashboard ? (
             <a
               href={applicationDashboard}
@@ -56,8 +64,9 @@ export default function ModalContent({
             "N/A"
           )}
         </p>
-        <p>
-          Status: <Status status={status} />
+        <p className="flex justify-between w-full">
+          <span className="font-semibold">Status:</span>{" "}
+          <Status status={status} />
         </p>
       </div>
       <ButtonModal
