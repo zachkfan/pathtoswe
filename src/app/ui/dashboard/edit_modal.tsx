@@ -75,6 +75,17 @@ export default function ModalEdit({
         | "Pending"
         | "Interviewed"
         | "Hired";
+      // Validate the dates
+      if (formDatePosted) {
+        dateSchema.parse(formDatePosted);
+      }
+      if (formDateApplied) {
+        dateSchema.parse(formDateApplied);
+      }
+      // Validate the URL
+      if (formApplicationDashboard) {
+        urlSchema.parse(formApplicationDashboard);
+      }
       const response = await fetch("/api/dashboard", {
         method: "PUT",
         body: JSON.stringify({
@@ -89,17 +100,6 @@ export default function ModalEdit({
           internship_id: item_id,
         }),
       });
-      // Validate the dates
-      if (formDatePosted) {
-        dateSchema.parse(formDatePosted);
-      }
-      if (formDateApplied) {
-        dateSchema.parse(formDateApplied);
-      }
-      // Validate the URL
-      if (formApplicationDashboard) {
-        urlSchema.parse(formApplicationDashboard);
-      }
 
       const result = (await response.json()) as { message: string };
       if (response.ok) {
