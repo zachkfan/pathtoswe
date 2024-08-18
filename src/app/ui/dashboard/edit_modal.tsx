@@ -1,5 +1,9 @@
+"use client";
+
 import toast, { Toaster } from "react-hot-toast";
 import { mutate } from "swr";
+import { z } from "zod";
+import React, { useState } from "react";
 
 interface Props {
   company?: string;
@@ -22,6 +26,11 @@ export default function ModalEdit({
   item_id,
   type,
 }: Props) {
+  const [selectedStatus, setSelectedStatus] = useState(status);
+  const dateSchema = z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format");
+
   async function handleDelete() {
     try {
       const response = await fetch("/api/dashboard", {
@@ -77,22 +86,35 @@ export default function ModalEdit({
           internship_id: item_id,
         }),
       });
+      // Validate the dates
+      if (formDatePosted) {
+        dateSchema.parse(formDatePosted);
+      }
+      if (formDateApplied) {
+        dateSchema.parse(formDateApplied);
+      }
+
       const result = (await response.json()) as { message: string };
       if (response.ok) {
         toast.success("Changes Successfully Saved");
         form.reset();
         await Promise.all([
+          // refetches data for the application counts
+          mutate("/api/dashboard"),
           // refetches data for the two status pages
           mutate({ url: "/api/dashboard", tab: "All" }),
           mutate({ url: "/api/dashboard", tab: status }),
-          // refetches data for the application counts
-          mutate("/api/dashboard"),
         ]);
       } else {
         toast.error(result.message);
       }
     } catch (error) {
-      toast.error("Something Went wrong");
+      if (error instanceof z.ZodError) {
+        // Handle Zod validation error
+        toast.error(error.errors[0].message);
+      } else {
+        toast.error("Something Went wrong");
+      }
       return "Something Went Wrong";
     }
   }
@@ -208,7 +230,10 @@ export default function ModalEdit({
           </div>
           <select
             className="select select-bordered bg-white text-base"
-            defaultValue={type == "Add" ? "" : status}
+            value={selectedStatus}
+            onChange={(e) => {
+              setSelectedStatus(e.target.value as typeof status);
+            }}
             name="status"
           >
             {type == "Add" ? (
