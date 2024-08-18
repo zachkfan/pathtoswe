@@ -1,4 +1,5 @@
 import toast, { Toaster } from "react-hot-toast";
+import { mutate } from "swr";
 
 interface Props {
   company?: string;
@@ -31,6 +32,13 @@ export default function ModalEdit({
       const result = (await response.json()) as { message: string };
       if (response.ok) {
         toast.success("Application Successfully Deleted");
+        await Promise.all([
+          // refetches data for the two status pages
+          mutate({ url: "/api/dashboard", tab: "All" }),
+          mutate({ url: "/api/dashboard", tab: status }),
+          // refetches data for the application counts
+          mutate("/api/dashboard"),
+        ]);
       } else {
         toast.error(result.message);
       }
@@ -71,6 +79,13 @@ export default function ModalEdit({
       const result = (await response.json()) as { message: string };
       if (response.ok) {
         toast.success("Changes Successfully Saved");
+        await Promise.all([
+          // refetches data for the two status pages
+          mutate({ url: "/api/dashboard", tab: "All" }),
+          mutate({ url: "/api/dashboard", tab: status }),
+          // refetches data for the application counts
+          mutate("/api/dashboard"),
+        ]);
       } else {
         toast.error(result.message);
       }
