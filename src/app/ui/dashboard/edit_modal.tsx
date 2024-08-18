@@ -185,7 +185,7 @@ export default function ModalEdit({
         <label className="form-control w-full max-w-sm">
           <div className="label">
             <span className="label-text text-black">Dashboard:</span>
-            <span className="label-text-alt">ex. www.google.com</span>
+            <span className="label-text-alt">ex. https://www.google.com/</span>
           </div>
           <input
             type="text"

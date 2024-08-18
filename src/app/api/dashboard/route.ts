@@ -156,7 +156,9 @@ export async function PUT(request: Request) {
             },
           },
           data: {
-            dateApplied: dateApplied || undefined,
+            date_applied: dateApplied
+              ? new Date(dateApplied).toISOString()
+              : undefined,
             application_dashboard: applicationDashboard || undefined,
             status: status,
           },
