@@ -34,7 +34,7 @@ export default function DashboardCard({
   };
   return (
     <div
-      className="card card-side bg-white w-[47%] h-44 lg:h-52 xl:h-60 text-black drop-shadow-around my-2 lg:my-4"
+      className="card card-side bg-white w-[47%] min-h-44 h-fit lg:min-h-52 xl:min-h-60 text-black drop-shadow-around my-2 lg:my-4"
       key={item_id}
     >
       <figure className="w-[13%]">
