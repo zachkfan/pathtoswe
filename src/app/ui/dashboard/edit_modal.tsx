@@ -49,8 +49,9 @@ export default function ModalEdit({
   }
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
     try {
-      const formData = new FormData(event.currentTarget);
+      const formData = new FormData(form);
       const formCompany = formData.get("company");
       const formRole = formData.get("role");
       const formLocation = formData.get("location");
@@ -79,6 +80,7 @@ export default function ModalEdit({
       const result = (await response.json()) as { message: string };
       if (response.ok) {
         toast.success("Changes Successfully Saved");
+        form.reset();
         await Promise.all([
           // refetches data for the two status pages
           mutate({ url: "/api/dashboard", tab: "All" }),
