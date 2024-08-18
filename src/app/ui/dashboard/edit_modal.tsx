@@ -30,6 +30,9 @@ export default function ModalEdit({
   const dateSchema = z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be in YYYY-MM-DD format");
+  const urlSchema = z
+    .string()
+    .regex(/^https?:\/\/.*/, "URL must start with http:// or https://");
 
   async function handleDelete() {
     try {
@@ -92,6 +95,10 @@ export default function ModalEdit({
       }
       if (formDateApplied) {
         dateSchema.parse(formDateApplied);
+      }
+      // Validate the URL
+      if (formApplicationDashboard) {
+        urlSchema.parse(formApplicationDashboard);
       }
 
       const result = (await response.json()) as { message: string };
