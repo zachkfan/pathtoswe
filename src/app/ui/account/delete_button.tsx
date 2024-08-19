@@ -9,8 +9,9 @@ const delete_button = ({ id }: { id: string | undefined }) => {
         method: "DELETE",
         body: JSON.stringify({ id: id }),
       });
-
-      redirect("/");
+      if (response.ok) {
+        redirect("/");
+      }
     } catch (error) {
       return "Something went Wrong";
     }
