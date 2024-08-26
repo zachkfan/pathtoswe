@@ -5,6 +5,15 @@ export interface SignUpFormDataType {
   password2: string;
 }
 
+export interface EditAccountDataType{
+  id: string;
+  username: string;
+  email: string;
+  old_password: string;
+  password: string;
+  password2: string;
+}
+
 export interface InternshipsType {
   id: number;
   company: string;
