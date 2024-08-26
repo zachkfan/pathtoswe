@@ -9,7 +9,7 @@ const delete_button = ({ id }: { id: string | undefined }) => {
         body: JSON.stringify({ id: id }),
       });
       if (response.ok) {
-        signOut({ callbackUrl: "/", redirect: true });
+        void signOut({ callbackUrl: "/", redirect: true });
       }
     } catch (error) {
       return "Something went Wrong";
