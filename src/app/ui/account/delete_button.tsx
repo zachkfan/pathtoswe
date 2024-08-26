@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import { redirect } from "next/navigation";
-
+import { signOut } from "next-auth/react";
 const delete_button = ({ id }: { id: string | undefined }) => {
   async function handleDelete() {
     try {
@@ -10,7 +9,7 @@ const delete_button = ({ id }: { id: string | undefined }) => {
         body: JSON.stringify({ id: id }),
       });
       if (response.ok) {
-        redirect("/");
+        signOut({ callbackUrl: "/", redirect: true });
       }
     } catch (error) {
       return "Something went Wrong";

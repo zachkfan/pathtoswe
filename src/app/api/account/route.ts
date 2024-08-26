@@ -1,5 +1,4 @@
 import prisma from "@/app/lib/prismadb";
-import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 export async function DELETE(request : Request){
 try{
