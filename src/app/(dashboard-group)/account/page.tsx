@@ -38,8 +38,8 @@ export default async function Page() {
   }
 
   return (
-    <div className="p-6 flex flex-row justify-center items-end gap-2">
-      <div className="pl-20 flex flex-col items-center w-fit">
+    <div className="p-6 flex flex-row justify-center items-end gap-4">
+      <div className="pl-24 flex flex-col items-center w-fit">
         <h1 className="text-4xl text-black-gray font-bold mb-12 w-fit">
           Account Settings
         </h1>
