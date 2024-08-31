@@ -3,8 +3,13 @@ import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Session } from "next-auth";
 import DeleteButton from "@/app/ui/account/delete_button";
+import { useState } from "react";
 
-const form = ({ session }: { session: Session | null }) => {
+const Form = ({ session }: { session: Session | null }) => {
+  const [userInfo, setUserInfo] = useState([
+    session?.user.name,
+    session?.user.email,
+  ]);
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (session) {
@@ -31,6 +36,10 @@ const form = ({ session }: { session: Session | null }) => {
         if (response.ok) {
           console.log("This gets ran");
           toast.success("Edit Success");
+          setUserInfo([
+            username as string | null | undefined,
+            email ? (email as string | null | undefined) : session.user.email,
+          ]);
         } else {
           toast.error(result.message);
         }
@@ -60,7 +69,7 @@ const form = ({ session }: { session: Session | null }) => {
                 <input
                   type="text"
                   name="username"
-                  placeholder={session?.user.name as string | undefined}
+                  placeholder={userInfo[0] as string | undefined}
                   className="input input-bordered w-full bg-transparent border-2 border-gray-300 focus:border-gray-300 text-black-gray"
                 />
               </label>
@@ -71,7 +80,7 @@ const form = ({ session }: { session: Session | null }) => {
                 <input
                   type="text"
                   name="email"
-                  placeholder={session?.user.email}
+                  placeholder={userInfo[1] as string | undefined}
                   className="input input-bordered w-full bg-transparent border-2 border-gray-300 focus:border-gray-300 text-black-gray"
                 />
               </label>
@@ -135,4 +144,4 @@ const form = ({ session }: { session: Session | null }) => {
   );
 };
 
-export default form;
+export default Form;
