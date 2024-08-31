@@ -31,6 +31,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
+```
 
 Once the server is running, open [http://localhost:3000](http://localhost:3000) in your browser to view the site.
 
@@ -39,4 +40,3 @@ You can start editing the page by modifying `app/page.tsx`. The site supports ho
 This project utilizes `next/font` to optimize and load the Inter font from Google, providing a seamless and visually appealing experience.
 
 Visit the live site here: [PathToSWE](https://pathtoswe.vercel.app/).
-```
