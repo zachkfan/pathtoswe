@@ -4,20 +4,17 @@
 PathToSWE provides a comprehensive and curated list of software engineering internships, tailored to your experience level and career goals. Our platform aggregates opportunities from a wide range of companies, offering detailed insights into each position to help you make informed decisions.
 
 🚀 **Personalized Experience**  
-Filter and search through internships by location, technology stack, company, and more. Our user-friendly interface ensures you can quickly find opportunities that match your skills and preferences.
+Filter and search through internships by location, position, company, and more. Our user-friendly interface ensures you can quickly find opportunities that match your skills and preferences.
 
 📊 **Track Your Progress**  
-Stay organized with our interactive dashboard that helps you manage your applications, deadlines, and follow-ups all in one place.
-
-🛠️ **Optimized for Growth**  
-PathToSWE isn't just about finding internships—it's about growing in your career. We provide resources like interview tips, resume-building tools, and coding challenges to prepare you for your software engineering journey.
+Stay organized with our interactive dashboard that helps you manage your applications, deadlines, and dashboards all in one place.
 
 ## Key Features
 
-- **Extensive Internship Database**: Access hundreds of opportunities from top companies.
-- **Advanced Filtering Options**: Narrow down your search with specific criteria like location, required skills, and company size.
+- **Extensive Internship Database**: Access hundreds of opportunities from top companies that are updated daily.
+- **Advanced Filtering Options**: Narrow down your search with specific criteria like location, required skills, and positions.
 - **Application Tracking**: Keep track of where you have applied and what you need to do next.
-- **Resource Hub**: Get access to exclusive resources to enhance your interview skills and technical knowledge.
+- **Track Your Applications**: Keep a personal log of internships you've applied to, manage deadlines, and monitor your progress in one convenient place.
 
 ## How to Run PathToSWE Locally
 
