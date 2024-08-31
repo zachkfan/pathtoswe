@@ -31,7 +31,6 @@ const form = ({ session }: { session: Session | null }) => {
         if (response.ok) {
           console.log("This gets ran");
           toast.success("Edit Success");
-          await new Promise((resolve) => setTimeout(resolve, 3000));
         } else {
           toast.error(result.message);
         }
