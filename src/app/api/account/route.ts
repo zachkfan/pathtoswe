@@ -3,6 +3,7 @@ import { EditAccountDataType } from "@/app/lib/types";
 import { NextResponse } from "next/server";
 import {User} from "@prisma/client"
 import bcrypt from "bcryptjs"
+import {hash} from "bcryptjs"
 export async function DELETE(request : Request){
 try{
     const {id} = (await request.json()) as {
@@ -42,7 +43,6 @@ catch(error){
 export async function POST(request : Request){
     try{
         const {id, username, email, old_password, password, password2} = (await request.json()) as EditAccountDataType
-        console.log(username)
         if (id){
             if (old_password || password || password2){
                 if (password != password2){
@@ -62,9 +62,16 @@ export async function POST(request : Request){
                     return NextResponse.json({
                         message: "Incorrect Current Password"
                     }, {status: 400})
+                }else{
+                    if(password.length < 6){
+                        return NextResponse.json({
+                            message: "Password is Too Short"
+                        }, {status: 400})
+                    }
                 }
             }
             }
+            const pwHash = await hash(password, 12)
             // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             await prisma.user.update({
                 where:{
@@ -73,7 +80,7 @@ export async function POST(request : Request){
                 data: {
                     name: username || undefined,
                     email: email || undefined,
-                    password: password || undefined
+                    password: pwHash || undefined
                 }
             })
 

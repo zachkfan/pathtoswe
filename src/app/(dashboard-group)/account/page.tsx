@@ -1,41 +1,8 @@
 import { auth } from "@/auth";
-import toast from "react-hot-toast";
-import DeleteButton from "@/app/ui/account/delete_button";
+import AccountForm from "@/app/ui/account/form";
 
 export default async function Page() {
   const session = await auth();
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    try {
-      const formData = new FormData(event.currentTarget);
-      const username = formData.get("username");
-      const email = formData.get("email");
-      const old_password = formData.get("current_password");
-      const password = formData.get("password");
-      const password2 = formData.get("password2");
-      const response = await fetch("/api/account", {
-        method: "POST",
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          old_password: old_password,
-          password: password,
-          password2: password2,
-        }),
-      });
-      const result = (await response.json()) as { message: string };
-      if (response.ok) {
-        toast.success("Account Created! Redirecting in 3 seconds");
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-      } else {
-        toast.error(result.message);
-      }
-    } catch (error) {
-      toast.error("Something Went Wrong");
-      return "Something Went Wrong";
-    }
-  }
 
   return (
     <div className="p-6 flex flex-row justify-center items-end gap-4">
@@ -116,6 +83,11 @@ export default async function Page() {
         </div>
       </div>
       <DeleteButton id={session?.user.id}></DeleteButton>
+    <div className="p-6">
+      <h1 className="text-4xl text-black-gray font-bold mb-12">
+        Account Settings
+      </h1>
+      <AccountForm session={session}></AccountForm>
     </div>
   );
 }
