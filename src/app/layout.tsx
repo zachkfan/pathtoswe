@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito_Sans, Playfair_Display } from "next/font/google";
 import "./ui/globals.css";
 import { StrictMode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -30,7 +31,10 @@ export default function RootLayout({
         lang="en"
         className={`${playfairDisplay.variable} ${nunito.variable}`}
       >
-        <body>{children}</body>
+        <body>
+          {children}
+          <Analytics />
+        </body>
       </html>
     </StrictMode>
   );
