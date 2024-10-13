@@ -28,7 +28,7 @@ const HomeNav = () => {
             className="menu menu-sm dropdown-content bg-concrete-gray rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <HomeNavLink
-              title={"Search Interships"}
+              title={"Search Internships"}
               href={"/search"}
             ></HomeNavLink>
             <HomeNavLink title={"Dashboard"} href={"/dashboard"}></HomeNavLink>
@@ -47,7 +47,7 @@ const HomeNav = () => {
       <div className="flex-none text-white">
         <ul className="menu menu-horizontal px-1 text-2xl hidden md:flex">
           <HomeNavLink
-            title={"Search Interships"}
+            title={"Search Internships"}
             href={"/search"}
           ></HomeNavLink>
           <HomeNavLink title={"Dashboard"} href={"/dashboard"}></HomeNavLink>
