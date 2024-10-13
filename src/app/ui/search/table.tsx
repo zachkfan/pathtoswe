@@ -141,7 +141,7 @@ const Table = ({ search, filter, tab, showToast }: Props) => {
             <tr>
               <CustomTablePagination
                 className="text-black text-sm"
-                rowsPerPageOptions={[10, 15, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[10, 15, 25, 100]}
                 colSpan={7}
                 count={filteredInternships.length}
                 rowsPerPage={rowsPerPage}
