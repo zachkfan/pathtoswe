@@ -13,6 +13,8 @@ export function parseLocation(location: string): string[] {
     "Palo Alto, CA",
     "Salt Lake City, UT",
     "Bala Cynwyd, PA",
+    "St. Louis, MO",
+    "Saint Louis, MO",
     "New Jersey",
     "New York",
     "New York City",
@@ -26,6 +28,8 @@ export function parseLocation(location: string): string[] {
     "Palo Alto",
     "Salt Lake City",
     "Bala Cynwyd",
+    "St. Louis",
+    "Saint Louis",
   ];
 
   // Extract and remove multi-word cities from the input string
