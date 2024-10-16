@@ -23,40 +23,42 @@ export default function Signin() {
   return (
     <>
       <Toaster toastOptions={{ className: "text-black font-semibold" }} />
-      <div className="flex items-center justify-between w-3/4 lg:w-2/3 bg-white text-black rounded-lg overflow-hidden h-[60vh] lg:h-[79vh]">
-        <div className="flex-col justify-center py-6 px-6 lg:px-8 xl:py-8 xl:px-16 w-1/2">
-          <Header title={"Sign in"}></Header>
+      <div className="flex flex-col lg:flex-row items-center justify-between w-full lg:w-2/3 bg-white text-black rounded-lg overflow-hidden h-auto lg:h-[70vh] p-4 lg:p-0">
+        <div className="flex flex-col justify-center py-6 px-6 lg:px-8 xl:py-8 xl:px-16 w-full lg:w-1/2">
+          <Header title={"Sign in"} />
           <form action={formAction}>
             <TextBox
               title={"Email"}
               icon={UserIcon}
               inputType="email"
               name="email"
-            ></TextBox>
+            />
             <TextBox
               title={"Password"}
               icon={KeyIcon}
               inputType="password"
               name="password"
-            ></TextBox>
-            <Button login={"Sign in"}></Button>
+            />
+            <Button login={"Sign in"} />
           </form>
 
-          <OrDiv></OrDiv>
-          <GoogleBox login={"in"}></GoogleBox>
+          <OrDiv />
+          <GoogleBox login={"in"} />
           <SignLink
             login={"Sign up"}
             link={"/sign_up"}
             member={"Not a member?"}
-          ></SignLink>
+          />
         </div>
-        <Image
-          src="/Sign_in.png"
-          alt="Gray and black art"
-          width={5000}
-          height={5000}
-          className="w-1/2 h-full"
-        ></Image>
+        <div className="hidden lg:block w-full lg:w-1/2 h-full">
+          <Image
+            src="/Sign_in.png"
+            alt="Gray and black art"
+            width={5000}
+            height={5000}
+            className="w-full h-full"
+          />
+        </div>
       </div>
     </>
   );
