@@ -1,30 +1,18 @@
-"use client";
-
-import { ArrowUpIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 
-interface Props {
+interface ScrollButtonProps {
   footerOffset: number;
 }
 
-export default function ScrollButton({ footerOffset }: Props) {
+const ScrollButton: React.FC<ScrollButtonProps> = ({ footerOffset }) => {
   const [isOverlappingFooter, setIsOverlappingFooter] = useState(false);
 
   useEffect(() => {
-    const saved = sessionStorage.getItem("overlapped");
-    if (saved !== null) {
-      setIsOverlappingFooter(JSON.parse(saved) as boolean);
-    }
-
     const handleScroll = () => {
       const scrollTop = window.scrollY + window.innerHeight;
-      const isScrolledPastFooter = scrollTop >= footerOffset;
+      const isScrolledPastFooter = scrollTop >= footerOffset + 30;
       setIsOverlappingFooter(isScrolledPastFooter);
-      sessionStorage.setItem(
-        "overlapped",
-        JSON.stringify(isScrolledPastFooter)
-      );
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,17 +28,30 @@ export default function ScrollButton({ footerOffset }: Props) {
 
   return (
     <button
-      className={clsx(
-        "btn btn-circle bg-black-gray opacity-20 bottom-corner bottom-2",
-        {
-          "relative motion-safe:animate-bounce left-[95vw]":
-            isOverlappingFooter,
-          "fixed left-[95vw]": !isOverlappingFooter,
-        }
-      )}
       onClick={scrollToTop}
+      className={clsx(
+        "fixed p-2 bg-gray-800 text-white rounded-full shadow-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400",
+        "bottom-4 right-4 sm:bottom-8 sm:right-8",
+        { "opacity-20": isOverlappingFooter }
+      )}
+      style={{ zIndex: 1000, transition: "transform 0.2s" }}
     >
-      <ArrowUpIcon className="w-7 text-white" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
     </button>
   );
-}
+};
+
+export default ScrollButton;

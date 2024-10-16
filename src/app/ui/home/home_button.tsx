@@ -4,7 +4,7 @@ import Link from "next/link";
 const HomeButton = () => {
   return (
     <Link href="/search">
-      <button className="text-black-gray bg-white cursor-pointer w-80 h-16 text-4xl text-center rounded-full font-black hover:scale-110 duration-100 animate-fadeInFromLeft2">
+      <button className="text-black-gray bg-white cursor-pointer w-52 md:w-80 h-16 text-2xl md:text-4xl text-center rounded-full font-black hover:scale-110 duration-100 animate-fadeInFromLeft2">
         Start Today
       </button>
     </Link>
