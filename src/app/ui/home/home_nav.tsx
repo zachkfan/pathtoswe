@@ -25,7 +25,7 @@ const HomeNav = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-concrete-gray rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-concrete-gray rounded-box z-[1] mt-3 w-52 p-2 shadow text-black font-bold"
           >
             <HomeNavLink
               title={"Search Internships"}
